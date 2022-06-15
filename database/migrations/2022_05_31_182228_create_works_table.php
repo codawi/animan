@@ -15,10 +15,12 @@ return new class extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->id();
-            $table->integer('category');
+            $table->string('category');
             $table->string('title');
-            $table->string('image');
-            $table->string('url');
+            $table->string('image')->nullable();
+            $table->string('copyright')->nullable();
+            $table->string('url')->nullable();
+            $table->string('media')->nullable();
             $table->timestamps();
         });
     }

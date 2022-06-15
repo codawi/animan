@@ -212,4 +212,7 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    // annict トークン
+    'secret_key'=>env('SECRET_KEY'),
+
 ];
