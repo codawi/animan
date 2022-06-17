@@ -11,7 +11,8 @@ class Work extends Model
 {
   use HasFactory;
 
-  public $response;
+  protected $fillable = ['category', 'title', 'image', 'copyright', 'url', 'media'];
+  private $response;
 
   public function annictQuery()
   {
@@ -52,14 +53,24 @@ GQL;
   public function annictStore()
   {
     $annict_data = json_decode($this->response->getBody()->getContents());
+    $annict_works = $annict_data->data->searchWorks->edges;
 
-    $work = new Work();
-    $work->category = "anime";
-    $work->title = $annict_data->data->searchWorks->edges[0]->node->title;
-    $work->image = $annict_data->data->searchWorks->edges[0]->node->image->facebookOgImageUrl;
-    $work->copyright = $annict_data->data->searchWorks->edges[0]->node->image->copyright;
-    $work->url = $annict_data->data->searchWorks->edges[0]->node->officialSiteUrl;
-    $work->media = $annict_data->data->searchWorks->edges[0]->node->media;
-    $work->save();
+    foreach ($annict_works as $annict_work) {
+      Work::create([
+        'category' => 'anime',
+        'title' => $annict_work->node->title,
+        'image' => $annict_work->node->image->facebookOgImageUrl,
+        'copyright' => $annict_work->node->image->copyright,
+        'url' => $annict_work->node->officialSiteUrl,
+        'media' => $annict_work->node->media,
+      ]);
+    }
+    // $work->category = "anime";
+    // $work->title = $annict_data->data->searchWorks->edges[0]->node->title;
+    // $work->image = $annict_data->data->searchWorks->edges[0]->node->image->facebookOgImageUrl;
+    // $work->copyright = $annict_data->data->searchWorks->edges[0]->node->image->copyright;
+    // $work->url = $annict_data->data->searchWorks->edges[0]->node->officialSiteUrl;
+    // $work->media = $annict_data->data->searchWorks->edges[0]->node->media;
+    // $work->save();
   }
 }
