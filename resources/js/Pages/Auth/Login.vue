@@ -7,6 +7,10 @@ import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 
+defineProps({
+    canResetPassword: Boolean,
+    status: String,
+});
 
 const form = useForm({
     email: '',
