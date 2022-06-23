@@ -673,10 +673,6 @@ select {
   margin-left: -1rem;
   margin-right: -1rem;
 }
-.-my-4 {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1041,21 +1037,21 @@ select {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
 }
-.px-3 {
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-}
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
 }
-.py-24 {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-}
 .py-8 {
   padding-top: 2rem;
   padding-bottom: 2rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
 }
 .pt-8 {
   padding-top: 2rem;
@@ -1567,20 +1563,12 @@ select {
     margin-bottom: 0px;
   }
 
-  .md\:mr-auto {
-    margin-right: auto;
-  }
-
-  .md\:ml-4 {
-    margin-left: 1rem;
+  .md\:ml-auto {
+    margin-left: auto;
   }
 
   .md\:mt-0 {
     margin-top: 0px;
-  }
-
-  .md\:ml-auto {
-    margin-left: auto;
   }
 
   .md\:grid-cols-2 {
@@ -1601,20 +1589,6 @@ select {
 
   .md\:border-l {
     border-left-width: 1px;
-  }
-
-  .md\:border-gray-400 {
-    --tw-border-opacity: 1;
-    border-color: rgb(156 163 175 / var(--tw-border-opacity));
-  }
-
-  .md\:py-1 {
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-
-  .md\:pl-4 {
-    padding-left: 1rem;
   }
 }
 @media (min-width: 1024px) {

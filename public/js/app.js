@@ -24475,6 +24475,11 @@ __webpack_require__.r(__webpack_exports__);
   components: {
     Header: _components_Header__WEBPACK_IMPORTED_MODULE_0__["default"],
     Footer: _components_Footer__WEBPACK_IMPORTED_MODULE_1__["default"]
+  },
+  props: {
+    animeWorks: {
+      type: Object
+    }
   }
 });
 
@@ -25903,15 +25908,51 @@ __webpack_require__.r(__webpack_exports__);
 var _hoisted_1 = {
   id: "app"
 };
+var _hoisted_2 = {
+  "class": "text-gray-600 body-font"
+};
+var _hoisted_3 = {
+  "class": "container px-5 py-24 mx-auto"
+};
+var _hoisted_4 = {
+  "class": "flex flex-wrap -mx-4 -mb-10 text-center"
+};
+var _hoisted_5 = {
+  "class": "sm:w-1/2 mb-10 px-4"
+};
+var _hoisted_6 = {
+  "class": "rounded-lg h-64 overflow-hidden"
+};
+var _hoisted_7 = ["src"];
+var _hoisted_8 = {
+  "class": "title-font text-2xl font-medium text-gray-900 mt-6 mb-3"
+};
+var _hoisted_9 = {
+  "class": "leading-relaxed text-xs"
+};
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"text-gray-600 body-font\"><div class=\"container px-5 py-24 mx-auto\"><div class=\"flex flex-wrap -mx-4 -mb-10 text-center\"><div class=\"sm:w-1/2 mb-10 px-4\"><div class=\"rounded-lg h-64 overflow-hidden\"><img alt=\"content\" class=\"object-cover object-center h-full w-full\" src=\"https://dummyimage.com/1201x501\"></div><h2 class=\"title-font text-2xl font-medium text-gray-900 mt-6 mb-3\">Buy YouTube Videos</h2><p class=\"leading-relaxed text-base\">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p><button class=\"flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded\">詳細</button></div><div class=\"sm:w-1/2 mb-10 px-4\"><div class=\"rounded-lg h-64 overflow-hidden\"><img alt=\"content\" class=\"object-cover object-center h-full w-full\" src=\"https://dummyimage.com/1202x502\"></div><h2 class=\"title-font text-2xl font-medium text-gray-900 mt-6 mb-3\">The Catalyzer</h2><p class=\"leading-relaxed text-base\">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p><button class=\"flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded\">詳細</button></div></div></div></section>", 1);
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  "class": "flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded"
+}, "詳細", -1
+/* HOISTED */
+);
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"sm:w-1/2 mb-10 px-4\"><div class=\"rounded-lg h-64 overflow-hidden\"><img alt=\"content\" class=\"object-cover object-center h-full w-full\" src=\"https://dummyimage.com/1202x502\"></div><h2 class=\"title-font text-2xl font-medium text-gray-900 mt-6 mb-3\">The Catalyzer</h2><p class=\"leading-relaxed text-base\">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p><button class=\"flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded\">詳細</button></div>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Header = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Header");
 
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)]);
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Header), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $props.animeWorks.image
+  }, null, 8
+  /* PROPS */
+  , _hoisted_7)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h2", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animeWorks.title), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animeWorks.copyright), 1
+  /* TEXT */
+  ), _hoisted_10]), _hoisted_11])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)]);
 }
 
 /***/ }),
@@ -25959,7 +26000,7 @@ var _hoisted_1 = {
   "class": "text-gray-600 body-font"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center\"><a class=\"flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" class=\"w-10 h-10 text-white p-2 bg-yellow-500 rounded-full\" viewBox=\"0 0 24 24\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\"></path></svg><span class=\"ml-3 text-xl\">Tailblocks</span></a><nav class=\"md:ml-auto flex flex-wrap items-center text-base justify-center\"><a class=\"mr-5 hover:text-gray-900\">First Link</a><a class=\"mr-5 hover:text-gray-900\">Second Link</a><a class=\"mr-5 hover:text-gray-900\">Third Link</a><a class=\"mr-5 hover:text-gray-900\">Fourth Link</a></nav><button class=\"inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0\">Button <svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" class=\"w-4 h-4 ml-1\" viewBox=\"0 0 24 24\"><path d=\"M5 12h14M12 5l7 7-7 7\"></path></svg></button></div>", 1);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center\"><a class=\"flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0\"><svg xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" class=\"w-10 h-10 text-white p-2 bg-yellow-500 rounded-full\" viewBox=\"0 0 24 24\"><path d=\"M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5\"></path></svg><span class=\"ml-3 text-xl\">Animan</span></a><nav class=\"md:ml-auto flex flex-wrap items-center text-base justify-center\"><a class=\"mr-5 hover:text-gray-900\">First Link</a><a class=\"mr-5 hover:text-gray-900\">Second Link</a><a class=\"mr-5 hover:text-gray-900\">Third Link</a><a class=\"mr-5 hover:text-gray-900\">Fourth Link</a></nav><button class=\"inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0\">Button <svg fill=\"none\" stroke=\"currentColor\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\" class=\"w-4 h-4 ml-1\" viewBox=\"0 0 24 24\"><path d=\"M5 12h14M12 5l7 7-7 7\"></path></svg></button></div>", 1);
 
 var _hoisted_3 = [_hoisted_2];
 function render(_ctx, _cache) {
