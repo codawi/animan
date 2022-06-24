@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $anime_works = Work::where('id', '4')->first();
+        $anime_works = Work::all();
         return Inertia::render('Work/index',
     ['animeWorks' => $anime_works]);
         
