@@ -11,7 +11,7 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $anime_works = Work::all();
+        $anime_works = Work::take(10)->get();
         return Inertia::render('Work/index',
     ['animeWorks' => $anime_works]);
         

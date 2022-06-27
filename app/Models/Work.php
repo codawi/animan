@@ -65,12 +65,5 @@ GQL;
         'media' => $annict_work->node->media,
       ]);
     }
-    // $work->category = "anime";
-    // $work->title = $annict_data->data->searchWorks->edges[0]->node->title;
-    // $work->image = $annict_data->data->searchWorks->edges[0]->node->image->facebookOgImageUrl;
-    // $work->copyright = $annict_data->data->searchWorks->edges[0]->node->image->copyright;
-    // $work->url = $annict_data->data->searchWorks->edges[0]->node->officialSiteUrl;
-    // $work->media = $annict_data->data->searchWorks->edges[0]->node->media;
-    // $work->save();
   }
 }

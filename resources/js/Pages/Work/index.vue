@@ -2,25 +2,20 @@
     <div id="app">
         <Header/>
         <section class="text-gray-600 body-font">
-  <div class="container px-5 py-24 mx-auto">
-    <div class="flex flex-wrap -mx-4 -mb-10 text-center">
-      <div v-for="animeWork in animeWorks" :key="animeWork.anime" class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <div>
-           <img :src=" animeWork.image  ">
+  <div class="container flex justify-center mx-auto">
+    <div class="flex-col max-w-2xl mb-10 text-center">
+      <div v-for="animeWork in animeWorks" :key="animeWork.anime" class="my-36 px-4">
+        <div class="rounded-lg overflow-hidden">
+          <div v-if="animeWork.image !== null">
+           <img :src=" animeWork.image ">
+          </div>
+          <div v-else class="flex justify-center">
+            <img :src="'/img/no_image_logo.png'">
           </div>
         </div>
         <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">{{ animeWork.title }}</h2>
-        <p class="leading-relaxed text-xs" >{{ animeWork.copyright }}</p>
-        <button class="flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded">詳細</button>
-      </div>
-      <div class="sm:w-1/2 mb-10 px-4">
-        <div class="rounded-lg h-64 overflow-hidden">
-          <img alt="content" class="object-cover object-center h-full w-full" src="https://dummyimage.com/1202x502">
-        </div>
-        <h2 class="title-font text-2xl font-medium text-gray-900 mt-6 mb-3">The Catalyzer</h2>
-        <p class="leading-relaxed text-base">Williamsburg occupy sustainable snackwave gochujang. Pinterest cornhole brunch, slow-carb neutra irony.</p>
-        <button class="flex mx-auto mt-6 text-white bg-yellow-500 border-0 py-2 px-5 focus:outline-none hover:bg-yellow-600 rounded">詳細</button>
+        <p class="leading-relaxed text-xs font-thin" >{{ animeWork.copyright }}</p>
+        <button class="flex mx-auto mt-4 text-white bg-yellow-500 border-0 py-4 px-8 focus:outline-none hover:bg-yellow-600 rounded">詳細</button>
       </div>
     </div>
   </div>
@@ -30,10 +25,8 @@
 </template>
 
 <script>
-    import Header from "@/components/Header"
-    import Footer from "@/components/Footer"
-    // import Paginate from 'vujs-paginate'
-    // VUe.component('paginate', Paginate)
+    import Header from "@/Components/Header"
+    import Footer from "@/Components/Footer"
 
     export default {
         name: 'app',
