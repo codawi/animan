@@ -32,6 +32,22 @@ Route::get('/dashboard', function () {
 
 // Route::get('/', [IndexController::class, 'index'])->name('Work.index');
 
+Route::get('/', function() {
+        $goutte = Goutte::request('GET', 'https://sakuhindb.com/manga-ranking/2022/');
+        //画像を取得するための配列
+        $images = array();
+        //タイトルを取得するための配列
+        $titles = array();
+        
+        //画像取得
+        //詳細ページに移動→画像、タイトル、作者情報取得を繰り返す。
+        $goutte->filter('tr td span img')->each(function ($node) use (&$images) {
+            $images[] = $node->attr('.src');
+        });
+        dd($images);
+        
+});
+
 
 require __DIR__.'/auth.php';
 

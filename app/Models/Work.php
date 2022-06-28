@@ -66,4 +66,10 @@ GQL;
       ]);
     }
   }
+
+  public function mangaStore() {
+    $crawler = Goutte::request('GET', 'https://sakuhindb.com/manga-ranking/2022/');
+    $crawler->filter('filter')->attr('src')->text();
+    dd($crawler);
+  }
 }
