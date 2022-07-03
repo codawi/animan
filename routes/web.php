@@ -69,12 +69,12 @@ Route::get('/', function() {
         });
 
         //次のページへ移動
-        try {
-        $link = $crawler->selectLink($page)->link();
-        $crawler = $client->click($link);
-        } catch (\InvalidArgumentException $e) {
-            break;
-        }
+        // try {
+        // $link = $crawler->selectLink($page)->link();
+        // $crawler = $client->click($link);
+        // } catch (\InvalidArgumentException $e) {
+        //     break;
+        // }
     }
 
         $works = [
@@ -83,7 +83,7 @@ Route::get('/', function() {
             'images' => $images,
             'urls'=> $urls,
         ];
-        ddd($works);
+        dd($works);
         
         
 });
