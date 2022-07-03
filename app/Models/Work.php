@@ -6,14 +6,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Http;
+use Goutte\Client;
 
 class Work extends Model
 {
   use HasFactory;
 
   protected $fillable = ['category', 'title', 'image', 'copyright', 'url', 'media'];
-  private $response;
 
+  //annictAPI作品情報取得
+  private $response;
   public function annictQuery()
   {
     $query = <<<GQL
@@ -67,9 +69,46 @@ GQL;
     }
   }
 
-  public function mangaStore() {
-    $crawler = Goutte::request('GET', 'https://sakuhindb.com/manga-ranking/2022/');
-    $crawler->filter('filter')->attr('src')->text();
-    dd($crawler);
-  }
+
+  //漫画スクレイピング
+  public function comicScraping() {
+  $client = new Client();
+  //少年漫画週間ランキング
+  $crawler = $client->request('GET', 'https://comic.k-manga.jp/rank/boy/weekly');
+
+      $images = array();
+      $titles = array();
+      $artists = array();
+      $urls = array();
+
+    //タイトル取得
+      $crawler->filter('.book-list--title')->each(function ($node) use (&$titles) {
+          $titles[] = $node->text();
+      });
+
+      //作家情報取得
+      $crawler->filter('.book-list--author')->each(function ($node) use (&$artists) {
+          $artists[] = $node->text();
+      });
+      
+      //画像取得
+      $crawler->filter('.book-list--img')->each(function ($node) use (&$images) {
+          $images[] = $node->attr('src');
+      });
+
+      // URL取得
+      $crawler->filter('.book-list--item')->each(function($node) use (&$urls) {
+          $href_link = $node->attr('href');
+          $urls[] = $href_link;
+      });
+
+      $works = [
+          'titles' => $titles,
+          'artists' => $artists,
+          'images' => $images,
+          'urls'=> $urls,
+      ];
+    }
+      
+      
 }
