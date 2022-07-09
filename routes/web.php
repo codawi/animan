@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\TweetCountsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +33,8 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/', [IndexController::class, 'index'])->name('Work.index');
+
+Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
 
 require __DIR__.'/auth.php';
