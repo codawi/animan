@@ -12,7 +12,7 @@ class Work extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['category', 'title', 'image', 'copyright', 'url', 'media'];
+  protected $fillable = ['category', 'title', 'author', 'image', 'copyright', 'url', 'media'];
 
   //annictAPI作品情報取得
   private $response;
@@ -72,43 +72,39 @@ GQL;
 
   //漫画スクレイピング
   public function comicScraping() {
-  $client = new Client();
-  //少年漫画週間ランキング
-  $crawler = $client->request('GET', 'https://comic.k-manga.jp/rank/boy/weekly');
+    $client = new Client();
 
-      $images = array();
-      $titles = array();
-      $artists = array();
-      $urls = array();
+    //少年→青年→少女→女性漫画週間ランキングの作品を順に取得
+    $works = [];
+    $categories = array('boy', 'male', 'girl', 'female');
+    foreach ($categories as $category) {
+        $crawler = $client->request("GET", "https://comic.k-manga.jp/rank/{$category}/weekly");
+        $crawler->filter('.book-list--target')->each(function ($node) use (&$works) {
+            $works[] = [
+                //タイトル取得
+                'title' => $node->filter('.book-list--title')->text(),
 
-    //タイトル取得
-      $crawler->filter('.book-list--title')->each(function ($node) use (&$titles) {
-          $titles[] = $node->text();
-      });
+                //作家情報取得
+                'author' => $node->filter('.book-list--author')->text('span'),
 
-      //作家情報取得
-      $crawler->filter('.book-list--author')->each(function ($node) use (&$artists) {
-          $artists[] = $node->text();
-      });
-      
-      //画像取得
-      $crawler->filter('.book-list--img')->each(function ($node) use (&$images) {
-          $images[] = $node->attr('src');
-      });
+                //画像取得
+                'image' => $node->filter('.book-list--img')->attr('src'),
 
-      // URL取得
-      $crawler->filter('.book-list--item')->each(function($node) use (&$urls) {
-          $href_link = $node->attr('href');
-          $urls[] = $href_link;
-      });
+                // URL取得
+                'url' => $node->filter('.book-list--item')->attr('href'),
+            ];
+        });
+    };
 
-      $works = [
-          'titles' => $titles,
-          'artists' => $artists,
-          'images' => $images,
-          'urls'=> $urls,
-      ];
+    //DB保存
+    foreach($works as $work) {
+      Work::create([
+        'category' => 'comic',
+        'title' => $work['title'],
+        'author' => $work['author'],
+        'image' => $work['image'],
+        'url' => $work['url'],
+      ]);
     }
-      
-      
+  }  
 }

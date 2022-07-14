@@ -18,13 +18,16 @@ class TweetCountsController extends Controller
         //APIバージョン指定
         $connection->setApiVersion("2");
 
-        //検索ワード
+        //クエリ
+        //アニメはDBから、漫画はスクレイピングしたタイトル名で検索
         $query = 'アングリーバード';
         $params = [
         "query" => $query,
+        "start_time" => "2022-07-08T00:00:00+09:00",
+        "end_time" => "2022-07-09T00:00:00+09:00",
+        "granularity" => "day",
         ];
 
-        //クエリ
          $twitterRequest = $connection->get('tweets/counts/recent', $params); 
        
 
