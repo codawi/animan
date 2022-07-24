@@ -5,33 +5,41 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Abraham\TwitterOAuth\TwitterOAuth;
 use Inertia\Inertia;
-
+use App\Models\Work;
 
 class TweetCountsController extends Controller
 {
     //ツイート数検索
-    public function index(Request $request) {
-        $consumer_key = config('twitter.twitter-api'); 
-        $consumer_secret = config('twitter.twitter-api-secret'); 
-        $access_bearer = config('twitter.bearer-token'); 
+    public function index(Request $request)
+    {
+        $consumer_key = config('twitter.twitter-api');
+        $consumer_secret = config('twitter.twitter-api-secret');
+        $access_bearer = config('twitter.bearer-token');
         $connection = new TwitterOAuth($consumer_key, $consumer_secret, null, $access_bearer);
         //APIバージョン指定
         $connection->setApiVersion("2");
 
-        //クエリ
-        //アニメはDBから、漫画はスクレイピングしたタイトル名で検索
-        $query = 'アングリーバード';
-        $params = [
-        "query" => $query,
-        "start_time" => "2022-07-08T00:00:00+09:00",
-        "end_time" => "2022-07-09T00:00:00+09:00",
-        "granularity" => "day",
-        ];
+        //DBからアニメ作品情報取得
+        $works = Work::where('category', 'anime')->get()->toArray();
 
-         $twitterRequest = $connection->get('tweets/counts/recent', $params); 
-       
-
-            return inertia::render('Twitter',['twitter' => $twitterRequest]);
+        //タイトルのみ「:」を空白に置換
+        $serch = [':', '<', '>', '―', '‐', 'Ⅴ', '[', ']', '≪', '≫', '&'];
+        $titles = array_column($works, 'title');
+        foreach($titles as $index => $title) {
+            $works[$index]["title"] = str_replace($serch, '', $title);
         }
+
+        //検索ループ
+        foreach($works as $index => $work) {
+        $params = [
+            "query" => $work['title'],
+            "start_time" => "2022-07-19T00:00:00+09:00",
+            "end_time" => "2022-07-20T00:00:00+09:00",
+            "granularity" => "day",
+        ];
+        $twitter_request[] = $connection->get('tweets/counts/recent', $params);
     }
 
+        return inertia::render('Twitter', ['twitter' => $twitter_request]);
+    }
+}
