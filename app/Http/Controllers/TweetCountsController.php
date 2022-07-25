@@ -19,6 +19,7 @@ class TweetCountsController extends Controller
         //APIバージョン指定
         $connection->setApiVersion("2");
 
+        //アニメ作品カウント
         //DBからアニメ作品情報取得
         $works = Work::where('category', 'anime')->get()->toArray();
 
@@ -39,6 +40,32 @@ class TweetCountsController extends Controller
         ];
         $twitter_request[] = $connection->get('tweets/counts/recent', $params);
     }
+
+        //15分間スリープ
+        sleep(900);
+
+        //漫画作品カウント
+        //DBから漫画作品情報取得
+        $works = Work::where('category', 'comic')->get()->toArray();
+
+        $serch = [':', '<', '>', '―', '‐', 'Ⅴ', '[', ']', '≪', '≫', '&'];
+        $titles = array_column($works, 'title');
+        foreach($titles as $index => $title) {
+            $works[$index]["title"] = str_replace($serch, '', $title);
+        }
+
+        foreach($works as $index => $work) {
+        $params = [
+            "query" => $work['title'],
+            "start_time" => "2022-07-19T00:00:00+09:00",
+            "end_time" => "2022-07-20T00:00:00+09:00",
+            "granularity" => "day",
+        ];
+        $twitter_request[] = $connection->get('tweets/counts/recent', $params);
+    }
+
+    dd($twitter_request);
+
 
         return inertia::render('Twitter', ['twitter' => $twitter_request]);
     }
