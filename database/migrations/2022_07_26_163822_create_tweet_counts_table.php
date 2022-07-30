@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('works', function (Blueprint $table) {
+        Schema::create('tweet_counts', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('title');
-            $table->string('author')->nullable();
-            $table->string('image')->nullable();
-            $table->string('copyright')->nullable();
-            $table->string('url')->nullable();
-            $table->string('media')->nullable();
+            $table->foreignId('work_id')->constrained('works')->cascadeOnDelete();
+            $table->integer('daily_tweet');
+            $table->integer('weekly_tweet')->default(0);
+            $table->integer('monthly_tweet')->default(0);
             $table->timestamps();
         });
     }
@@ -33,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('works');
+        Schema::dropIfExists('tweet_counts');
     }
 };
