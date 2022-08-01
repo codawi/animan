@@ -80,4 +80,9 @@ class TweetCount extends Model
             ]);
         }
     }
+
+    //作品情報リレーション
+    public function work() {
+        return $this->belongsTo(Work::class);
+    }
 }
