@@ -111,4 +111,9 @@ GQL;
       ]);
     }
   }
+
+  //カウント数リレーション
+  public function count() {
+    return $this->hasOne(TweetCount::class);
+  }
 }
