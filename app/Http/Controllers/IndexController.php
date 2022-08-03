@@ -12,13 +12,16 @@ class IndexController extends Controller
 {
     public function index()
     {
-        $anime_works = Work::where('category', 'anime')->take(10)->get();
-        $comic_works = Work::where('category', 'comic')->take(10)->get();
-        $anime_ranking = TweetCount::orderBy('daily_tweet', 'desc')->with('work')->take(10)->get()->toArray();
-        dd($anime_ranking);
-        
+        //アニメランキング
+        $anime_ranking = Work::with('count')->where('category', 'anime')->get();
+        $anime_ranking = $anime_ranking->sortByDesc('count.daily_tweet')->toArray();
+
+        //漫画ランキング
+        $comic_ranking = Work::with('count')->where('category', 'comic')->get();
+        $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->toArray();
+
         return Inertia::render('Work/index',
-    ['animeWorks' => $anime_works, 'comicWorks' => $comic_works]);
+    ['animeWorks' => $anime_ranking, 'comicWorks' => $comic_ranking]);
         
     }
 }
