@@ -19,10 +19,8 @@ class IndexController extends Controller
         //漫画ランキング
         $comic_ranking = Work::with('count')->where('category', 'comic')->get();
         $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
-
-        // dd($comic_ranking);
         
-        return Inertia::render('Work/index',
+        return Inertia::render('Index',
     ['animeWorks' => $anime_ranking, 'comicWorks' => $comic_ranking]);
         
     }

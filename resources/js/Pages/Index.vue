@@ -1,4 +1,5 @@
 <template>
+<Header/>
 <div class="md:flex">
 <!-- アニメ作品表示 -->
 <section class="text-gray-600 body-font md:ml-16">
@@ -24,18 +25,17 @@
     </div>
   </div>
 </section>
-
+</div>
 <!-- 漫画作品表示 -->
+<div class="md:flex">
 <section class="text-gray-600 body-font md:ml-16">
-  <div  v-for="comicWork in comicWorks" :key="comicWork" class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-      <div v-if="comicWork.image !== null">
+  <div  v-for="comicWork in comicWorks" :key="comicWork" class="container flex px-5 py-24 md:flex-row flex-col items-center">
+    <div v-if="comicWork.image !== null" class="mx-auto lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
        <img :src=" comicWork.image ">
           </div>
           <div v-else>
             <img :src="'/img/noimage.svg'">
           </div>
-    </div>
     <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
       <h1 v-text="comicWork.title" class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
       </h1>
@@ -50,6 +50,7 @@
   </div>
 </section>
 </div>
+<Footer/>
 </template>
 
 <script>
@@ -63,8 +64,8 @@
             type:Object,
           },
           comicWorks: {
-            type: Object,
-          }
+            type:Object,
+          },
     },
     }
 </script>
