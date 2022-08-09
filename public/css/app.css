@@ -968,12 +968,20 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(238 242 255 / var(--tw-bg-opacity));
 }
-.bg-yellow-500 {
+.bg-orange-500 {
   --tw-bg-opacity: 1;
-  background-color: rgb(234 179 8 / var(--tw-bg-opacity));
+  background-color: rgb(249 115 22 / var(--tw-bg-opacity));
 }
 .fill-current {
   fill: currentColor;
+}
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.object-center {
+  -o-object-position: center;
+     object-position: center;
 }
 .p-6 {
   padding: 1.5rem;
@@ -1294,9 +1302,9 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(17 24 39 / var(--tw-bg-opacity));
 }
-.hover\:bg-yellow-600:hover {
+.hover\:bg-orange-600:hover {
   --tw-bg-opacity: 1;
-  background-color: rgb(202 138 4 / var(--tw-bg-opacity));
+  background-color: rgb(234 88 12 / var(--tw-bg-opacity));
 }
 .hover\:bg-gray-200:hover {
   --tw-bg-opacity: 1;
@@ -1602,10 +1610,6 @@ select {
   .md\:mx-2 {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
-  }
-
-  .md\:ml-16 {
-    margin-left: 4rem;
   }
 
   .md\:mb-0 {
