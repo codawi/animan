@@ -1,21 +1,19 @@
 <template>  
 <!-- propsを子コンポーネントへ -->
-<AnimeRanking :animeWorks="animeWorks" />
+<ComicRanking :comicWorks="comicWorks" />
 </template>
 
 <script>
     import Navbar from "@/Components/Navbar";
     import Footer from "@/Components/Footer";
-    import AnimeRanking from "@/Components/AnimeRanking";
 
     export default {
         components: { 
           Navbar,
           Footer,
-          AnimeRanking,
            },
         props: {
-          animeWorks: {
+          comicWorks: {
             type:Object,
           },
     },
