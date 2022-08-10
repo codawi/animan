@@ -22,4 +22,30 @@ class ComicController extends Controller
             ['comicWorks' => $comic_ranking]
         );
     }
+
+    public function indexWeekly()
+    {
+        $comic_ranking = Work::with('count')->where('category', 'comic')->get();
+        $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+
+        $comic_ranking = array_merge($comic_ranking);
+
+        return Inertia::render(
+            'Comic/WeeklyRanking',
+            ['comicWorks' => $comic_ranking]
+        );
+    }
+
+    public function indexMonthly()
+    {
+        $comic_ranking = Work::with('count')->where('category', 'comic')->get();
+        $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+
+        $comic_ranking = array_merge($comic_ranking);
+
+        return Inertia::render(
+            'Comic/MonthlyRanking',
+            ['comicWorks' => $comic_ranking]
+        );
+    }
 }
