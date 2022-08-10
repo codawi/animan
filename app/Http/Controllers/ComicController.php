@@ -18,7 +18,7 @@ class ComicController extends Controller
         $comic_ranking = array_merge($comic_ranking);
 
         return Inertia::render(
-            'ComicDaily',
+            'Comic/DailyRanking',
             ['comicWorks' => $comic_ranking]
         );
     }

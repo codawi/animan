@@ -2,8 +2,6 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
-use Goutte\Client;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\animeController;
@@ -39,6 +37,13 @@ Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/anime/daily', [animeController::class, 'indexDaily'])->name('anime.daily');
 Route::get('/comic/daily', [comicController::class, 'indexDaily'])->name('comic.daily');
+
+Route::get('/anime/weekly', [animeController::class, 'indexWeekly'])->name('anime.weekly');
+Route::get('/comic/weekly', [comicController::class, 'indexWeekly'])->name('comic.weekly');
+
+Route::get('/anime/monthly', [animeController::class, 'indexMonthly'])->name('anime.monthly');
+Route::get('/comic/monthly', [comicController::class, 'indexMonthly'])->name('comic.monthly');
+
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 

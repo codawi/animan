@@ -18,7 +18,7 @@ class AnimeController extends Controller
         $anime_ranking = array_merge($anime_ranking);
 
         return Inertia::render(
-            'AnimeDaily',
+            'Anime/DailyRanking',
             ['animeWorks' => $anime_ranking]
         );
     }
