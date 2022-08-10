@@ -22,4 +22,28 @@ class AnimeController extends Controller
             ['animeWorks' => $anime_ranking]
         );
     }
+
+    public function indexWeekly() {
+        $anime_ranking = Work::with('count')->where('category', 'anime')->get();
+        $anime_ranking = $anime_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+
+        $anime_ranking = array_merge($anime_ranking);
+
+        return Inertia::render(
+            'Anime/WeeklyRanking',
+            ['animeWorks' => $anime_ranking]
+        );
+    }
+
+    public function indexMonthly() {
+        $anime_ranking = Work::with('count')->where('category', 'anime')->get();
+        $anime_ranking = $anime_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+
+        $anime_ranking = array_merge($anime_ranking);
+
+        return Inertia::render(
+            'Anime/MonthlyRanking',
+            ['animeWorks' => $anime_ranking]
+        );
+    }
 }
