@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\animeController;
 use App\Http\Controllers\comicController;
+use App\Http\Controllers\WorkController;
 use App\Http\Controllers\TweetCountsController;
 
 
@@ -44,6 +45,8 @@ Route::get('/comic/weekly', [comicController::class, 'indexWeekly'])->name('comi
 Route::get('/anime/monthly', [animeController::class, 'indexMonthly'])->name('anime.monthly');
 Route::get('/comic/monthly', [comicController::class, 'indexMonthly'])->name('comic.monthly');
 
+Route::get('/work/anime/{id}', [WorkController::class, 'showAnime'])->name('work.anime');
+Route::get('/work/comic/{id}', [WorkController::class, 'showComic'])->name('work.comic');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
