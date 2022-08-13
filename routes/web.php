@@ -2,6 +2,7 @@
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\animeController;
@@ -21,20 +22,20 @@ use App\Http\Controllers\TweetCountsController;
 |
 */
 
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
+Route::get('/', function () {
+    return Inertia::render('Welcome', [
+        'canLogin' => Route::has('login'),
+        'canRegister' => Route::has('register'),
+        'laravelVersion' => Application::VERSION,
+        'phpVersion' => PHP_VERSION,
+    ]);
+});
 
 // Route::get('/dashboard', function () {
 //     return Inertia::render('Dashboard');
 // })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', [IndexController::class, 'index'])->name('index');
+// Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::get('/anime/daily', [animeController::class, 'indexDaily'])->name('anime.daily');
 Route::get('/comic/daily', [comicController::class, 'indexDaily'])->name('comic.daily');
