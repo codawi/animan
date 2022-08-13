@@ -37,17 +37,19 @@ Route::get('/', function () {
 
 // Route::get('/', [IndexController::class, 'index'])->name('index');
 
-Route::get('/anime/daily', [animeController::class, 'indexDaily'])->name('anime.daily');
-Route::get('/comic/daily', [comicController::class, 'indexDaily'])->name('comic.daily');
+Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
+    Route::get('daily', [AnimeController::class, 'indexDaily'])->name('daily');
+    Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
+    Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
+    Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
+});
 
-Route::get('/anime/weekly', [animeController::class, 'indexWeekly'])->name('anime.weekly');
-Route::get('/comic/weekly', [comicController::class, 'indexWeekly'])->name('comic.weekly');
-
-Route::get('/anime/monthly', [animeController::class, 'indexMonthly'])->name('anime.monthly');
-Route::get('/comic/monthly', [comicController::class, 'indexMonthly'])->name('comic.monthly');
-
-Route::get('/work/anime/{id}', [WorkController::class, 'showAnime'])->name('work.anime');
-Route::get('/work/comic/{id}', [WorkController::class, 'showComic'])->name('work.comic');
+Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
+    Route::get('daily', [ComicController::class, 'indexDaily'])->name('daily');
+    Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
+    Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
+    Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
+});
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
