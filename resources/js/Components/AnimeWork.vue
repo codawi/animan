@@ -69,9 +69,10 @@
     </div>
   </section>
   <section class="text-gray-600 body-font relative">
-  <div class="container px-5 pb-24 mx-auto">
-    <div class="lg:w-1/2 md:w-2/3 mx-auto">
-      <div class="flex flex-wrap -m-2">
+    <div class="container px-5 pb-24 mx-auto">
+      <div class="lg:w-1/2 md:w-2/3 mx-auto">
+        <star-rating :star-size="35" :increment="0.5" v-model="rating" class="justify-center py-4"></star-rating>
+        <div class="flex flex-wrap -m-2">
         <div class="p-2 w-full">
           <div class="relative">
             <label for="message" class="leading-7 text-sm text-gray-600">感想</label>
@@ -89,11 +90,13 @@
 </template>
 
 <script>
+import StarRating from "vue-star-rating";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 
 export default {
   components: {
+    StarRating,
     Navbar,
     Footer,
   },
@@ -102,5 +105,10 @@ export default {
       type: Object,
     },
   },
+  data: function(){
+    return {
+    rating:0,
+    }
+  }
 };
 </script>
