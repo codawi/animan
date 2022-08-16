@@ -24876,7 +24876,7 @@ var _hoisted_1 = {
   "class": "text-gray-600 body-font"
 };
 var _hoisted_2 = {
-  "class": "container mx-auto flex px-5 py-24 items-center justify-center flex-col"
+  "class": "container mx-auto flex px-5 py-12 items-center justify-center flex-col"
 };
 var _hoisted_3 = {
   key: 0
@@ -24893,11 +24893,13 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "flex justify-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "inline-flex text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded text-lg"
-}, "評価"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+}, " 評価 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
-}, "配信サイト")], -1
+}, " 配信サイト ")], -1
 /* HOISTED */
 );
+
+var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<section class=\"text-gray-600 body-font relative\"><div class=\"container px-5 pb-24 mx-auto\"><div class=\"lg:w-1/2 md:w-2/3 mx-auto\"><div class=\"flex flex-wrap -m-2\"><div class=\"p-2 w-full\"><div class=\"relative\"><label for=\"message\" class=\"leading-7 text-sm text-gray-600\">感想</label><textarea id=\"message\" name=\"message\" class=\"w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out\"></textarea></div></div><div class=\"p-2 w-full\"><button class=\"flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg\">送信する</button></div></div></div></div></section>", 1);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Navbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Navbar");
@@ -24906,7 +24908,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.animeWork.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $props.animeWork.image,
-    "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+    "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 mx-auto object-cover object-center rounded"
   }, null, 8
   /* PROPS */
   , _hoisted_4)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
@@ -24915,7 +24917,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
   }, null, 8
   /* PROPS */
-  , _hoisted_5))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  , _hoisted_5)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animeWork.title),
     "class": "title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
   }, null, 8
@@ -24925,7 +24927,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-8 leading-relaxed"
   }, null, 8
   /* PROPS */
-  , _hoisted_8), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
+  , _hoisted_8), _hoisted_9])])]), _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -25146,9 +25148,9 @@ var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "flex justify-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "inline-flex text-white bg-orange-500 border-0 py-2 px-6 focus:outline-none hover:bg-orange-600 rounded text-lg"
-}, "評価"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+}, " 評価 "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   "class": "ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg"
-}, "配信サイト")], -1
+}, " 配信サイト ")], -1
 /* HOISTED */
 );
 
@@ -25159,7 +25161,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.comicWork.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     src: $props.comicWork.image,
-    "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+    "class": "w-5/6 mb-10 mx-auto object-cover object-center rounded"
   }, null, 8
   /* PROPS */
   , _hoisted_4)])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
@@ -25168,7 +25170,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
   }, null, 8
   /* PROPS */
-  , _hoisted_5))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
+  , _hoisted_5)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
     textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comicWork.title),
     "class": "title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
   }, null, 8
@@ -25178,7 +25180,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "mb-8 leading-relaxed"
   }, null, 8
   /* PROPS */
-  , _hoisted_8), _hoisted_9])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
+  , _hoisted_8), _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
   /* STABLE_FRAGMENT */
   );
 }
