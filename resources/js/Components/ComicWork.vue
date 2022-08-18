@@ -68,18 +68,21 @@
       </div>
     </div>
   </section>
+  <Review />
   <Footer />
 </template>
 
 <script>
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import Review from "@/Components/Review";
 
 export default {
   components: {
     Navbar,
     Footer,
-  },
+    Review
+},
   props: {
     comicWork: {
       type: Object,
