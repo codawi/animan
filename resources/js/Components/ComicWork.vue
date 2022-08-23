@@ -68,7 +68,7 @@
       </div>
     </div>
   </section>
-  <Review />
+  <Review :comicWork="comicWork"/>
   <Footer />
 </template>
 

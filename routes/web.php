@@ -32,9 +32,9 @@ Route::get('/', function () {
     ]);
 });
 
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', function () {
+    return Inertia::render('Dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 // Route::get('/', [IndexController::class, 'index'])->name('index');
 
@@ -43,7 +43,6 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
-    Route::get('work/{id}/review', [RatingController::class, 'index'])->name('review');
 });
 
 Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
@@ -51,10 +50,10 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
-    Route::get('work/{id}/review', [RatingController::class, 'index'])->name('review');
 });
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
+Route::post('/review/store', [RatingController::class, 'store'])->name('review');
 
 require __DIR__ . '/auth.php';
