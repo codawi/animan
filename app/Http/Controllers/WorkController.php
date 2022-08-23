@@ -12,7 +12,7 @@ class WorkController extends Controller
         $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
         return Inertia::render(
             'Work/Anime',
-            ['animeWork' => $animeWork]
+            ['work' => $animeWork]
         );
     }
 
@@ -20,7 +20,7 @@ class WorkController extends Controller
         $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
         return Inertia::render(
             'Work/Comic',
-            ['comicWork' => $comicWork]
+            ['work' => $comicWork]
         );
     }
 }

@@ -81,7 +81,7 @@ export default {
     StarRating,
   },
   props: {
-    comicWork: {
+    work: {
       type: Object,
     },
   },
@@ -90,7 +90,7 @@ export default {
       rating: 0,
       form: this.$inertia.form({
       rating:this.rating,
-      work_id: this.comicWork.id,
+      work_id: this.work.id,
       review: "",
       })
     }

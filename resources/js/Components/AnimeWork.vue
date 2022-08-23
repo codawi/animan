@@ -13,9 +13,9 @@
         flex-col
       "
     >
-      <div v-if="animeWork.image !== null">
+      <div v-if="work.image !== null">
         <img
-          :src="animeWork.image"
+          :src="work.image"
           class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 mx-auto object-cover object-center rounded"
         />
       </div>
@@ -26,10 +26,10 @@
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1
-          v-text="animeWork.title"
+          v-text="work.title"
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-text="animeWork.copyright" class="mb-8 leading-relaxed"></p>
+        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
         <div class="flex justify-center">
           <button
             class="
@@ -68,7 +68,7 @@
       </div>
     </div>
   </section>
-  <Review />
+  <Review :work="work"/>
   <Footer />
 </template>
 
@@ -84,7 +84,7 @@ export default {
     Review
   },
   props: {
-    animeWork: {
+    work: {
       type: Object,
     },
   },

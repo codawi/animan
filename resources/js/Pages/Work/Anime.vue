@@ -1,5 +1,5 @@
 <template>
-<animeWork :animeWork="animeWork" />
+<animeWork :work="work" />
 </template>
 
 <script>
@@ -9,7 +9,7 @@
           animeWork,
            },
         props: {
-          animeWork: {
+          work: {
             type:Object,
           },
     },
