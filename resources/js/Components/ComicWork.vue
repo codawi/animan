@@ -13,9 +13,9 @@
         flex-col
       "
     >
-      <div v-if="comicWork.image !== null">
+      <div v-if="work.image !== null">
         <img
-          :src="comicWork.image"
+          :src="work.image"
           class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
         />
       </div>
@@ -26,10 +26,10 @@
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1
-          v-text="comicWork.title"
+          v-text="work.title"
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-text="comicWork.author" class="mb-8 leading-relaxed"></p>
+        <p v-text="work.author" class="mb-8 leading-relaxed"></p>
         <div class="flex justify-center">
           <button
             class="
@@ -68,7 +68,7 @@
       </div>
     </div>
   </section>
-  <Review :comicWork="comicWork"/>
+  <Review :work="work"/>
   <Footer />
 </template>
 
@@ -84,7 +84,7 @@ export default {
     Review
 },
   props: {
-    comicWork: {
+    work: {
       type: Object,
     },
   },

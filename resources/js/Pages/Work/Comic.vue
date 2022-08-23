@@ -1,5 +1,5 @@
 <template>
-<comicWork :comicWork="comicWork" />
+<comicWork :work="work" />
 </template>
 
 <script>
@@ -9,7 +9,7 @@
           comicWork,
            },
         props: {
-          comicWork: {
+          work: {
             type:Object,
           },
     },

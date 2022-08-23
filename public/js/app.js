@@ -23573,7 +23573,7 @@ __webpack_require__.r(__webpack_exports__);
     Review: _Components_Review__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
-    animeWork: {
+    work: {
       type: Object
     }
   }
@@ -23722,7 +23722,7 @@ __webpack_require__.r(__webpack_exports__);
     Review: _Components_Review__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   props: {
-    comicWork: {
+    work: {
       type: Object
     }
   }
@@ -24006,7 +24006,7 @@ __webpack_require__.r(__webpack_exports__);
     StarRating: (vue_star_rating__WEBPACK_IMPORTED_MODULE_0___default())
   },
   props: {
-    comicWork: {
+    work: {
       type: Object
     }
   },
@@ -24015,7 +24015,7 @@ __webpack_require__.r(__webpack_exports__);
       rating: 0,
       form: this.$inertia.form({
         rating: this.rating,
-        work_id: this.comicWork.id,
+        work_id: this.work.id,
         review: ""
       })
     };
@@ -24778,7 +24778,7 @@ __webpack_require__.r(__webpack_exports__);
     animeWork: _Components_AnimeWork__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    animeWork: {
+    work: {
       type: Object
     }
   }
@@ -24804,7 +24804,7 @@ __webpack_require__.r(__webpack_exports__);
     comicWork: _Components_ComicWork__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    comicWork: {
+    work: {
       type: Object
     }
   }
@@ -24954,8 +24954,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.animeWork.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $props.animeWork.image,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.work.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $props.work.image,
     "class": "lg:w-2/6 md:w-3/6 w-5/6 mb-10 mx-auto object-cover object-center rounded"
   }, null, 8
   /* PROPS */
@@ -24966,16 +24966,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_5)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animeWork.title),
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.work.title),
     "class": "title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
   }, null, 8
   /* PROPS */
   , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.animeWork.copyright),
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.work.copyright),
     "class": "mb-8 leading-relaxed"
   }, null, 8
   /* PROPS */
-  , _hoisted_8), _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Review), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
+  , _hoisted_8), _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Review, {
+    work: $props.work
+  }, null, 8
+  /* PROPS */
+  , ["work"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -25209,8 +25213,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Footer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Footer");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.comicWork.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-    src: $props.comicWork.image,
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Navbar), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [$props.work.image !== null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+    src: $props.work.image,
     "class": "w-5/6 mb-10 mx-auto object-cover object-center rounded"
   }, null, 8
   /* PROPS */
@@ -25221,20 +25225,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, null, 8
   /* PROPS */
   , _hoisted_5)), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", {
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comicWork.title),
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.work.title),
     "class": "title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
   }, null, 8
   /* PROPS */
   , _hoisted_7), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
-    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.comicWork.author),
+    textContent: (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.work.author),
     "class": "mb-8 leading-relaxed"
   }, null, 8
   /* PROPS */
   , _hoisted_8), _hoisted_9])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Review, {
-    comicWork: $props.comicWork
+    work: $props.work
   }, null, 8
   /* PROPS */
-  , ["comicWork"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
+  , ["work"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Footer)], 64
   /* STABLE_FRAGMENT */
   );
 }
@@ -26857,10 +26861,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_animeWork = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("animeWork");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_animeWork, {
-    animeWork: $props.animeWork
+    work: $props.work
   }, null, 8
   /* PROPS */
-  , ["animeWork"]);
+  , ["work"]);
 }
 
 /***/ }),
@@ -26882,10 +26886,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_comicWork = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("comicWork");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_comicWork, {
-    comicWork: $props.comicWork
+    work: $props.work
   }, null, 8
   /* PROPS */
-  , ["comicWork"]);
+  , ["work"]);
 }
 
 /***/ }),
