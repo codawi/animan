@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class RatingController extends Controller
 {
@@ -34,7 +36,10 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //現在認証しているユーザーID取得
+        $user_id = Auth::id();
+        $input = ['user_id' => $user_id, 'work_id' => $request->work_id, 'rating_value' => $request->rating, 'review' => $request->review ];
+        Review::create($input);
     }
 
     /**
@@ -45,7 +50,7 @@ class RatingController extends Controller
      */
     public function show($id)
     {
-        //
+       //
     }
 
     /**
