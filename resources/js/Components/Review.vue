@@ -62,6 +62,7 @@
                 text-lg
               "
               :disabled="form.processing"
+              :class="{'cursor-not-allowed': form.processing}"
             >
               送信する
             </button>
@@ -89,8 +90,8 @@ export default {
     return {
       rating: 0,
       form: this.$inertia.form({
-      rating:this.rating,
       work_id: this.work.id,
+      rating:this.rating,
       review: "",
       })
     }
