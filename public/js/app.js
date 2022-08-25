@@ -24014,8 +24014,8 @@ __webpack_require__.r(__webpack_exports__);
     return {
       rating: 0,
       form: this.$inertia.form({
-        rating: this.rating,
         work_id: this.work.id,
+        rating: this.rating,
         review: ""
       })
     };
@@ -25595,10 +25595,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.form.review]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "submit",
-    "class": "flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["flex mx-auto text-white bg-orange-500 border-0 py-2 px-8 focus:outline-none hover:bg-orange-600 rounded text-lg", {
+      'cursor-not-allowed': _ctx.form.processing
+    }]),
     disabled: _ctx.form.processing
-  }, " 送信する ", 8
-  /* PROPS */
+  }, " 送信する ", 10
+  /* CLASS, PROPS */
   , _hoisted_10)])])], 32
   /* HYDRATE_EVENTS */
   )])])]);
