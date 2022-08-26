@@ -1,5 +1,4 @@
 <template>
-  <Navbar />
   <section class="text-gray-600 body-font">
     <div
       class="
@@ -7,7 +6,7 @@
         mx-auto
         flex
         px-5
-        py-12
+        py-24
         items-center
         justify-center
         flex-col
@@ -16,7 +15,7 @@
       <div v-if="work.image !== null">
         <img
           :src="work.image"
-          class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 mx-auto object-cover object-center rounded"
+          class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
         />
       </div>
       <img
@@ -68,25 +67,14 @@
       </div>
     </div>
   </section>
-  <Review :work="work"/>
-  <Footer />
 </template>
 
 <script>
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
-import Review from "@/Components/Review";
-
 export default {
-  components: {
-    Navbar,
-    Footer,
-    Review
-  },
   props: {
     work: {
       type: Object,
     },
   },
-};
+}
 </script>

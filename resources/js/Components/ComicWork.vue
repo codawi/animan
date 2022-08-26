@@ -1,5 +1,4 @@
 <template>
-  <Navbar />
   <section class="text-gray-600 body-font">
     <div
       class="
@@ -68,25 +67,14 @@
       </div>
     </div>
   </section>
-  <Review :work="work"/>
-  <Footer />
 </template>
 
 <script>
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
-import Review from "@/Components/Review";
-
 export default {
-  components: {
-    Navbar,
-    Footer,
-    Review
-},
   props: {
     work: {
       type: Object,
     },
   },
-};
+}
 </script>
