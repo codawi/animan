@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use App\Models\Work;
+
 
 class RatingController extends Controller
 {
@@ -23,9 +26,22 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function animeCreate($id)
     {
-        //
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+        return Inertia::render(
+            'Work/Comic/Review/Create',
+            ['work' => $animeWork]
+        );
+    }
+
+    public function comicCreate($id)
+    {
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+        return Inertia::render(
+            'Work/Comic/Review/Create',
+            ['work' => $comicWork]
+        );
     }
 
     /**
@@ -45,21 +61,17 @@ class RatingController extends Controller
             'rating_value' => 'required',
             'review' => 'nullable|max:1200',
         ]);
-
-        function($fail) use($request, $user_id) {
-
-        //同じユーザーIDと作品IDで投稿しているかチェック
-        $exists = Review::where('user_id', $user_id)
-        ->where('work_id', $request->work_id)
-        ->exists();
-
-        if($exists) {
-            $fail('すでにレビューは投稿済みです');
-            return;
-        }
-    };
-
-        $input = ['user_id' => $user_id, 'work_id' => $request->work_id, 'rating_value' => $request->rating, 'review' => $request->review ];
+                
+                //同じユーザーIDと作品IDで投稿してないかチェック
+                $exists = Review::where('user_id', $user_id)
+                ->where('work_id', $request->work_id)
+                ->exists();
+                
+                if($exists) {
+                    return;
+                }
+            
+        $input = ['user_id' => $user_id, 'work_id' => $request->work_id, 'rating_value' => $request->rating_value, 'review' => $request->review ];
 
         Review::create($input);
         return back();

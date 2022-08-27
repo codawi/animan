@@ -43,6 +43,7 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
+    Route::get('work/{id}/review/create', [RatingController::class, 'animeCreate'])->name('review.create');
 });
 
 Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
@@ -50,10 +51,12 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
+    Route::get('work/{id}/review/create', [RatingController::class, 'comicCreate'])->name('review.create');
 });
+
+Route::post('/review/store', [RatingController::class, 'store'])->name('review');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
-Route::post('/review/store', [RatingController::class, 'store'])->name('review');
 
 require __DIR__ . '/auth.php';

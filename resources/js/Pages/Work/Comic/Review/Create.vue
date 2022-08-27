@@ -1,8 +1,8 @@
 <template>
   <Navbar />
   <comicWork :work="work" />
-  <!-- レビュー一覧 -->
-  <ReviewIndex :reviews="reviews" />
+ <!-- レビュー投稿画面 -->
+  <ReviewCreate :work="work" />
   <Footer />
 </template>
 
@@ -10,20 +10,17 @@
 import comicWork from "@/Components/ComicWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import ReviewIndex from "@/Components/ReviewIndex";
+import ReviewCreate from "@/Components/ReviewCreate";
 
 export default {
   components: {
     comicWork,
     Navbar,
     Footer,
-    ReviewIndex,
+    ReviewCreate,
   },
   props: {
     work: {
-      type: Object,
-    },
-    reviews: {
       type: Object,
     },
   },
