@@ -43,7 +43,8 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
-    Route::get('work/{id}/review/create', [RatingController::class, 'animeCreate'])->name('review.create');
+    Route::get('work/{id}/review/create', [RatingController::class, 'animeReviewCreate'])->name('review.create');
+    Route::get('work/{id}/review/show', [RatingController::class, 'animeReviewShow'])->name('review.show');
 });
 
 Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
@@ -51,7 +52,8 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
-    Route::get('work/{id}/review/create', [RatingController::class, 'comicCreate'])->name('review.create');
+    Route::get('work/{id}/review/create', [RatingController::class, 'comicReviewCreate'])->name('review.create');
+    Route::get('work/{id}/review/show', [RatingController::class, 'comicReviewShow'])->name('review.show');
 });
 
 Route::post('/review/store', [RatingController::class, 'store'])->name('review');

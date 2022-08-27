@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Review;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Work;
+use App\Models\Review;
 
 class WorkController extends Controller
 {
