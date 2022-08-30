@@ -113,9 +113,28 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function AnimeReviewEdit($id)
     {
-        //
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+
+        return Inertia::render(
+            'Work/Comic/Review/Edit',
+            ['work' => $animeWork, 'review' => $review]
+        );
+    }
+
+    public function ComicReviewEdit($id)
+    {
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+
+        return Inertia::render(
+            'Work/Comic/Review/Edit',
+            ['work' => $comicWork, 'review' => $review]
+        );
     }
 
     /**
