@@ -24047,15 +24047,13 @@ __webpack_require__.r(__webpack_exports__);
     return {
       rating: 0,
       form: this.$inertia.form({
-        work_id: this.work.id,
-        rating_value: this.rating,
-        review: this.review.review
+        review: this.review
       })
     };
   },
   methods: {
     submit: function submit() {
-      this.form.post('/review/update');
+      this.form.post(route('review.update', this.work.id));
     }
   }
 });

@@ -58,7 +58,8 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('work/{id}/review/edit', [RatingController::class, 'comicReviewEdit'])->name('review.edit');
 });
 
-Route::post('/review/store', [RatingController::class, 'store'])->name('review.store');
+Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
+Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 

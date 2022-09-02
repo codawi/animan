@@ -115,9 +115,9 @@ class RatingController extends Controller
      */
     public function AnimeReviewEdit($id)
     {
-        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first();
 
-        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
 
         return Inertia::render(
             'Work/Comic/Review/Edit',
@@ -127,9 +127,9 @@ class RatingController extends Controller
 
     public function ComicReviewEdit($id)
     {
-        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first();
 
-        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
 
         return Inertia::render(
             'Work/Comic/Review/Edit',
@@ -146,7 +146,16 @@ class RatingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
+        
+        
+        $input->user_id = Auth::id();
+        $input->work_id = $id;
+        $input->rating_value = $request->review['rating_value'];
+        $input->review = $request->review['review'];
+
+        $input->save();
+        return back();
     }
 
     /**
