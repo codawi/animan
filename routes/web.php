@@ -43,6 +43,9 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
+    Route::get('work/{id}/review/create', [RatingController::class, 'animeReviewCreate'])->name('review.create');
+    Route::get('work/{id}/review/show', [RatingController::class, 'animeReviewShow'])->name('review.show');
+    Route::get('work/{id}/review/edit', [RatingController::class, 'animeReviewEdit'])->name('review.edit');
 });
 
 Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
@@ -50,10 +53,16 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
+    Route::get('work/{id}/review/create', [RatingController::class, 'comicReviewCreate'])->name('review.create');
+    Route::get('work/{id}/review/show', [RatingController::class, 'comicReviewShow'])->name('review.show');
+    Route::get('work/{id}/review/edit', [RatingController::class, 'comicReviewEdit'])->name('review.edit');
 });
+
+Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
+Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
+Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
-Route::post('/review/store', [RatingController::class, 'store'])->name('review');
 
 require __DIR__ . '/auth.php';

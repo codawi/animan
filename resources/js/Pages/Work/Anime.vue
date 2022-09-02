@@ -1,8 +1,6 @@
 <template>
   <Navbar />
   <animeWork :work="work" />
-  <!-- レビュー投稿画面
-  <Review :work="work" /> -->
   <!-- レビュー一覧 -->
   <ReviewIndex :reviews="reviews" />
   <Footer />
@@ -12,7 +10,6 @@
 import animeWork from "@/Components/AnimeWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import Review from "@/Components/Review";
 import ReviewIndex from "@/Components/ReviewIndex";
 
 export default {
@@ -20,7 +17,6 @@ export default {
     animeWork,
     Navbar,
     Footer,
-    Review,
     ReviewIndex,
   },
   props: {

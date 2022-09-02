@@ -7,7 +7,7 @@
         <star-rating
           :star-size="35"
           :increment="0.5"
-          v-model:rating="form.rating"
+          v-model:rating="review.rating_value"
           class="justify-center py-4"
         ></star-rating>
         <input type="hidden" name="rating" v-model="this.rating" />
@@ -19,7 +19,7 @@
               >
               <textarea
                 id="message"
-                v-model="form.review"
+                v-model="review.review"
                 name="rating_value"
                 class="
                   w-full
@@ -69,6 +69,27 @@
           </div>
         </div>
             </form>
+            <button
+              type="submit"
+              class="
+                flex
+                mx-auto
+                text-white
+                bg-gray-500
+                border-0
+                py-2
+                px-8
+                focus:outline-none
+                hover:bg-gray-600
+                rounded
+                text-lg
+              "
+              @click="deleteReview(this.work.id)"
+              :disabled="form.processing"
+              :class="{'cursor-not-allowed': form.processing}"
+            >
+              削除
+            </button>
       </div>
     </div>
   </section>
@@ -85,21 +106,27 @@ export default {
     work: {
       type: Object,
     },
+    review: {
+      type: Object,
+    },
   },
   data: function(){
     return {
       rating: 0,
       form: this.$inertia.form({
-      work_id: this.work.id,
-      rating:this.rating,
-      review: "",
+      review: this.review,
       })
     }
   },
   methods: {
     submit() {
-      this.form.post('/review/store');
+      this.form.post(route('review.update', this.work.id));
     },
+    deleteReview() {
+      this.$inertia.delete(route('review.destroy', this.work.id), {
+        onBefore: () => confirm('本当に削除します？')
+      })
+    }
     }
   }
 </script>

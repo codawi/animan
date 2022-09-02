@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Review;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
+use App\Models\Work;
+use App\Models\Review;
+use App\Models\User;
+
 
 class RatingController extends Controller
 {
@@ -23,9 +27,22 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function animeReviewCreate($id)
     {
-        //
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+        return Inertia::render(
+            'Work/Comic/Review/Create',
+            ['work' => $animeWork]
+        );
+    }
+
+    public function comicReviewCreate($id)
+    {
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+        return Inertia::render(
+            'Work/Comic/Review/Create',
+            ['work' => $comicWork]
+        );
     }
 
     /**
@@ -36,30 +53,23 @@ class RatingController extends Controller
      */
     public function store(Request $request)
     {
-        //現在認証しているユーザーID取得
-        $user_id = Auth::id();
-
         //バリデーション
         $request->validate([
             'work_id' => 'required',
             'rating_value' => 'required',
             'review' => 'nullable|max:1200',
         ]);
-
-        function($fail) use($request, $user_id) {
-
-        //同じユーザーIDと作品IDで投稿しているかチェック
-        $exists = Review::where('user_id', $user_id)
-        ->where('work_id', $request->work_id)
-        ->exists();
-
-        if($exists) {
-            $fail('すでにレビューは投稿済みです');
-            return;
-        }
-    };
-
-        $input = ['user_id' => $user_id, 'work_id' => $request->work_id, 'rating_value' => $request->rating, 'review' => $request->review ];
+                
+                //認証しているユーザーが同じ作品のレビューを投稿しているかチェック
+                $exists = Review::where('user_id', Auth::id())
+                ->where('work_id', $request->work_id)
+                ->exists();
+                
+                if($exists) {
+                    return;
+                }
+            
+        $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'rating_value' => $request->rating_value, 'review' => $request->review ];
 
         Review::create($input);
         return back();
@@ -71,9 +81,30 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function animeReviewshow($id)
     {
-       //
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+
+        //認証しているユーザーのレビュー投稿を取得
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+
+        return Inertia::render(
+            'Work/Anime/Review/Show',
+            ['work' => $animeWork, 'review' => $review]
+        );
+    }
+
+    public function comicReviewshow($id)
+    {
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+
+        //認証しているユーザーのレビュー投稿を取得
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
+
+        return Inertia::render(
+            'Work/Comic/Review/Show',
+            ['work' => $comicWork, 'review' => $review]
+        );
     }
 
     /**
@@ -82,9 +113,28 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function AnimeReviewEdit($id)
     {
-        //
+        $animeWork = Work::where('id', $id)->where('category', 'anime')->first();
+
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
+
+        return Inertia::render(
+            'Work/Comic/Review/Edit',
+            ['work' => $animeWork, 'review' => $review]
+        );
+    }
+
+    public function ComicReviewEdit($id)
+    {
+        $comicWork = Work::where('id', $id)->where('category', 'comic')->first();
+
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
+
+        return Inertia::render(
+            'Work/Comic/Review/Edit',
+            ['work' => $comicWork, 'review' => $review]
+        );
     }
 
     /**
@@ -96,7 +146,16 @@ class RatingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
+        
+
+        $input->user_id = Auth::id();
+        $input->work_id = $id;
+        $input->rating_value = $request->review['rating_value'];
+        $input->review = $request->review['review'];
+
+        $input->save();
+        return back();
     }
 
     /**
@@ -107,6 +166,9 @@ class RatingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
+
+        $input->delete();
+        return back();
     }
 }

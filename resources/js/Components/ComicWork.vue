@@ -6,7 +6,7 @@
         mx-auto
         flex
         px-5
-        py-24
+        py-20
         items-center
         justify-center
         flex-col
@@ -29,36 +29,48 @@
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         ></h1>
         <p v-text="work.author" class="mb-8 leading-relaxed"></p>
-        <div class="flex justify-center">
+        <div class="flex">
           <button
             class="
-              inline-flex
               text-white
               bg-orange-500
               border-0
               py-2
-              px-6
+              px-4
               focus:outline-none
               hover:bg-orange-600
               rounded
-              text-lg
+              text-sm
             "
           >
-            評価
+            レビュー一覧
           </button>
+          <Link :href="'/comic/work/' + work.id + '/review/create'"
+            class="
+              text-white
+              bg-orange-500
+              border-0
+              py-2
+              px-4
+              focus:outline-none
+              hover:bg-orange-600
+              rounded
+              text-sm
+            "
+          >
+            レビュー
+          </Link>
           <button
             class="
-              ml-4
-              inline-flex
               text-gray-700
               bg-gray-100
               border-0
               py-2
-              px-6
+              px-4
               focus:outline-none
               hover:bg-gray-200
               rounded
-              text-lg
+              text-sm
             "
           >
             配信サイト
@@ -70,7 +82,11 @@
 </template>
 
 <script>
+    import { Link } from "@inertiajs/inertia-vue3";
 export default {
+  components: {
+    Link,
+  },
   props: {
     work: {
       type: Object,

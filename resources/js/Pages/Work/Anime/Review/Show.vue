@@ -1,29 +1,29 @@
 <template>
   <Navbar />
-  <comicWork :work="work" />
-  <!-- レビュー一覧 -->
-  <ReviewIndex :reviews="reviews" />
+  <animeWork :work="work" />
+  <!-- 認証ユーザーのレビュー表示 -->
+  <ReviewShow :review="review" />
   <Footer />
 </template>
 
 <script>
-import comicWork from "@/Components/ComicWork";
+import animeWork from "@/Components/AnimeWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import ReviewIndex from "@/Components/ReviewIndex";
+import ReviewShow from "@/Components/ReviewShow";
 
 export default {
   components: {
-    comicWork,
+    animeWork,
     Navbar,
     Footer,
-    ReviewIndex,
+    ReviewShow,
   },
   props: {
     work: {
       type: Object,
     },
-    reviews: {
+    review: {
       type: Object,
     },
   },

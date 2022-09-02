@@ -6,7 +6,7 @@
         mx-auto
         flex
         px-5
-        py-24
+        py-20
         items-center
         justify-center
         flex-col
@@ -44,8 +44,24 @@
               text-lg
             "
           >
-            評価
+            レビュー一覧
           </button>
+          <Link :href="'/anime/work/' + work.id + '/review/create'"
+            class="
+              inline-flex
+              text-white
+              bg-orange-500
+              border-0
+              py-2
+              px-6
+              focus:outline-none
+              hover:bg-orange-600
+              rounded
+              text-lg
+            "
+          >
+            レビューする
+          </Link>
           <button
             class="
               ml-4
@@ -70,7 +86,11 @@
 </template>
 
 <script>
+    import { Link } from "@inertiajs/inertia-vue3";
 export default {
+  components: {
+    Link,
+  },
   props: {
     work: {
       type: Object,
