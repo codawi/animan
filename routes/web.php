@@ -60,6 +60,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 
 Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
 Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
+Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 

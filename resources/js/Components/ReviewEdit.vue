@@ -69,6 +69,27 @@
           </div>
         </div>
             </form>
+            <button
+              type="submit"
+              class="
+                flex
+                mx-auto
+                text-white
+                bg-gray-500
+                border-0
+                py-2
+                px-8
+                focus:outline-none
+                hover:bg-gray-600
+                rounded
+                text-lg
+              "
+              @click="deleteReview(this.work.id)"
+              :disabled="form.processing"
+              :class="{'cursor-not-allowed': form.processing}"
+            >
+              削除
+            </button>
       </div>
     </div>
   </section>
@@ -101,6 +122,11 @@ export default {
     submit() {
       this.form.post(route('review.update', this.work.id));
     },
+    deleteReview() {
+      this.$inertia.delete(route('review.destroy', this.work.id), {
+        onBefore: () => confirm('本当に削除します？')
+      })
+    }
     }
   }
 </script>

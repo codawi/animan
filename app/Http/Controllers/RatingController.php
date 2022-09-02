@@ -148,7 +148,7 @@ class RatingController extends Controller
     {
         $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
         
-        
+
         $input->user_id = Auth::id();
         $input->work_id = $id;
         $input->rating_value = $request->review['rating_value'];
@@ -166,6 +166,9 @@ class RatingController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
+
+        $input->delete();
+        return back();
     }
 }

@@ -24054,6 +24054,13 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     submit: function submit() {
       this.form.post(route('review.update', this.work.id));
+    },
+    deleteReview: function deleteReview() {
+      this.$inertia["delete"](route('review.destroy', this.work.id), {
+        onBefore: function onBefore() {
+          return confirm('本当に削除します？');
+        }
+      });
     }
   }
 });
@@ -26017,6 +26024,7 @@ var _hoisted_9 = {
   "class": "p-2 w-full"
 };
 var _hoisted_10 = ["disabled"];
+var _hoisted_11 = ["disabled"];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _this = this;
 
@@ -26063,7 +26071,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS, PROPS */
   , _hoisted_10)])])], 32
   /* HYDRATE_EVENTS */
-  )])])]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+    type: "submit",
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["flex mx-auto text-white bg-gray-500 border-0 py-2 px-8 focus:outline-none hover:bg-gray-600 rounded text-lg", {
+      'cursor-not-allowed': _ctx.form.processing
+    }]),
+    onClick: _cache[4] || (_cache[4] = function ($event) {
+      return $options.deleteReview(_this.work.id);
+    }),
+    disabled: _ctx.form.processing
+  }, " 削除 ", 10
+  /* CLASS, PROPS */
+  , _hoisted_11)])])]);
 }
 
 /***/ }),
