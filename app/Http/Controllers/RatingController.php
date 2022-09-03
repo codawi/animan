@@ -55,9 +55,8 @@ class RatingController extends Controller
     {
         //バリデーション
         $request->validate([
-            'work_id' => 'required',
-            'rating_value' => 'required',
-            'review' => 'nullable|max:1200',
+            'rating_value' => ['required'],
+            'review' => ['max:1200'],
         ]);
                 
                 //認証しているユーザーが同じ作品のレビューを投稿しているかチェック
@@ -81,7 +80,7 @@ class RatingController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function animeReviewshow($id)
+    public function animeReviewShow($id)
     {
         $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
 
@@ -94,7 +93,7 @@ class RatingController extends Controller
         );
     }
 
-    public function comicReviewshow($id)
+    public function comicReviewShow($id)
     {
         $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
 
@@ -146,8 +145,13 @@ class RatingController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //バリデーション
+        $request->validate([
+            'rating_value' => ['required'],
+            'review' => ['max:1200'],
+        ]);
+
         $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
-        
 
         $input->user_id = Auth::id();
         $input->work_id = $id;
