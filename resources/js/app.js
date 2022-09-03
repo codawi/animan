@@ -3,6 +3,16 @@ import './bootstrap';
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/inertia-vue3';
 import { InertiaProgress } from '@inertiajs/progress';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faLeaf } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
+library.add(faLeaf)
+
+var app = createApp(App)
+
+app.component('fa', FontAwesomeIcon )
+app.mount('#app')
 
 const appName = window.document.getElementsByTagName('title')[0]?.innerText || 'Laravel';
 
