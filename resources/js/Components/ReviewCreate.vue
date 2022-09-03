@@ -2,7 +2,13 @@
   <section class="text-gray-600 body-font relative">
     <div class="container px-5 pb-24 mx-auto">
       <div class="lg:w-1/2 md:w-2/3 mx-auto text-center">
-        <p class="leading-relaxed">面白さ</p>
+        <div v-if="form.hasErrors" class="border border-red-100 p-1 m-1 text-sm text-red-600">
+        入力された値をもう一度確認してください。
+        <ul class="list-disc list-inside">
+            <li v-for="error in form.errors" :key="error" >{{error}}</li>
+        </ul>
+    </div>
+        <p class="leading-relaxed">評価</p>
           <form @submit.prevent="submit">
         <star-rating
           :star-size="35"
@@ -76,10 +82,12 @@
 
 <script>
 import StarRating from "vue-star-rating";
+import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 
 export default {
   components: {
     StarRating,
+    BreezeValidationErrors
   },
   props: {
     work: {
