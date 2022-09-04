@@ -116,4 +116,5 @@ GQL;
   public function count() {
     return $this->hasOne(TweetCount::class);
   }
+
 }

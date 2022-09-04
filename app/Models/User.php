@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
@@ -41,4 +43,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function bookmarks() {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function bookmark_works() {
+        return $this->belongsToMany(Work::class, 'bookmarks', 'user_id', 'work_id')->withTimestamps();
+    }
+
+    public function is_bookmark($id) {
+        return $this->bookmarks()->where('work_id', $id)->exists();
+    }
 }

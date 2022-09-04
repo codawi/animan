@@ -45,7 +45,8 @@
           >
             レビュー一覧
           </button>
-          <Link :href="'/comic/work/' + work.id + '/review/create'"
+          <Link
+            :href="'/comic/work/' + work.id + '/review/create'"
             class="
               text-white
               bg-orange-500
@@ -75,6 +76,7 @@
           >
             配信サイト
           </button>
+        <BookMarkButton :work="work" />
         </div>
       </div>
     </div>
@@ -82,15 +84,17 @@
 </template>
 
 <script>
-    import { Link } from "@inertiajs/inertia-vue3";
+import { Link } from "@inertiajs/inertia-vue3";
+import BookMarkButton from "@/Components/BookMarkButton";
 export default {
   components: {
     Link,
+    BookMarkButton,
   },
   props: {
     work: {
       type: Object,
     },
   },
-}
+};
 </script>
