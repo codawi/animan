@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class BookMark extends Model
+class Bookmark extends Model
 {
     use HasFactory;
 
@@ -15,10 +15,10 @@ class BookMark extends Model
     ];
 
     public function user() {
-        return $this->belongsToMany(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function work() {
-        return $this->belongsToMany(Work::class);
+        return $this->belongsTo(Work::class);
     }
 }

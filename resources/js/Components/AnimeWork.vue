@@ -60,7 +60,7 @@
               text-lg
             "
           >
-            レビューする
+            レビュー
           </Link>
           <button
             class="

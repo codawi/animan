@@ -6,6 +6,7 @@ use Inertia\Inertia;
 
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\animeController;
+use App\Http\Controllers\BookMarkController;
 use App\Http\Controllers\comicController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
@@ -61,6 +62,8 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
 Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
 Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
+
+Route::post('/bookmark/{id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 

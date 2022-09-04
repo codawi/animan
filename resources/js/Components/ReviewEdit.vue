@@ -116,7 +116,7 @@ export default {
       type: Object,
     },
   },
-  data: function(){
+  data() {
     return {
       rating: 0,
       form: this.$inertia.form({

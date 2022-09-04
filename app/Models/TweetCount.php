@@ -36,8 +36,8 @@ class TweetCount extends Model
         foreach ($works as $index => $work) {
             $params = [
                 "query" => $work['title'],
-                "start_time" => "2022-07-28T00:00:00+09:00",
-                "end_time" => "2022-07-29T00:00:00+09:00",
+                "start_time" => "2022-09-02T00:00:00+09:00",
+                "end_time" => "2022-09-03T00:00:00+09:00",
                 "granularity" => "day",
             ];
             $twitter_requests[] = $connection->get('tweets/counts/recent', $params);
@@ -59,8 +59,8 @@ class TweetCount extends Model
         foreach ($works as $work) {
             $params = [
                 "query" => $work['title'],
-                "start_time" => "2022-07-28T00:00:00+09:00",
-                "end_time" => "2022-07-29T00:00:00+09:00",
+                "start_time" => "2022-09-02T00:00:00+09:00",
+                "end_time" => "2022-09-03T00:00:00+09:00",
                 "granularity" => "day",
             ];
             $twitter_requests[] = $connection->get('tweets/counts/recent', $params);
