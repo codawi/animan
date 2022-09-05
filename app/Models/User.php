@@ -52,6 +52,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Work::class, 'bookmarks', 'user_id', 'work_id')->withTimestamps();
     }
 
+    //ブックマークしているかチェック
     public function is_bookmark($id) {
         return $this->bookmarks()->where('work_id', $id)->exists();
     }

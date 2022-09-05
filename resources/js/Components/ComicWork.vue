@@ -76,7 +76,7 @@
           >
             配信サイト
           </button>
-        <BookMarkButton :work="work" />
+        <BookMarkButton :work="work" :is_bookmark="is_bookmark" />
         </div>
       </div>
     </div>
@@ -95,6 +95,9 @@ export default {
     work: {
       type: Object,
     },
+    is_bookmark: {
+      type: Boolean,
+    }
   },
 };
 </script>

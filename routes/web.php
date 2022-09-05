@@ -64,6 +64,7 @@ Route::post('{id}/review/update', [RatingController::class, 'update'])->name('re
 Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
 
 Route::post('/bookmark/{id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
+Route::delete('/bookmark/{id}/delete', [BookmarkController::class, 'destroy'])->name('bookmark.delete');
 
 Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
