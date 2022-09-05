@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <comicWork :work="work" />
+  <comicWork :work="work" :is_bookmark="is_bookmark" />
   <!-- レビュー一覧 -->
   <ReviewIndex :reviews="reviews" />
   <Footer />
@@ -26,6 +26,9 @@ export default {
     reviews: {
       type: Object,
     },
+    is_bookmark: {
+      type: Boolean,
+    }
   },
 };
 </script>

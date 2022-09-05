@@ -17,4 +17,13 @@ class BookmarkController extends Controller
         }
         return back();
     }
+
+    public function destroy($id) {
+        //登録していれば削除
+        $user = Auth::user();
+        if($user->is_bookmark($id)) {
+            $user->bookmark_works()->detach($id);
+        }
+        return back();
+    }
 }
