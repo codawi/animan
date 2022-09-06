@@ -1,9 +1,10 @@
 <template>
+  <div class="text-2xl table-cell align-middle">
   <div v-if=" is_bookmark ">
   <button type="button">
     <font-awesome-icon
       icon="fa-solid fa-heart"
-      class="text-2xl"
+      class="text-pink-500"
       @click="bookMarkDelete(work.id)"
     />
   </button>
@@ -12,10 +13,10 @@
   <button type="button">
     <font-awesome-icon
       icon="fa-regular fa-heart"
-      class="text-2xl"
       @click="bookMarkStore(work.id)"
     />
   </button>
+</div>
 </div>
 </template>
 
