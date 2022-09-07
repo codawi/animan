@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Work;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 
 class ComicController extends Controller
@@ -17,9 +19,14 @@ class ComicController extends Controller
             $query->select(DB::raw("SUM(daily_tweet) as daily_count_sum"));
         }])->orderByDesc('total_daily_count')->take(10)->get();
 
+        //ブックマーク済みか作品ごとに確認
+        foreach ($comic_ranking as $comic_id) {
+            $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
+        }
+
         return Inertia::render(
             'Comic/DailyRanking',
-            ['comicWorks' => $comic_ranking]
+            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark]
         );
     }
 

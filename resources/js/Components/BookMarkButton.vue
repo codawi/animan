@@ -1,5 +1,5 @@
 <template>
-  <div class="text-2xl table-cell align-middle">
+  <div class="text-2xl my-auto px-4">
   <div v-if=" is_bookmark ">
   <button type="button">
     <font-awesome-icon
@@ -24,18 +24,22 @@
 export default {
   props: {
     work: {
-      type: Object,
+      type: Object
     },
     is_bookmark: {
-      type: Boolean,
+      type: [Boolean, Object]
     },
   },
   methods: {
     bookMarkStore() {
-      this.$inertia.post(route("bookmark.store", this.work.id))
+      this.$inertia.post(route("bookmark.store", this.work.id), {
+        preserveScroll: true,
+      })
     },
     bookMarkDelete() {
-      this.$inertia.delete(route('bookmark.delete', this.work.id))
+      this.$inertia.delete(route('bookmark.delete', this.work.id), {
+        preserveScroll: true,
+      })
     }
   },
 };

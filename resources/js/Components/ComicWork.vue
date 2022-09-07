@@ -15,13 +15,13 @@
     <div v-if="work.image == null">
         <img
           :src="'/img/noimage.svg'"
-          class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+          class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
           />
         </div>
         <img
         v-else
         :src="work.image"
-        class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
+        class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1

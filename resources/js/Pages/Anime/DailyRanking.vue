@@ -1,6 +1,6 @@
 <template>  
 <!-- propsを子コンポーネントへ -->
-<AnimeRanking :animeWorks="animeWorks" />
+<AnimeRanking :works="works" :is_bookmark="is_bookmark" />
 </template>
 
 <script>
@@ -11,8 +11,11 @@
           AnimeRanking,
            },
         props: {
-          animeWorks: {
+          works: {
             type:Object,
+          },
+          is_bookmark: {
+            type: Object,
           },
     },
     }
