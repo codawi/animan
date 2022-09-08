@@ -32,4 +32,10 @@ class WorkController extends Controller
             ['work' => $comicWork, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
         );
     }
+
+    public function search(Request $request) {
+        return Inertia::render(
+            'SearchResults',
+        );
+    }
 }

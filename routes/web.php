@@ -59,10 +59,15 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('work/{id}/review/edit', [RatingController::class, 'comicReviewEdit'])->name('review.edit');
 });
 
+//キーワード検索
+Route::get('/search', [WorkController::class, 'search'])->name('work.search');
+
+//レビューDB関連
 Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
 Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
 Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
 
+//ブックマーク
 Route::post('/bookmark/{id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
 Route::delete('/bookmark/{id}/delete', [BookmarkController::class, 'destroy'])->name('bookmark.delete');
 

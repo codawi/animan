@@ -112,6 +112,9 @@ GQL;
     }
   }
 
+  //作品検索
+  
+
   //カウント数リレーション
   public function count() {
     return $this->hasOne(TweetCount::class);
