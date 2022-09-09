@@ -13,7 +13,8 @@ use function PHPUnit\Framework\isEmpty;
 
 class WorkController extends Controller
 {
-    public function showAnime($id) {
+    public function showAnime($id)
+    {
         $animeWork = Work::where('id', $id)->where('category', 'anime')->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
@@ -23,7 +24,8 @@ class WorkController extends Controller
         );
     }
 
-    public function showComic($id) {
+    public function showComic($id)
+    {
         $comicWork = Work::where('id', $id)->where('category', 'comic')->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
@@ -33,9 +35,15 @@ class WorkController extends Controller
         );
     }
 
-    public function search(Request $request) {
+    public function search($queryWord)
+    {
+        $works = Work::Where('title', 'like',
+            '%' . $queryWord . '%'
+        )->get();
+
         return Inertia::render(
             'SearchResults',
-        );
+            ['works' => $works
+        ]);
     }
 }
