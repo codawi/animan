@@ -60,7 +60,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 });
 
 //キーワード検索
-Route::get('/search', [WorkController::class, 'search'])->name('work.search');
+Route::get('/search/{queryWord}', [WorkController::class, 'search'])->name('work.search');
 
 //レビューDB関連
 Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
