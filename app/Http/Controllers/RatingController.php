@@ -82,27 +82,27 @@ class RatingController extends Controller
      */
     public function animeReviewShow($id)
     {
-        $animeWork = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
+        $anime_work = Work::where('id', $id)->where('category', 'anime')->first()->toArray();
 
         //認証しているユーザーのレビュー投稿を取得
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
 
         return Inertia::render(
             'Work/Anime/Review/Show',
-            ['work' => $animeWork, 'review' => $review]
+            ['work' => $anime_work, 'review' => $review]
         );
     }
 
     public function comicReviewShow($id)
     {
-        $comicWork = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
+        $comic_work = Work::where('id', $id)->where('category', 'comic')->first()->toArray();
 
         //認証しているユーザーのレビュー投稿を取得
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first()->toArray();
 
         return Inertia::render(
             'Work/Comic/Review/Show',
-            ['work' => $comicWork, 'review' => $review]
+            ['work' => $comic_work, 'review' => $review]
         );
     }
 
@@ -114,25 +114,25 @@ class RatingController extends Controller
      */
     public function AnimeReviewEdit($id)
     {
-        $animeWork = Work::where('id', $id)->where('category', 'anime')->first();
+        $anime_work = Work::where('id', $id)->where('category', 'anime')->first();
 
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
 
         return Inertia::render(
             'Work/Comic/Review/Edit',
-            ['work' => $animeWork, 'review' => $review]
+            ['work' => $anime_work, 'review' => $review]
         );
     }
 
     public function ComicReviewEdit($id)
     {
-        $comicWork = Work::where('id', $id)->where('category', 'comic')->first();
+        $comic_work = Work::where('id', $id)->where('category', 'comic')->first();
 
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
 
         return Inertia::render(
             'Work/Comic/Review/Edit',
-            ['work' => $comicWork, 'review' => $review]
+            ['work' => $comic_work, 'review' => $review]
         );
     }
 

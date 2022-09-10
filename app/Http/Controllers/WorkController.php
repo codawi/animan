@@ -15,30 +15,30 @@ class WorkController extends Controller
 {
     public function showAnime($id)
     {
-        $animeWork = Work::where('id', $id)->where('category', 'anime')->first();
+        $anime_work = Work::where('id', $id)->where('category', 'anime')->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
         return Inertia::render(
             'Work/Anime',
-            ['work' => $animeWork, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+            ['work' => $anime_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
         );
     }
 
     public function showComic($id)
     {
-        $comicWork = Work::where('id', $id)->where('category', 'comic')->first();
+        $comic_work = Work::where('id', $id)->where('category', 'comic')->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
         return Inertia::render(
             'Work/Comic',
-            ['work' => $comicWork, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+            ['work' => $comic_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
         );
     }
 
-    public function search($queryWord)
+    public function search($query_word)
     {
         $works = Work::Where('title', 'like',
-            '%' . $queryWord . '%'
+            '%' . $query_word . '%'
         )->get();
 
         //多次元データの為ただonlyを使っただけでは空だったのでmapで繰り返し処理

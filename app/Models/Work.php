@@ -35,11 +35,11 @@ class Work extends Model
       }
 GQL;
 
-    $graphqlEndpoint = 'https://api.annict.com/graphql';
+    $graphql_endpoint = 'https://api.annict.com/graphql';
     $client = new \GuzzleHttp\Client();
     $secret_key = config('app.secret_key');
 
-    $response = $client->request('POST', $graphqlEndpoint, [
+    $response = $client->request('POST', $graphql_endpoint, [
       'headers' => [
         'Content-Type' => 'application/json',
         'Authorization' => "Bearer {$secret_key}"
