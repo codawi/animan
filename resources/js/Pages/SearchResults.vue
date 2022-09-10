@@ -15,7 +15,7 @@
         items-center
       "
     >
-      <p>{{ key + 1 }}</p>
+      <p>{{ key + 1 }}件目</p>
       <div
         v-if="work.image !== null"
         class="
@@ -63,6 +63,7 @@
         ></h1>
         <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
         <div class="flex mx-auto">
+          <div v-if="work.title === 'anime'">
           <Link
             :href="'/anime/work/' + work.id"
             class="
@@ -79,6 +80,25 @@
             "
             >詳細</Link
           >
+        </div>
+        <div v-else>
+          <Link
+            :href="'/comic/work/' + work.id"
+            class="
+              inline-flex
+              text-white
+              bg-orange-500
+              border-0
+              py-2
+              px-6
+              focus:outline-none
+              hover:bg-orange-600
+              rounded
+              text-lg
+            "
+            >詳細</Link
+          >
+        </div>
           <button
             class="
               ml-4
@@ -96,6 +116,7 @@
           >
             配信サイト
           </button>
+          <BookMarkButton :work="work" :is_bookmark="is_bookmark"/>
         </div>
       </div>
     </div>
@@ -107,16 +128,21 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import BookMarkButton from "@/Components/BookMarkButton";
 
 export default {
   components: {
     Link,
     Navbar,
     Footer,
+    BookMarkButton,
   },
   props: {
     works: {
       type: Object,
+    },
+    is_bookmark: {
+      type: [Object,Boolean]
     },
   },
 };
