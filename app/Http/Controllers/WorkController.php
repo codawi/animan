@@ -41,9 +41,18 @@ class WorkController extends Controller
             '%' . $queryWord . '%'
         )->get();
 
+        //多次元データの為ただonlyを使っただけでは空だったのでmapで繰り返し処理
+        $works_id = $works->map(function($row) {
+            return $row->only('id');
+        });
+
+        foreach($works_id as $work_id) {
+        $is_bookmark = Auth::user()->is_bookmark($work_id);
+        }
+
         return Inertia::render(
             'SearchResults',
-            ['works' => $works
+            ['works' => $works, 'is_bookmark' => $is_bookmark
         ]);
     }
 }
