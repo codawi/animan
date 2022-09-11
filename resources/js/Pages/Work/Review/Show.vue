@@ -1,20 +1,23 @@
 <template>
   <Navbar />
-  <comicWork :work="work" />
+  <AnimeWork v-if="work === 'anime'" :work="work" />
+  <ComicWork v-else :work="work" />
   <!-- 認証ユーザーのレビュー表示 -->
   <ReviewShow :review="review" />
   <Footer />
 </template>
 
 <script>
-import comicWork from "@/Components/ComicWork";
+import AnimeWork from "@/Components/AnimeWork";
+import ComicWork from "@/Components/ComicWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import ReviewShow from "@/Components/ReviewShow";
 
 export default {
   components: {
-    comicWork,
+    AnimeWork,
+    ComicWork,
     Navbar,
     Footer,
     ReviewShow,

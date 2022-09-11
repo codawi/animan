@@ -70,7 +70,7 @@
               :disabled="form.processing"
               :class="{'cursor-not-allowed': form.processing}"
             >
-              送信する
+              更新する
             </button>
           </div>
         </div>
@@ -130,7 +130,7 @@ export default {
     },
     deleteReview() {
       this.$inertia.delete(route('review.destroy', this.work.id), {
-        onBefore: () => confirm('本当に削除します？')
+        onBefore: () => confirm('本当に削除しますか？')
       })
     }
     }
