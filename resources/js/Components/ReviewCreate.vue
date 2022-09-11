@@ -106,7 +106,7 @@ export default {
   },
   methods: {
     submit() {
-      this.form.post('/review/store');
+      this.form.post(route('review.store', this.work.id));
     },
     }
   }

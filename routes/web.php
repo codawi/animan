@@ -33,39 +33,55 @@ Route::get('/', function () {
     ]);
 });
 
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/', [IndexController::class, 'index'])->name('index');
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
+    //アニメランキング
     Route::get('daily', [AnimeController::class, 'indexDaily'])->name('daily');
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
+    //アニメ作品詳細
     Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
-    Route::get('work/{id}/review/create', [RatingController::class, 'animeReviewCreate'])->name('review.create');
-    Route::get('work/{id}/review/show', [RatingController::class, 'animeReviewShow'])->name('review.show');
-    Route::get('work/{id}/review/edit', [RatingController::class, 'animeReviewEdit'])->name('review.edit');
+    //レビュー
+    Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
+        Route::get('create', [RatingController::class, 'create'])->name('create');
+        Route::get('show', [RatingController::class, 'show'])->name('show');
+        Route::get('edit', [RatingController::class, 'edit'])->name('edit');
+    });
 });
 
+
 Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
+    //漫画ランキング
     Route::get('daily', [ComicController::class, 'indexDaily'])->name('daily');
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
+    //漫画作品詳細
     Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
-    Route::get('work/{id}/review/create', [RatingController::class, 'comicReviewCreate'])->name('review.create');
-    Route::get('work/{id}/review/show', [RatingController::class, 'comicReviewShow'])->name('review.show');
-    Route::get('work/{id}/review/edit', [RatingController::class, 'comicReviewEdit'])->name('review.edit');
+    //レビュー
+    Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
+        Route::get('create', [RatingController::class, 'create'])->name('create');
+        Route::get('show', [RatingController::class, 'show'])->name('show');
+        Route::get('edit', [RatingController::class, 'edit'])->name('edit');
+    });
 });
+
+
+//レビューDB関連
+Route::group(['prefix' => '{id}/review', 'as' => 'review.'], function () {
+    Route::post('store', [RatingController::class, 'store'])->name('store');
+    Route::post('update', [RatingController::class, 'update'])->name('update');
+    Route::delete('destroy', [RatingController::class, 'destroy'])->name('destroy');
+});
+
 
 //キーワード検索
 Route::get('/search/{queryWord}', [WorkController::class, 'search'])->name('work.search');
 
-//レビューDB関連
-Route::post('review/store', [RatingController::class, 'store'])->name('review.store');
-Route::post('{id}/review/update', [RatingController::class, 'update'])->name('review.update');
-Route::delete('{id}/review/destroy', [RatingController::class, 'destroy'])->name('review.destroy');
 
 //ブックマーク
 Route::post('/bookmark/{id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
