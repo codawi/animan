@@ -74,7 +74,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 //レビューDB関連
 Route::group(['prefix' => '{id}/review', 'as' => 'review.'], function () {
     Route::post('store', [RatingController::class, 'store'])->name('store');
-    Route::post('update', [RatingController::class, 'update'])->name('update');
+    Route::patch('update', [RatingController::class, 'update'])->name('update');
     Route::delete('destroy', [RatingController::class, 'destroy'])->name('destroy');
 });
 

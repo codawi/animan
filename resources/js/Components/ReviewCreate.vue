@@ -12,7 +12,7 @@
           <form @submit.prevent="submit">
         <star-rating
           :star-size="35"
-          :increment="0.5"
+          :increment="1"
           v-model:rating="form.rating_value"
           class="justify-center py-4"
         ></star-rating>
@@ -99,7 +99,7 @@ export default {
       rating: 0,
       form: this.$inertia.form({
       work_id: this.work.id,
-      rating_value:this.rating,
+      rating_value:this.review.rating_value,
       review: "",
       })
     }

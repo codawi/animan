@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\Work;
 use App\Models\Review;
+
 
 
 class RatingController extends Controller
@@ -34,7 +36,7 @@ class RatingController extends Controller
         $exists = Review::where('user_id', Auth::id())
                 ->where('work_id', $id)
                 ->exists();
-                
+
                 if($exists && $work->category === 'anime') {
                     return to_route('anime.review.show', $work->id);
                 } elseif($exists && $work->category === 'comic') {
@@ -57,8 +59,8 @@ class RatingController extends Controller
     {
         //バリデーション
         $request->validate([
-            'rating_value' => ['required'],
             'review' => ['max:1200'],
+            'rating_value' => ['required'],
         ]);
                 
                 //認証しているユーザーが同じ作品のレビューを投稿しているかチェック
@@ -70,7 +72,7 @@ class RatingController extends Controller
                     return;
                 }
             
-        $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'rating_value' => $request->rating_value, 'review' => $request->review ];
+        $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'review' => $request->review , 'rating_value' => $request->rating_value];
 
         Review::create($input);
         return back();
@@ -105,7 +107,7 @@ class RatingController extends Controller
     {
         $work = Work::where('id', $id)->first();
 
-        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first(['review','rating_value']);
 
         return Inertia::render(
             'Work/Review/Edit',
@@ -123,20 +125,18 @@ class RatingController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //バリデーション
-        $request->validate([
-            'rating_value' => ['required'],
-            'review' => ['max:1200'],
-        ]);
 
+        //配列バリデーション
+        $validator = Validator::make($request->all(), [
+            'review.review' => ['max:1200'],
+            'review.rating_value' => ['required'],
+        ])->safe()->all();
+        
         $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
+        $input->review = $validator['review']['review'];
+        $input->rating_value = $validator['review']['rating_value'];
 
-        $input->user_id = Auth::id();
-        $input->work_id = $id;
-        $input->rating_value = $request->review['rating_value'];
-        $input->review = $request->review['review'];
-
-        $input->save();
+        $input->update();
         return back();
     }
 

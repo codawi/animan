@@ -12,11 +12,11 @@
           <form @submit.prevent="submit">
         <star-rating
           :star-size="35"
-          :increment="0.5"
-          v-model:rating="review.rating_value"
+          :increment="1"
+          v-model:rating="this.review.rating_value"
           class="justify-center py-4"
         ></star-rating>
-        <input type="hidden" name="rating" v-model="this.rating" />
+        <input type="hidden" name="rating" v-model="this.review.rating_value" />
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-full">
             <div class="relative">
@@ -26,7 +26,6 @@
               <textarea
                 id="message"
                 v-model="review.review"
-                name="rating_value"
                 class="
                   w-full
                   bg-gray-100 bg-opacity-50
@@ -126,7 +125,7 @@ export default {
   },
   methods: {
     submit() {
-      this.form.post(route('review.update', this.work.id));
+      this.form.patch(route('review.update', this.work.id));
     },
     deleteReview() {
       this.$inertia.delete(route('review.destroy', this.work.id), {
