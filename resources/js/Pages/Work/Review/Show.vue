@@ -3,7 +3,7 @@
   <AnimeWork v-if="work === 'anime'" :work="work" />
   <ComicWork v-else :work="work" />
   <!-- 認証ユーザーのレビュー表示 -->
-  <ReviewShow :review="review" />
+  <ReviewShow :review="review" :work="work" />
   <Footer />
 </template>
 

@@ -12,13 +12,13 @@
         flex-col
       "
     >
-    <div v-if="work.image == null">
+      <div v-if="work.image == null">
         <img
           :src="'/img/noimage.svg'"
           class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
-          />
-        </div>
-        <img
+        />
+      </div>
+      <img
         v-else
         :src="work.image"
         class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
@@ -30,23 +30,11 @@
         ></h1>
         <p v-text="work.author" class="mb-8 leading-relaxed"></p>
         <div class="flex">
-          <button
-            class="
-              text-white
-              bg-orange-500
-              border-0
-              py-2
-              px-4
-              focus:outline-none
-              hover:bg-orange-600
-              rounded
-              text-sm
-            "
-          >
-            レビュー一覧
-          </button>
           <Link
-            :href="'/comic/work/' + work.id + '/review/create'"
+            :href="route('comic.work', { id: work.id })"
+            method="get"
+            as="button"
+            type="button"
             class="
               text-white
               bg-orange-500
@@ -59,7 +47,26 @@
               text-sm
             "
           >
-            レビュー
+            トップ
+          </Link>
+          <Link
+            :href="route('comic.review.create', { id: work.id })"
+            method="get"
+            as="button"
+            type="button"
+            class="
+              text-white
+              bg-orange-500
+              border-0
+              py-2
+              px-4
+              focus:outline-none
+              hover:bg-orange-600
+              rounded
+              text-sm
+            "
+          >
+            レビューする
           </Link>
           <button
             class="
@@ -76,7 +83,7 @@
           >
             配信サイト
           </button>
-        <BookMarkButton :work="work" :is_bookmark="is_bookmark" />
+          <BookMarkButton :work="work" :is_bookmark="is_bookmark" />
         </div>
       </div>
     </div>
@@ -97,7 +104,7 @@ export default {
     },
     is_bookmark: {
       type: Boolean,
-    }
+    },
   },
 };
 </script>
