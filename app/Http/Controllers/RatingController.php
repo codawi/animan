@@ -42,7 +42,7 @@ class RatingController extends Controller
                 } elseif($exists && $work->category === 'comic') {
                     return to_route('comic.review.show', ['id' => $id]);
                 }
-
+                
         return Inertia::render(
             'Work/Review/Create',
             ['work' => $work]
@@ -90,7 +90,6 @@ class RatingController extends Controller
 
         //認証しているユーザーのレビュー投稿を取得
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
-
         return Inertia::render(
             'Work/Review/Show',
             ['work' => $work, 'review' => $review]
@@ -151,6 +150,6 @@ class RatingController extends Controller
         $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
 
         $input->delete();
-        return back();
+        return redirect()->action([RatingController::class, 'show'], ['id' => $id]);
     }
 }

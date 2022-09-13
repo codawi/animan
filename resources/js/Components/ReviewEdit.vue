@@ -93,7 +93,7 @@
               :class="{'cursor-not-allowed': form.processing}"
             >
               削除
-            </button>
+          </button>
       </div>
     </div>
   </section>
@@ -127,7 +127,7 @@ export default {
       this.form.patch(route('review.update', this.work.id));
     },
     deleteReview() {
-      this.$inertia.delete(route('review.destroy', this.work.id), {
+      this.$inertia.delete(route('review.delete', this.work.id), {
         onBefore: () => confirm('本当に削除しますか？')
       })
     }
