@@ -13,10 +13,9 @@
         <star-rating
           :star-size="35"
           :increment="1"
-          v-model:rating="this.review.rating_value"
+          v-model:rating="form.review.rating_value"
           class="justify-center py-4"
         ></star-rating>
-        <input type="hidden" name="rating" v-model="this.review.rating_value" />
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-full">
             <div class="relative">
@@ -25,7 +24,7 @@
               >
               <textarea
                 id="message"
-                v-model="review.review"
+                v-model="form.review.review"
                 class="
                   w-full
                   bg-gray-100 bg-opacity-50

@@ -16,7 +16,6 @@
           v-model:rating="form.rating_value"
           class="justify-center py-4"
         ></star-rating>
-        <input type="hidden" name="rating" v-model="this.rating" />
         <div class="flex flex-wrap -m-2">
           <div class="p-2 w-full">
             <div class="relative">
@@ -26,7 +25,6 @@
               <textarea
                 id="message"
                 v-model="form.review"
-                name="rating_value"
                 class="
                   w-full
                   bg-gray-100 bg-opacity-50
@@ -99,7 +97,7 @@ export default {
       rating: 0,
       form: this.$inertia.form({
       work_id: this.work.id,
-      rating_value:this.review.rating_value,
+      rating_value:this.rating_value,
       review: "",
       })
     }
