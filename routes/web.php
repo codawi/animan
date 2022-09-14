@@ -45,7 +45,7 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     //アニメ作品詳細
-    Route::get('work/{id}', [WorkController::class, 'showAnime'])->name('work');
+    Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
     //レビュー
     Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');
@@ -61,7 +61,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     //漫画作品詳細
-    Route::get('work/{id}', [WorkController::class, 'showComic'])->name('work');
+    Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
     //レビュー
     Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');
