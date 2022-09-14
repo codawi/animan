@@ -42,7 +42,7 @@ class RatingController extends Controller
                 } elseif($exists && $work->category === 'comic') {
                     return to_route('comic.review.show', ['id' => $id]);
                 }
-                
+
         return Inertia::render(
             'Work/Review/Create',
             ['work' => $work]
@@ -150,6 +150,6 @@ class RatingController extends Controller
         $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
 
         $input->delete();
-        return redirect()->action([RatingController::class, 'show'], ['id' => $id]);
+        return redirect()->action([WorkController::class, 'index'], ['id' => $id]);
     }
 }

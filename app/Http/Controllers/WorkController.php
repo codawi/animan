@@ -13,28 +13,39 @@ use function PHPUnit\Framework\isEmpty;
 
 class WorkController extends Controller
 {
-    public function showAnime($id)
+    public function index($id)
     {
-        $anime_work = Work::where('id', $id)->where('category', 'anime')->first();
+        $work = Work::where('id', $id)->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
         return Inertia::render(
-            'Work/Anime',
-            ['work' => $anime_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+            'Work/Work',
+            ['work' => $work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
         );
     }
 
-    public function showComic($id)
-    {
-        $comic_work = Work::where('id', $id)->where('category', 'comic')->first();
-        $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
-        $is_bookmark = Auth::user()->is_bookmark($id);
-        return Inertia::render(
-            'Work/Comic',
-            ['work' => $comic_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
-        );
-    }
-
+    // public function showComic($id)
+    // {
+    //     $comic_work = Work::where('id', $id)->where('category', 'comic')->first();
+    //     $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
+    //     $is_bookmark = Auth::user()->is_bookmark($id);
+    //     return Inertia::render(
+    //         'Work/Comic',
+    //         ['work' => $comic_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+    //     );
+    // }
+    
+    // public function showComic($id)
+    // {
+    //     $comic_work = Work::where('id', $id)->where('category', 'comic')->first();
+    //     $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
+    //     $is_bookmark = Auth::user()->is_bookmark($id);
+    //     return Inertia::render(
+    //         'Work/Comic',
+    //         ['work' => $comic_work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+    //     );
+    // }
+    
     public function search($query_word)
     {
         $works = Work::Where('title', 'like',
