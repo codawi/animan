@@ -34,18 +34,20 @@ class RatingController extends Controller
 
         //投稿していたら編集画面にリダイレクト
         $exists = Review::where('user_id', Auth::id())
-                ->where('work_id', $id)
-                ->exists();
+            ->where('work_id', $id)
+            ->exists();
 
-                if($exists && $work->category === 'anime') {
-                    return to_route('anime.review.show', $work->id);
-                } elseif($exists && $work->category === 'comic') {
-                    return to_route('comic.review.show', ['id' => $id]);
-                }
+        if ($exists && $work->category === 'anime') {
+            return to_route('anime.review.show', $work->id);
+        } elseif ($exists && $work->category === 'comic') {
+            return to_route('comic.review.show', ['id' => $id]);
+        }
+
+        $is_bookmark = Auth::user()->is_bookmark($id);
 
         return Inertia::render(
             'Work/Review/Create',
-            ['work' => $work]
+            ['work' => $work, 'is_bookmark' => $is_bookmark]
         );
     }
 
@@ -62,17 +64,17 @@ class RatingController extends Controller
             'review' => ['max:1200'],
             'rating_value' => ['required'],
         ]);
-                
-                //認証しているユーザーが同じ作品のレビューを投稿しているかチェック
-                $exists = Review::where('user_id', Auth::id())
-                ->where('work_id', $request->work_id)
-                ->exists();
-                
-                if($exists) {
-                    return;
-                }
-            
-        $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'review' => $request->review , 'rating_value' => $request->rating_value];
+
+        //認証しているユーザーが同じ作品のレビューを投稿しているかチェック
+        $exists = Review::where('user_id', Auth::id())
+            ->where('work_id', $request->work_id)
+            ->exists();
+
+        if ($exists) {
+            return;
+        }
+
+        $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'review' => $request->review, 'rating_value' => $request->rating_value];
 
         Review::create($input);
         return back();
@@ -90,9 +92,12 @@ class RatingController extends Controller
 
         //認証しているユーザーのレビュー投稿を取得
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
+
+        $is_bookmark = Auth::user()->is_bookmark($id);
+
         return Inertia::render(
             'Work/Review/Show',
-            ['work' => $work, 'review' => $review]
+            ['work' => $work, 'review' => $review, 'is_bookmark' => $is_bookmark]
         );
     }
 
@@ -106,11 +111,13 @@ class RatingController extends Controller
     {
         $work = Work::where('id', $id)->first();
 
-        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first(['review','rating_value']);
+        $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first(['review', 'rating_value']);
+
+        $is_bookmark = Auth::user()->is_bookmark($id);
 
         return Inertia::render(
             'Work/Review/Edit',
-            ['work' => $work, 'review' => $review]
+            ['work' => $work, 'review' => $review, 'is_bookmark' => $is_bookmark]
         );
     }
 
@@ -130,7 +137,7 @@ class RatingController extends Controller
             'review.review' => ['max:1200'],
             'review.rating_value' => ['required'],
         ])->safe()->all();
-        
+
         $input = Review::where('work_id', $id)->where('user_id', Auth::id())->first();
         $input->review = $validator['review']['review'];
         $input->rating_value = $validator['review']['rating_value'];
