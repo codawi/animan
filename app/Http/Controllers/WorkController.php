@@ -18,6 +18,7 @@ class WorkController extends Controller
         $work = Work::where('id', $id)->first();
         $reviews = Review::with('user:id,name')->where('work_id', $id)->get();
         $is_bookmark = Auth::user()->is_bookmark($id);
+        
         return Inertia::render(
             'Work/Work',
             ['work' => $work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
-  <AnimeWork v-if="work === 'anime'" :work="work" />
-  <ComicWork v-else :work="work" />
+  <AnimeWork v-if="work === 'anime'" :work="work" :is_bookmark="is_bookmark" />
+  <ComicWork v-else :work="work" :is_bookmark="is_bookmark" />
   <!-- レビュー投稿画面 -->
   <ReviewEdit :work="work" :review="review" />
   <Footer />
@@ -28,6 +28,9 @@ export default {
     },
     review: {
       type: Object,
+    },
+    is_bookmark: {
+      type: Boolean,
     },
   },
 };
