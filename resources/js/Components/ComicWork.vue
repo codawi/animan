@@ -83,7 +83,12 @@
           >
             配信サイト
           </button>
-          <BookMarkButton :work="work" :is_bookmark="is_bookmark" />
+          <!-- ログイン済みでなければ表示しない -->
+          <BookMarkButton
+            v-if="is_bookmark !== null"
+            :work="work"
+            :is_bookmark="is_bookmark[key]"
+          />
         </div>
       </div>
     </div>
