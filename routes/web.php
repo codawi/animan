@@ -38,6 +38,11 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+//トップページ
+Route::get('/1', function() {
+    return Inertia::render('Home');
+});
+
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     //アニメランキング
