@@ -19,9 +19,14 @@ class ComicController extends Controller
             $query->select(DB::raw("SUM(daily_tweet) as daily_count_sum"));
         }])->orderByDesc('total_daily_count')->take(10)->get();
 
-        //ブックマーク済みか作品ごとに確認
-        foreach ($comic_ranking as $comic_id) {
-            $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
+        //ログイン判定
+        if (Auth::check()) {
+            //ブックマーク済みか作品ごとに確認
+            foreach ($comic_ranking as $comic_id) {
+                $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
+            }
+        } else {
+            $is_bookmark = null;
         }
 
         return Inertia::render(

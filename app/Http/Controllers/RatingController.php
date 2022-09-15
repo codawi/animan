@@ -43,7 +43,13 @@ class RatingController extends Controller
             return to_route('comic.review.show', ['id' => $id]);
         }
 
-        $is_bookmark = Auth::user()->is_bookmark($id);
+        //ログイン判定
+        if (Auth::check()) {
+            //ブックマーク済みか作品ごとに確認
+            $is_bookmark = Auth::user()->is_bookmark($id);
+        } else {
+            $is_bookmark = null;
+        }
 
         return Inertia::render(
             'Work/Review/Create',
@@ -93,7 +99,13 @@ class RatingController extends Controller
         //認証しているユーザーのレビュー投稿を取得
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first();
 
-        $is_bookmark = Auth::user()->is_bookmark($id);
+        //ログイン判定
+        if (Auth::check()) {
+            //ブックマーク済みか作品ごとに確認
+            $is_bookmark = Auth::user()->is_bookmark($id);
+        } else {
+            $is_bookmark = null;
+        }
 
         return Inertia::render(
             'Work/Review/Show',
@@ -113,7 +125,13 @@ class RatingController extends Controller
 
         $review = Review::with('user:id,name')->where('work_id', $id)->where('user_id', Auth::id())->first(['review', 'rating_value']);
 
-        $is_bookmark = Auth::user()->is_bookmark($id);
+        //ログイン判定
+        if (Auth::check()) {
+            //ブックマーク済みか作品ごとに確認
+            $is_bookmark = Auth::user()->is_bookmark($id);
+        } else {
+            $is_bookmark = null;
+        }
 
         return Inertia::render(
             'Work/Review/Edit',

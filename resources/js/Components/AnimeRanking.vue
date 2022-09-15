@@ -28,10 +28,7 @@
           md:mb-0
         "
       >
-        <img
-          class="object-cover object-center rounded"
-          :src="work.image"
-        />
+        <img class="object-cover object-center rounded" :src="work.image" />
       </div>
       <div
         v-else
@@ -79,24 +76,12 @@
             "
             >詳細</Link
           >
-          <button
-            class="
-              ml-4
-              inline-flex
-              text-gray-700
-              bg-gray-100
-              border-0
-              py-2
-              px-6
-              focus:outline-none
-              hover:bg-gray-200
-              rounded
-              text-lg
-            "
-          >
-            配信サイト
-          </button>
-          <BookMarkButton :work="work" :is_bookmark="is_bookmark[key]"/>
+          <!-- ログイン済みでなければ表示しない -->
+          <BookMarkButton
+            v-if="is_bookmark !== null"
+            :work="work"
+            :is_bookmark="is_bookmark[key]"
+          />
         </div>
       </div>
     </div>
