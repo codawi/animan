@@ -61,7 +61,7 @@
         <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
         <div class="flex mx-auto">
           <Link
-            :href="'/anime/work/' + work.id"
+            :href="route('anime.daily', { id: work.id })"
             class="
               inline-flex
               text-white
@@ -78,9 +78,9 @@
           >
           <!-- ログイン済みでなければ表示しない -->
           <BookMarkButton
-            v-if="is_bookmark !== null"
+            v-if="$page.props.auth.user"
             :work="work"
-            :is_bookmark="is_bookmark[key]"
+            :is_bookmark="is_bookmark"
           />
         </div>
       </div>
