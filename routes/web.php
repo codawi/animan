@@ -39,7 +39,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //トップページ
-Route::get('/1', function() {
+Route::get('/1', function () {
     return Inertia::render('Home');
 });
 
@@ -52,7 +52,7 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     //アニメ作品詳細
     Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
     //レビュー
-    Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
+    Route::group(['middleware' => 'auth', 'prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');
         Route::get('show', [RatingController::class, 'show'])->name('show');
         Route::get('edit', [RatingController::class, 'edit'])->name('edit');
@@ -68,7 +68,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     //漫画作品詳細
     Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
     //レビュー
-    Route::group(['prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
+    Route::group(['middleware' => 'auth', 'prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');
         Route::get('show', [RatingController::class, 'show'])->name('show');
         Route::get('edit', [RatingController::class, 'edit'])->name('edit');
@@ -77,7 +77,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 
 
 //レビューDB関連
-Route::group(['prefix' => '{id}/review', 'as' => 'review.'], function () {
+Route::group(['middleware' => 'auth', 'prefix' => '{id}/review', 'as' => 'review.'], function () {
     Route::post('store', [RatingController::class, 'store'])->name('store');
     Route::patch('update', [RatingController::class, 'update'])->name('update');
     Route::delete('delete', [RatingController::class, 'destroy'])->name('delete');
@@ -89,10 +89,12 @@ Route::get('/search/{queryWord}', [WorkController::class, 'search'])->name('work
 
 
 //ブックマーク
-Route::post('/bookmark/{id}/store', [BookmarkController::class, 'store'])->name('bookmark.store');
-Route::delete('/bookmark/{id}/delete', [BookmarkController::class, 'destroy'])->name('bookmark.delete');
+Route::group(['prefix' => 'bookmark/{id}', 'as' => 'bookmark.'], function () {
+    Route::post('store', [BookmarkController::class, 'store'])->name('store');
+    Route::delete('delete', [BookmarkController::class, 'destroy'])->name('delete');
+});
 
-Route::get('/twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
+Route::get('twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
 
 
 require __DIR__ . '/auth.php';

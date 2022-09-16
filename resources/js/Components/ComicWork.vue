@@ -51,6 +51,7 @@
           </Link>
           <Link
             :href="route('comic.review.create', { id: work.id })"
+            v-if="$page.props.auth.user"
             method="get"
             as="button"
             type="button"
@@ -85,9 +86,9 @@
           </button>
           <!-- ログイン済みでなければ表示しない -->
           <BookMarkButton
-            v-if="is_bookmark !== null"
+            v-if="$page.props.auth.user"
             :work="work"
-            :is_bookmark="is_bookmark[key]"
+            :is_bookmark="is_bookmark"
           />
         </div>
       </div>

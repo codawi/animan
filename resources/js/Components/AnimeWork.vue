@@ -49,7 +49,9 @@
           >
             トップ
           </Link>
+          <!-- is_bookmarkでログイン済みか判定 -->
           <Link
+          v-if="$page.props.auth.user"
             :href="route('anime.review.create', { id: work.id })"
             method="get"
             as="button"
@@ -85,9 +87,9 @@
           </button>
           <!-- ログイン済みでなければ表示しない -->
           <BookMarkButton
-            v-if="is_bookmark !== null"
+            v-if="$page.props.auth.user"
             :work="work"
-            :is_bookmark="is_bookmark[key]"
+            :is_bookmark="is_bookmark"
           />
         </div>
       </div>
