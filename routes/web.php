@@ -41,7 +41,7 @@ Route::get('/dashboard', function () {
 //トップページ
 Route::get('/1', function () {
     return Inertia::render('Home');
-});
+})->name('home');
 
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
