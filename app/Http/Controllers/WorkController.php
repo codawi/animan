@@ -44,12 +44,11 @@ class WorkController extends Controller
         $works_id = $works->map(function ($row) {
             return $row->only('id');
         });
-
         if (Auth::check()) {
             foreach ($works_id as $work_id) {
                 $is_bookmark = Auth::user()->is_bookmark($work_id);
             }
-        } else {
+        }else{
             $is_bookmark = null;
         }
 
