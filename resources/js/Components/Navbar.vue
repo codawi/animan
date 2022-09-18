@@ -204,7 +204,7 @@
         </div>
         <div class="hidden md:inline-block">
           <Link
-            :href="route('login')"
+            :href="route('myLogin')"
             v-if="!$page.props.auth.user"
             class="
               flex flex-col
@@ -243,6 +243,7 @@
               <Link
                 :href="route('logout')"
                 method="post"
+                as="button"
                 class="
                   md:px-2
                   py-1

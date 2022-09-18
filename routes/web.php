@@ -4,13 +4,13 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\animeController;
 use App\Http\Controllers\BookMarkController;
 use App\Http\Controllers\comicController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\TweetCountsController;
+use App\Http\Controllers\LoginController;
 
 
 /*
@@ -24,24 +24,27 @@ use App\Http\Controllers\TweetCountsController;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
+// Route::get('/', function () {
+//     return Inertia::render('Welcome', [
+//         'canLogin' => Route::has('login'),
+//         'canRegister' => Route::has('register'),
+//         'laravelVersion' => Application::VERSION,
+//         'phpVersion' => PHP_VERSION,
+//     ]);
+// });
 
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return Inertia::render('Dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
 
 //トップページ
-Route::get('/1', function () {
+Route::get('/', function () {
     return Inertia::render('Home');
 })->name('home');
+
+//ログイン
+Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {

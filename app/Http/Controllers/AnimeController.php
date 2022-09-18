@@ -28,7 +28,6 @@ class AnimeController extends Controller
             $is_bookmark = null;
         }
 
-
         return Inertia::render(
             'Anime/DailyRanking',
             ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark]
