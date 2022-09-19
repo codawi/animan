@@ -1,5 +1,5 @@
 <template>
-  <div class="text-2xl my-auto px-4">
+  <div class="fa-2x my-auto px-4">
   <div v-if=" is_bookmark ">
   <button type="button">
     <font-awesome-icon

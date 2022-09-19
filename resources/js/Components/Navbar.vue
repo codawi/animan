@@ -72,6 +72,7 @@
                 <Link
                   href="#"
                   class="
+                  px-2
                     py-1
                     text-gray-700
                     transition-colors
@@ -87,7 +88,7 @@
                 <Link
                   href="#"
                   class="
-                    md:px-2
+                    px-2
                     py-1
                     text-gray-700
                     transition-colors
@@ -227,7 +228,7 @@
               <Link
                 href="#"
                 class="
-                  md:px-2
+                  px-2
                   py-1
                   text-gray-700
                   transition-colors
@@ -245,7 +246,7 @@
                 method="post"
                 as="button"
                 class="
-                  md:px-2
+                  px-2
                   py-1
                   text-gray-700
                   transition-colors

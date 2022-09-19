@@ -11,6 +11,7 @@ use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\TweetCountsController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\UserController;
 
 
 /*
@@ -45,6 +46,10 @@ Route::get('/', function () {
 
 //ログイン
 Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
+
+//マイページ
+ROute::get('user', [UserController::class, 'index'])->middleware('auth')->name('mypage');
+
 
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
