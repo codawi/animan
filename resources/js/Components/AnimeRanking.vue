@@ -77,7 +77,7 @@
             >詳細</Link
           >
           <!-- ログイン済みでなければ表示しない -->
-          <BookMarkButton
+          <BookmarkButton
             v-if="$page.props.auth.user"
             :work="work"
             :is_bookmark="is_bookmark[key]"
@@ -93,14 +93,14 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import BookMarkButton from "@/Components/BookMarkButton";
+import BookmarkButton from "@/Components/BookmarkButton";
 
 export default {
   components: {
     Link,
     Navbar,
     Footer,
-    BookMarkButton,
+    BookmarkButton,
   },
   props: {
     works: {

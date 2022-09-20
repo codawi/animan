@@ -5,7 +5,7 @@
     <font-awesome-icon
       icon="fa-solid fa-heart"
       class="text-pink-500"
-      @click="bookMarkDelete(work.id)"
+      @click="bookmarkDelete(work.id)"
     />
   </button>
 </div>
@@ -13,13 +13,12 @@
   <button type="button">
     <font-awesome-icon
       icon="fa-regular fa-heart"
-      @click="bookMarkStore(work.id)"
+      @click="bookmarkStore(work.id)"
     />
   </button>
 </div>
 </div>
 </template>
-
 <script>
 export default {
   props: {
@@ -31,12 +30,12 @@ export default {
     },
   },
   methods: {
-    bookMarkStore() {
+    bookmarkStore() {
       this.$inertia.post(route("bookmark.store", this.work.id), {
         preserveScroll: true,
       })
     },
-    bookMarkDelete() {
+    bookmarkDelete() {
       this.$inertia.delete(route('bookmark.delete', this.work.id), {
         preserveScroll: true,
       })
