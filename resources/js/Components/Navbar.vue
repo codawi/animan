@@ -226,7 +226,7 @@
           <div v-else-if="$page.props.auth.user">
             <div class="flex flex-col md:flex-row justify-end">
               <Link
-                href="#"
+                :href="route('mypage')"
                 class="
                   px-2
                   py-1

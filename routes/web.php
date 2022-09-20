@@ -48,8 +48,13 @@ Route::get('/', function () {
 Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 
 //マイページ
-ROute::get('user', [UserController::class, 'index'])->middleware('auth')->name('mypage');
+Route::get('user', [UserController::class, 'index'])->middleware('auth')->name('mypage');
 
+//ブックマーク一覧
+Route::group(['middleware' => 'auth', 'prefix' => 'bookmark', 'as' => 'bookmark.'], function() {
+    Route::get('anime', [BookmarkController::class, 'animeIndex'])->name('anime');
+    Route::get('comic', [BookmarkController::class, 'comicIndex'])->name('comic');
+});
 
 
 Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {

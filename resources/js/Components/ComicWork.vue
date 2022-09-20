@@ -85,7 +85,7 @@
             配信サイト
           </button>
           <!-- ログイン済みでなければ表示しない -->
-          <BookMarkButton
+          <BookmarkButton
             v-if="$page.props.auth.user"
             :work="work"
             :is_bookmark="is_bookmark"
@@ -98,11 +98,11 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import BookMarkButton from "@/Components/BookMarkButton";
+import BookmarkButton from "@/Components/BookmarkButton";
 export default {
   components: {
     Link,
-    BookMarkButton,
+    BookmarkButton,
   },
   props: {
     work: {
