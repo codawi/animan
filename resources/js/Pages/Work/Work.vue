@@ -1,7 +1,7 @@
 <template>
   <Navbar />
-  <animeWork v-if="work === 'anime'" :work="work" :is_bookmark="is_bookmark" />
-  <ComicWork v-else :work="work" :is_bookmark="is_bookmark" />
+  <animeWork v-if="work.category === 'anime'" :work="work" :is_bookmark="is_bookmark" />
+  <ComicWork v-else-if="work.category === 'comic'" :work="work" :is_bookmark="is_bookmark" />
   <!-- レビュー一覧 -->
   <ReviewIndex :reviews="reviews" />
   <Footer />
