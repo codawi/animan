@@ -19,7 +19,7 @@ class WorkController extends Controller
         
         //作品のレビューを全件取得
         $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate();
-        dd($reviews);
+        
         
         //ログイン判定
         if (Auth::check()) {
