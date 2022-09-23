@@ -20,4 +20,14 @@ class UserController extends Controller
             ['user' => $user]
         );
     }
+
+    public function edit() {
+        $user = Auth::user();
+        
+        return Inertia::render(
+            'User/Profile',
+            ['user' => $user]
+        );
+    }
+
 }

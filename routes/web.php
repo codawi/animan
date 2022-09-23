@@ -47,8 +47,12 @@ Route::get('/', function () {
 //ログイン
 Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 
-//マイページ
-Route::get('user', [UserController::class, 'index'])->middleware('auth')->name('mypage');
+//マイページ、ユーザー情報編集
+Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function() {
+    Route::get('', [UserController::class, 'index'])->name('mypage');
+    Route::get('profile', [UserController::class, 'edit'])->name('edit');
+    Route::get('profile', [UserController::class, 'edit'])->name('update');
+});
 
 //ブックマーク一覧
 Route::group(['middleware' => 'auth', 'prefix' => 'bookmark', 'as' => 'bookmark.'], function() {
