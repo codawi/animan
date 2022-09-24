@@ -83,12 +83,10 @@
 
 <script>
 import StarRating from "vue-star-rating";
-import BreezeValidationErrors from "@/Components/ValidationErrors.vue";
 
 export default {
   components: {
     StarRating,
-    BreezeValidationErrors,
   },
   props: {
     work: {
