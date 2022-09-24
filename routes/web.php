@@ -51,7 +51,7 @@ Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function() {
     Route::get('', [UserController::class, 'index'])->name('mypage');
     Route::get('profile', [UserController::class, 'edit'])->name('edit');
-    Route::get('profile', [UserController::class, 'edit'])->name('update');
+    Route::patch('profile', [UserController::class, 'update'])->name('update');
 });
 
 //ブックマーク一覧
