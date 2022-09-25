@@ -77,7 +77,8 @@
         </div>
       </div>
       <div class="p-4 lg:w-1/2 w-full">
-        <div
+        <Link
+        :href="route('user.edit')"
           class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8"
         >
           <div
@@ -110,7 +111,7 @@
           >
             アカウント情報
           </h2>
-        </div>
+        </Link>
       </div>
     </div>
   </section>
