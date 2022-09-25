@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Requests\UserUpdateRequest;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -32,6 +33,13 @@ class UserController extends Controller
     }
 
     public function update(UserUpdateRequest $request) {
-        dd($request);
+        $user = Auth::user();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->new_password);
+
+        $user->update();
+
+        return back();
     }
 }

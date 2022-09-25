@@ -807,6 +807,12 @@ select {
 .mt-5 {
   margin-top: 1.25rem;
 }
+.ml-8 {
+  margin-left: 2rem;
+}
+.ml-36 {
+  margin-left: 9rem;
+}
 .block {
   display: block;
 }
