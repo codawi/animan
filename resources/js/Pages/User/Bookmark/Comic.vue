@@ -1,19 +1,20 @@
 <template>
   <Navbar />
-  <Bookmarks :works="works" :is_bookmark="is_bookmark" />
+  <ComicBookmarks v-if="is_bookmark !== null" :works="works" :is_bookmark="is_bookmark" />
+  <h1 v-else class="text-center title-font sm:text-4xl text-2xl font-medium my-80 text-gray-900">ブックマークした作品はありません</h1>
   <Footer />
 </template>
 
 <script>
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import Bookmarks from "@/Components/Bookmarks";
+import ComicBookmarks from "@/Components/ComicBookmarks";
 
 export default {
   components: {
     Navbar,
     Footer,
-    Bookmarks,
+    ComicBookmarks,
   },
   props: {
     works: {

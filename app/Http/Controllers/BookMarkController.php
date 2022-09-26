@@ -33,15 +33,13 @@ class BookmarkController extends Controller
     public function animeIndex() {
         //認証中のユーザーでブックマークしているアニメ作品を取得
         $user_id = Auth::id();
+        $anime_bookmarks = Work::whereHas('bookmarks', function($query)use($user_id) {
+            $query->where('user_id', '=', $user_id)
+            ->where('category', 'anime');
+        })->get();
 
-        $anime_bookmarks = Work::select()
-        ->join('bookmarks', 'work_id', '=', 'works.id')
-        ->where('user_id', $user_id)
-        ->where('category', 'anime')
-        ->get();
-
-        //ログイン判定
-        if (Auth::check()) {
+        //ブックマーク作品が一つもないか判定
+        if ($anime_bookmarks->isEmpty() === false) {
             //ブックマーク済みか作品ごとに確認
             foreach ($anime_bookmarks as $anime_bookmark) {
                 $is_bookmark[] = Auth::user()->is_bookmark($anime_bookmark->id);
@@ -60,15 +58,13 @@ class BookmarkController extends Controller
     public function comicIndex() {
         //認証中のユーザーでブックマークしているアニメ作品を取得
         $user_id = Auth::id();
+        $comic_bookmarks = Work::whereHas('bookmarks', function($query)use($user_id) {
+            $query->where('user_id', '=', $user_id)
+            ->where('category', 'comic');
+        })->get();
 
-        $comic_bookmarks = Work::select()
-        ->join('bookmarks', 'work_id', '=', 'works.id')
-        ->where('user_id', $user_id)
-        ->where('category', 'comic')
-        ->get();
-
-        //ログイン判定
-        if (Auth::check()) {
+        //ブックマークしている作品の判定
+        if ($comic_bookmarks->isEmpty() === false) {
             //ブックマーク済みか作品ごとに確認
             foreach ($comic_bookmarks as $comic_bookmark) {
                 $is_bookmark[] = Auth::user()->is_bookmark($comic_bookmark->id);

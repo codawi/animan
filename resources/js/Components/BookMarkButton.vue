@@ -1,6 +1,6 @@
 <template>
   <div class="fa-2x my-auto px-4">
-  <div v-if=" is_bookmark ">
+  <div v-if="is_bookmark">
   <button type="button">
     <font-awesome-icon
       icon="fa-solid fa-heart"
