@@ -46,6 +46,7 @@
               rounded
               text-sm
             "
+            preserve-scroll
           >
             トップ
           </Link>
@@ -67,6 +68,7 @@
               rounded
               text-sm
             "
+            preserve-scroll
           >
             レビューする
           </Link>
