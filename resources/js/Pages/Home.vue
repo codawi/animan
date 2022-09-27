@@ -15,7 +15,7 @@
     >
       <div class="text-center lg:w-2/3 w-full">
         <h1
-          class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
+          class="title-font sm:text-4xl text-3xl mb-8 font-medium text-gray-900"
         >
           話題の作品を見つけよう
         </h1>
@@ -30,7 +30,7 @@
           "
         >
           Animanは<strong>アニメ 漫画</strong
-          >のトレンドがランキング形式で表示するサービスです。<br />
+          >のトレンドをランキング形式で表示するサービスです。<br />
           ログインすると気になった作品をブックマークしたり、感想を投稿することもできます。
         </p>
         <div class="flex justify-center mb-32">

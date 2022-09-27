@@ -64,6 +64,26 @@
             >
               ログイン
             </Link>
+            <Link
+              v-bind:class="{ hidden: isClose }"
+              :href="route('register')"
+              v-if="!$page.props.auth.user"
+              class="
+                flex flex-col
+                justify-end
+                px-2
+                py-1
+                text-gray-700
+                transition-colors
+                duration-200
+                transform
+                rounded
+                dark:text-gray-200
+                hover:bg-orange-500 hover:text-gray-100
+              "
+            >
+              会員登録
+            </Link>
             <div v-else-if="$page.props.auth.user">
               <div
                 v-bind:class="{ hidden: isClose }"
@@ -204,6 +224,7 @@
           />
         </div>
         <div class="hidden md:inline-block">
+          <div class="flex flex-col md:flex-row justify-end">
           <Link
             :href="route('myLogin')"
             v-if="!$page.props.auth.user"
@@ -222,6 +243,25 @@
             "
           >
             ログイン
+          </Link>
+          <Link
+            :href="route('register')"
+            v-if="!$page.props.auth.user"
+            class="
+              flex flex-col
+              justify-end
+              px-2
+              py-1
+              text-gray-700
+              transition-colors
+              duration-200
+              transform
+              rounded
+              dark:text-gray-200
+              hover:bg-orange-500 hover:text-gray-100
+            "
+          >
+            会員登録
           </Link>
           <div v-else-if="$page.props.auth.user">
             <div class="flex flex-col md:flex-row justify-end">
@@ -263,6 +303,7 @@
           </div>
         </div>
       </div>
+    </div>
     </div>
   </nav>
 </template>

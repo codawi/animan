@@ -42,4 +42,10 @@ class UserController extends Controller
 
         return back();
     }
+
+    public function destroy() {
+        $user = Auth::user();
+        $user->delete();
+        return to_route('/');
+    }
 }
