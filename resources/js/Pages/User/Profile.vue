@@ -4,14 +4,14 @@
     <h1 class="text-xl font-medium text-gray-900">ユーザー情報編集</h1>
     <div class="mt-5">
       <div
-          v-if="form.hasErrors"
-          class="border border-red-100 p-1 m-1 text-sm text-red-600"
-        >
-          入力された値をもう一度確認してください。
-          <ul class="list-disc list-inside">
-            <li v-for="error in form.errors" :key="error">{{ error }}</li>
-          </ul>
-        </div>
+        v-if="form.hasErrors"
+        class="border border-red-100 p-1 m-1 text-sm text-red-600"
+      >
+        入力された値をもう一度確認してください。
+        <ul class="list-disc list-inside">
+          <li v-for="error in form.errors" :key="error">{{ error }}</li>
+        </ul>
+      </div>
       <form @submit.prevent="submit">
         <div class="overflow-hidden shadow sm:rounded-md">
           <div class="bg-white px-4 py-5">
@@ -38,8 +38,7 @@
                 "
               />
 
-              <label
-                class="pt-4 block text-sm font-medium text-gray-700"
+              <label class="pt-4 block text-sm font-medium text-gray-700"
                 >メールアドレス</label
               >
               <input
@@ -58,14 +57,13 @@
                 "
               />
 
-              <label
-                class="pt-4 block text-sm font-medium text-gray-700"
+              <label class="pt-4 block text-sm font-medium text-gray-700"
                 >メールアドレス※確認用</label
               >
               <input
-              type="email"
-              v-model="form.email_confirmation"
-              required
+                type="email"
+                v-model="form.email_confirmation"
+                required
                 class="
                   mt-1
                   block
@@ -78,8 +76,7 @@
                 "
               />
 
-              <label
-                class="pt-4 block text-sm font-medium text-gray-700"
+              <label class="pt-4 block text-sm font-medium text-gray-700"
                 >現在のパスワード</label
               >
               <input
@@ -98,8 +95,7 @@
                 "
               />
 
-              <label
-                class="pt-4 block text-sm font-medium text-gray-700"
+              <label class="pt-4 block text-sm font-medium text-gray-700"
                 >新しいパスワード</label
               >
               <input
@@ -118,8 +114,7 @@
                 "
               />
 
-              <label
-                class="pt-4 block text-sm font-medium text-gray-700"
+              <label class="pt-4 block text-sm font-medium text-gray-700"
                 >パスワード※確認用</label
               >
               <input
@@ -167,6 +162,7 @@
         </div>
       </form>
     </div>
+      <DeleteConfirmButton class="mt-24" />
   </div>
   <Footer />
 </template>
@@ -175,11 +171,13 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import DeleteConfirmButton from "@/Components/DeleteConfirmButton";
 export default {
   components: {
     Link,
     Navbar,
     Footer,
+    DeleteConfirmButton,
   },
   props: {
     user: {
@@ -189,19 +187,19 @@ export default {
   data() {
     return {
       form: this.$inertia.form({
-      name: this.user.name,
-      email: this.user.email,
-      email_confirmation: null,
-      current_password: null,
-      new_password: null,
-      new_password_confirmation: null,
-      })
-    }
+        name: this.user.name,
+        email: this.user.email,
+        email_confirmation: null,
+        current_password: null,
+        new_password: null,
+        new_password_confirmation: null,
+      }),
+    };
   },
   methods: {
     submit() {
-    this.form.patch(route('user.update'))
-  }
-}
+      this.form.patch(route("user.update"));
+    },
+  },
 };
 </script>
