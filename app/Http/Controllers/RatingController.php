@@ -10,7 +10,6 @@ use App\Models\Work;
 use App\Models\Review;
 
 
-
 class RatingController extends Controller
 {
     /**
@@ -83,7 +82,13 @@ class RatingController extends Controller
         $input = ['user_id' => Auth::id(), 'work_id' => $request->work_id, 'review' => $request->review, 'rating_value' => $request->rating_value];
 
         Review::create($input);
-        return back();
+
+        return redirect()->action(
+            [RatingController::class, 'show'], ['id' => $request->work_id])
+            ->with([
+            'message' => '投稿しました',
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -161,7 +166,12 @@ class RatingController extends Controller
         $input->rating_value = $validator['review']['rating_value'];
 
         $input->update();
-        return back();
+        return redirect()->action(
+            [RatingController::class, 'show'], ['id' => $id])
+        ->with([
+            'message' => '更新しました',
+            'status' => 'success'
+        ]);
     }
 
     /**
@@ -175,6 +185,11 @@ class RatingController extends Controller
         $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
 
         $input->delete();
-        return redirect()->action([WorkController::class, 'index'], ['id' => $id]);
+        return redirect()
+        ->action([WorkController::class, 'index'], ['id' => $id])
+        ->with([
+            'message' => '削除しました',
+            'status' => 'danger'
+        ]);
     }
 }
