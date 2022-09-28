@@ -6,7 +6,9 @@
         class="px-4 py-2 text-white bg-red-500 rounded shadow"
         type="button"
       >
+      <slot name="button">
         アカウントを削除
+      </slot>
       </button>
 
       <div
@@ -22,11 +24,13 @@
       >
         <div class="max-w-2xl p-6 bg-white rounded-md shadow-xl">
           <div class="flex items-center justify-between">
-            <h3 class="text-2xl">アカウントを削除してもよろしいですか？</h3>
+            <h3 class="text-2xl"><slot  name="confirm">アカウントを削除してもよろしいですか？</slot></h3>
           </div>
           <div class="mt-4">
             <p class="mb-4 text-sm">
+              <slot name="confirm_text">
               「削除する」のボタンを押すとアカウントが削除されます
+            </slot>
             </p>
             <button
               @click="isOpen = false"
@@ -34,7 +38,7 @@
             >
               キャンセル
             </button>
-            <Link :href="route('user.delete')" method="delete" class="px-4 py-2 ml-8 text-blue-100 bg-red-500 rounded">
+            <Link :href="route('user.delete')" method="delete" as="button" class="px-4 py-2 ml-8 text-blue-100 bg-red-500 rounded">
               削除する
             </Link>
           </div>

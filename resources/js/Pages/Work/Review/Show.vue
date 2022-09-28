@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <FlashMessage />
   <AnimeWork v-if="work === 'anime'" :work="work" :is_bookmark="is_bookmark" />
   <ComicWork v-else :work="work" :is_bookmark="is_bookmark" />
   <!-- 認証ユーザーのレビュー表示 -->
@@ -13,6 +14,7 @@ import ComicWork from "@/Components/ComicWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import ReviewShow from "@/Components/ReviewShow";
+import FlashMessage from "@/Components/FlashMessage";
 
 export default {
   components: {
@@ -21,6 +23,7 @@ export default {
     Navbar,
     Footer,
     ReviewShow,
+    FlashMessage
   },
   props: {
     work: {

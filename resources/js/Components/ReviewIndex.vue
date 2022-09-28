@@ -27,7 +27,7 @@
             </div>
         </div>
       </div>
-    <Pagination class="my-8 flex justify-center" :links="reviews.links" />
+    <Pagination v-if="reviews" class="my-8 flex justify-center" :links="reviews.links" />
 </template>
 
 <script>
