@@ -1,5 +1,5 @@
 <template>
-  <div class="l-8">
+  <div class="my-8 flex justify-center">
     <h1>レビュー一覧</h1>
   </div>
     <div v-for="(review, key) in reviews.data" :key="key" class="max-w-2xl px-8 py-8 mx-auto bg-white rounded-lg shadow-md dark:bg-gray-800">
