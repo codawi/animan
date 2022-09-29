@@ -7,6 +7,7 @@
     "require": {
         "php": "^8.0.2",
         "abraham/twitteroauth": "^4.0",
+        "askedio/laravel-soft-cascade": "^9.0",
         "barryvdh/laravel-debugbar": "^3.6",
         "guzzlehttp/guzzle": "^7.2",
         "inertiajs/inertia-laravel": "^0.5.4",
