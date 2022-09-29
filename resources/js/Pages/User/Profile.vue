@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <FlashMessage />
   <div class="container py-32 mx-auto w-80 sm:w-1/2">
     <h1 class="text-xl font-medium text-gray-900">ユーザー情報編集</h1>
     <div class="mt-5">
@@ -171,12 +172,14 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import FlashMessage from "@/Components/FlashMessage";
 import DeleteConfirmButton from "@/Components/DeleteConfirmButton";
 export default {
   components: {
     Link,
     Navbar,
     Footer,
+    FlashMessage,
     DeleteConfirmButton,
   },
   props: {

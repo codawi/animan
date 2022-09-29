@@ -24,12 +24,17 @@
       <div
         v-show="isOpen"
         class="
-          absolute
-          inset-0
+          z-0
+          fixed
+          top-0
+          left-0
+          w-100
+          h-100
           flex
           items-center
           justify-center
-          bg-gray-700 bg-opacity-50
+          inset-0
+          bg-gray-700 bg-opacity-90
         "
       >
         <div class="max-w-2xl p-6 bg-white rounded-md shadow-xl">

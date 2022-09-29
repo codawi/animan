@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <FlashMessage />
   <section class="text-gray-600 body-font">
     <div
       class="
@@ -110,12 +111,14 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
+import FlashMessage from "@/Components/FlashMessage";
 
 export default {
   components: {
     Link,
     Navbar,
     Footer,
+    FlashMessage,
   },
 };
 </script>
