@@ -15,12 +15,17 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
     use SoftDeletes;
+    use \Askedio\SoftCascade\Traits\SoftCascadeTrait;
+
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
+    //論理削除した場合に一緒に削除したいデータ
+    protected $softCascade = ['reviews', 'bookmarks'];
+
     protected $fillable = [
         'name',
         'email',
@@ -48,16 +53,24 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function bookmarks() {
+    public function bookmarks()
+    {
         return $this->hasMany(Bookmark::class);
     }
 
-    public function bookmark_works() {
+    public function bookmark_works()
+    {
         return $this->belongsToMany(Work::class, 'bookmarks', 'user_id', 'work_id')->withTimestamps();
     }
 
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
+    }
+
     //ブックマークしているかチェック
-    public function is_bookmark($id) {
+    public function is_bookmark($id)
+    {
         return $this->bookmarks()->where('work_id', $id)->exists();
     }
 }
