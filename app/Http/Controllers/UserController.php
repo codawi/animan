@@ -40,12 +40,20 @@ class UserController extends Controller
 
         $user->update();
 
-        return back();
+        return back()
+        ->with([
+            'message' => 'ユーザー情報を更新しました',
+            'status' => 'success'
+        ]);
     }
 
     public function destroy() {
         $user = Auth::user();
         $user->delete();
-        return to_route('/');
+        return to_route('home')
+        ->with([
+            'message' => 'アカウントを削除しました',
+            'status' => 'danger'
+        ]);
     }
 }

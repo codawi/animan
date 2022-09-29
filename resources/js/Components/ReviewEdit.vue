@@ -71,12 +71,12 @@
                 :disabled="form.processing"
                 :class="{ 'cursor-not-allowed': form.processing }"
               >
-                更新する
+                更新
               </button>
             </div>
         </form>
         <delete-confirm-button>
-          <template #button class="">削除する</template>
+          <template #button>削除</template>
           <template #confirm> 投稿を削除してもよろしいですか？ </template>
           <template #confirmText>
             「削除する」のボタンを押すと投稿が削除されます
