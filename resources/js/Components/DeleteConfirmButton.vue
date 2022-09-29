@@ -3,7 +3,17 @@
     <div class="flex justify-center">
       <button
         @click="isOpen = true"
-        class="px-4 py-2 text-white bg-red-500 rounded shadow"
+        class="flex
+                  mx-auto
+                  text-white
+                  bg-red-500
+                  border-0
+                  py-2
+                  px-8
+                  focus:outline-none
+                  hover:bg-red-600
+                  rounded
+                  text-lg"
         type="button"
       >
       <slot name="button">
@@ -28,7 +38,7 @@
           </div>
           <div class="mt-4">
             <p class="mb-4 text-sm">
-              <slot name="confirm_text">
+              <slot name="confirmText">
               「削除する」のボタンを押すとアカウントが削除されます
             </slot>
             </p>
@@ -38,9 +48,11 @@
             >
               キャンセル
             </button>
+            <slot name="link">
             <Link :href="route('user.delete')" method="delete" as="button" class="px-4 py-2 ml-8 text-blue-100 bg-red-500 rounded">
               削除する
             </Link>
+          </slot>
           </div>
         </div>
       </div>
