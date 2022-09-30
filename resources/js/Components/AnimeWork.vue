@@ -28,69 +28,50 @@
           v-text="work.title"
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
-        <div class="flex">
-          <Link
-            method="get"
-            as="button"
-            type="button"
-            :href="route('anime.work', { id: work.id })"
-            class="
-              text-white
-              bg-orange-500
-              border-0
-              py-2
-              px-4
-              focus:outline-none
-              hover:bg-orange-600
-              rounded
-              text-sm
-            "
-          >
-            トップ
-          </Link>
-          <!-- is_bookmarkでログイン済みか判定 -->
-          <Link
-          v-if="$page.props.auth.user"
-            :href="route('anime.review.create', { id: work.id })"
-            method="get"
-            as="button"
-            type="button"
-            class="
-              text-white
-              bg-orange-500
-              border-0
-              py-2
-              px-4
-              focus:outline-none
-              hover:bg-orange-600
-              rounded
-              text-sm
-            "
-          >
-            レビューする
-          </Link>
-          <button
-            class="
-              text-gray-700
-              bg-gray-100
-              border-0
-              py-2
-              px-4
-              focus:outline-none
-              hover:bg-gray-200
-              rounded
-              text-sm
-            "
-          >
-            配信サイト
-          </button>
-          <!-- ログイン済みでなければ表示しない -->
-          <BookmarkButton
-            v-if="$page.props.auth.user"
+        <p v-text="work.author" class="mb-8 leading-relaxed"></p>
+        <div v-if="$page.props.auth.user" class="flexbg-white">
+          <nav class="flex flex-row justify-center">
+            <Link
+              Link
+              :href="route('anime.work', { id: work.id })"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: $page.component === 'Work/Work'}"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              トップ
+            </Link>
+            <Link
+              :href="route('anime.review.create', { id: work.id })"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: $page.component.startsWith('Work/Review')}"
+              class="
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              レビューする
+            </Link>
+            <BookmarkButton
             :work="work"
             :is_bookmark="is_bookmark"
           />
+          </nav>
         </div>
       </div>
     </div>
@@ -100,6 +81,7 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import BookmarkButton from "@/Components/BookmarkButton";
+
 export default {
   components: {
     Link,
@@ -115,3 +97,10 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .active {
+    border-bottom-width: 2px;
+    border-color: #3B82F6;
+  }
+</style>

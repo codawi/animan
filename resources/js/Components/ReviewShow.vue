@@ -68,6 +68,7 @@
             rounded
             hover:bg-orange-100
           "
+          preserve-scroll
         >編集
         </Link>
       </div>

@@ -31,11 +31,13 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
 import StarRating from "vue-star-rating";
 import Pagination from "@/Components/Pagination";
 
 export default {
   components: {
+    Link,
     StarRating,
     Pagination,
   },
