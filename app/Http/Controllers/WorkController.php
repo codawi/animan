@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Work;
 use App\Models\Review;
-use App\Models\Bookmark;
+use Illuminate\Support\Facades\Route;
 
 use function PHPUnit\Framework\isEmpty;
 
@@ -19,7 +19,6 @@ class WorkController extends Controller
         
         //作品のレビューを全件取得
         $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate();
-        
         
         //ログイン判定
         if (Auth::check()) {
