@@ -46,7 +46,7 @@
             </button>
             <Link
               v-bind:class="{ hidden: isClose }"
-              :href="route('login')"
+              :href="route('myLogin')"
               v-if="!$page.props.auth.user"
               class="
                 flex flex-col
@@ -107,6 +107,8 @@
                 </Link>
                 <Link
                 :href="route('logout')"
+                method="post"
+                as="button"
                   class="
                     px-2
                     py-1

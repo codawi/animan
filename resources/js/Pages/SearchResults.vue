@@ -61,11 +61,12 @@
           v-text="work.title"
           class="title-font text-2xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
+        <p v-if="work.copyright" v-text="work.copyright" class="mb-8 leading-relaxed"></p>
+        <p v-else v-text="work.author" class="mb-8 leading-relaxed"></p>
         <div class="flex mx-auto">
           <div v-if="work.title === 'anime'">
           <Link
-            :href="'/anime/work/' + work.id"
+          :href="route('anime.work', { id: work.id })"
             class="
               inline-flex
               text-white
@@ -83,7 +84,7 @@
         </div>
         <div v-else>
           <Link
-            :href="'/comic/work/' + work.id"
+          :href="route('comic.work', { id: work.id })"
             class="
               inline-flex
               text-white
@@ -99,24 +100,10 @@
             >詳細</Link
           >
         </div>
-          <button
-            class="
-              ml-4
-              inline-flex
-              text-gray-700
-              bg-gray-100
-              border-0
-              py-2
-              px-6
-              focus:outline-none
-              hover:bg-gray-200
-              rounded
-              text-lg
-            "
-          >
-            配信サイト
-          </button>
-          <BookMarkButton :work="work" :is_bookmark="is_bookmark"/>
+        <BookmarkButton
+            :work="work"
+            :is_bookmark="is_bookmark[key]"
+          />
         </div>
       </div>
     </div>
@@ -129,7 +116,7 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
-import BookMarkButton from "@/Components/BookMarkButton";
+import BookmarkButton from "@/Components/BookmarkButton";
 import Pagination from "@/Components/Pagination";
 
 export default {
@@ -137,7 +124,7 @@ export default {
     Link,
     Navbar,
     Footer,
-    BookMarkButton,
+    BookmarkButton,
     Pagination,
   },
   props: {

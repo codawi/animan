@@ -26,7 +26,7 @@ class ComicController extends Controller
                 $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
             }
         } else {
-            $is_bookmark = null;
+            $is_bookmark[] = null;
         }
 
         return Inertia::render(
