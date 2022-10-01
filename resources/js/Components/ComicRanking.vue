@@ -82,7 +82,6 @@
           >
           <!-- ログイン済みでなければ表示しない -->
           <BookmarkButton
-            v-if="$page.props.auth.user"
             :work="work"
             :is_bookmark="is_bookmark[key]"
           />

@@ -51,13 +51,12 @@ class WorkController extends Controller
 
         if (Auth::check() && $works->isNotEmpty()) {
             foreach ($works_id as $work_id) {
-                $is_bookmark = Auth::user()->is_bookmark($work_id);
+                $is_bookmark[] = Auth::user()->is_bookmark($work_id);
             }
         } else {
-            $is_bookmark = null;
+            $is_bookmark[] = null;
         }
-
-
+        
         return Inertia::render(
             'SearchResults',
             [
