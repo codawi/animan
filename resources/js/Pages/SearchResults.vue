@@ -1,8 +1,9 @@
 <template>
   <Navbar />
   <section class="text-gray-600 body-font">
+    <p>{{ works.total }}件中</p>
     <div
-      v-for="(work, key) in works"
+      v-for="(work, key) in works.data"
       :key="key"
       class="
         container
@@ -15,7 +16,6 @@
         items-center
       "
     >
-      <p>{{ key + 1 }}件目</p>
       <div
         v-if="work.image !== null"
         class="
@@ -120,6 +120,7 @@
         </div>
       </div>
     </div>
+    <Pagination class="my-8 flex justify-center" :links="works.links" />
   </section>
   <Footer />
 </template>
@@ -129,6 +130,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import BookMarkButton from "@/Components/BookMarkButton";
+import Pagination from "@/Components/Pagination";
 
 export default {
   components: {
@@ -136,6 +138,7 @@ export default {
     Navbar,
     Footer,
     BookMarkButton,
+    Pagination,
   },
   props: {
     works: {

@@ -40,19 +40,23 @@ class WorkController extends Controller
             'title',
             'like',
             '%' . $query_word . '%'
-        )->get();
+        )->paginate();
 
         //多次元データの為ただonlyを使っただけでは空だったのでmapで繰り返し処理
+        if($works->isNotEmpty()) {
         $works_id = $works->map(function ($row) {
             return $row->only('id');
         });
-        if (Auth::check()) {
+    }
+
+        if (Auth::check() && $works->isNotEmpty()) {
             foreach ($works_id as $work_id) {
                 $is_bookmark = Auth::user()->is_bookmark($work_id);
             }
-        }else{
+        } else {
             $is_bookmark = null;
         }
+
 
         return Inertia::render(
             'SearchResults',

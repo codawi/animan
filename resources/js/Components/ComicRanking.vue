@@ -15,34 +15,38 @@
         items-center
       "
     >
-      <p>{{ key + 1 }}位</p>
-      <div
-        v-if="work.image !== null"
-        class="
-          flex
-          justify-center
-          lg:max-w-lg lg:w-full
-          md:w-1/2
-          w-5/6
-          mb-10
-          md:mb-0
-        "
-      >
-        <img class="object-cover object-center rounded" :src="work.image" />
+      <div class="relative">
+        <p class="absolute texet-gray-900 font-semibold bg-orange-400 p-1.5">
+          {{ key + 1 }}位
+        </p>
+        <div
+          v-if="work.image !== null"
+          class="
+            flex
+            justify-center
+            lg:max-w-lg lg:w-full
+            md:w-1/2
+            w-5/6
+            mb-10
+            md:mb-0
+          "
+        >
+          <img class="object-cover object-center rounded" :src="work.image" />
+        </div>
+        <div
+          v-else
+          :src="'/img/noimage.svg'"
+          class="
+            flex
+            justify-center
+            lg:max-w-lg lg:w-full
+            md:w-1/2
+            w-5/6
+            mb-10
+            md:mb-0
+          "
+        ></div>
       </div>
-      <div
-        v-else
-        :src="'/img/noimage.svg'"
-        class="
-          flex
-          justify-center
-          lg:max-w-lg lg:w-full
-          md:w-1/2
-          w-5/6
-          mb-10
-          md:mb-0
-        "
-      ></div>
       <div
         class="
           lg:flex-grow
