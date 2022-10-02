@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <AnimeBookmarks v-if="is_bookmark !== null" :works="works" :is_bookmark="is_bookmark" />
-  <h1 v-else class="text-center title-font sm:text-4xl text-2xl font-medium my-80 text-gray-900">ブックマークした作品はありません</h1>
+  <h1 v-else class="text-center title-font sm:text-4xl text-2xl font-medium my-40 text-gray-900">ブックマークした作品はありません</h1>
   <Footer />
 </template>
 

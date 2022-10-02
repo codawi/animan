@@ -21,7 +21,7 @@
       <img
         v-else
         :src="work.image"
-        class="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
+        class="lg:w-2/6 mb-10 object-cover object-center rounded"
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1

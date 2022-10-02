@@ -1,5 +1,5 @@
 <template>
-  <nav class="bg-white shadow dark:bg-gray-800">
+  <nav class="bg-white shadow">
     <div class="container px-4 py-3 mx-auto md:flex">
       <div class="flex items-center justify-between">
         <div>
@@ -11,10 +11,8 @@
               transition-colors
               duration-200
               transform
-              dark:text-white
               lg:text-3xl
               hover:text-gray-700
-              dark:hover:text-gray-300
             "
             :href="route('home')"
             >Animan</Link
@@ -29,11 +27,8 @@
               @click="toggle"
               class="
                 text-gray-500
-                dark:text-gray-200
                 hover:text-gray-600
-                dark:hover:text-gray-400
-                focus:outline-none focus:text-gray-600
-                dark:focus:text-gray-400
+                focus:outline-none
               "
               aria-label="toggle menu"
             >
@@ -58,7 +53,6 @@
                 duration-200
                 transform
                 rounded
-                dark:text-gray-200
                 hover:bg-orange-500 hover:text-gray-100
               "
             >
@@ -78,7 +72,6 @@
                 duration-200
                 transform
                 rounded
-                dark:text-gray-200
                 hover:bg-orange-500 hover:text-gray-100
               "
             >
@@ -99,7 +92,6 @@
                     duration-200
                     transform
                     rounded
-                    dark:text-gray-200
                     hover:bg-orange-500 hover:text-gray-100
                   "
                 >
@@ -117,7 +109,6 @@
                     duration-200
                     transform
                     rounded
-                    dark:text-gray-200
                     hover:bg-red-500 hover:text-gray-100
                   "
                 >
@@ -144,7 +135,6 @@
               duration-200
               transform
               rounded
-              dark:text-gray-200
               hover:bg-gray-900 hover:text-gray-100
               md:mx-2
             "
@@ -162,7 +152,6 @@
               duration-200
               transform
               rounded
-              dark:text-gray-200
               hover:bg-gray-900 hover:text-gray-100
               md:mx-2
             "
@@ -180,7 +169,6 @@
               duration-200
               transform
               rounded
-              dark:text-gray-200
               hover:bg-gray-900 hover:text-gray-100
               md:mx-2
             "
@@ -214,9 +202,7 @@
               bg-white
               border
               rounded-md
-              dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600
               focus:border-blue-400
-              dark:focus:border-blue-300
               focus:outline-none
               focus:ring
               focus:ring-opacity-40
@@ -240,7 +226,6 @@
               duration-200
               transform
               rounded
-              dark:text-gray-200
               hover:bg-orange-500 hover:text-gray-100
             "
           >
@@ -259,7 +244,6 @@
               duration-200
               transform
               rounded
-              dark:text-gray-200
               hover:bg-orange-500 hover:text-gray-100
             "
           >
@@ -277,7 +261,6 @@
                   duration-200
                   transform
                   rounded
-                  dark:text-gray-200
                   hover:bg-orange-500 hover:text-gray-100
                 "
               >
@@ -295,7 +278,6 @@
                   duration-200
                   transform
                   rounded
-                  dark:text-gray-200
                   hover:bg-red-500 hover:text-gray-100
                 "
               >
