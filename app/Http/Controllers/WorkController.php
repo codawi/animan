@@ -18,7 +18,7 @@ class WorkController extends Controller
         $work = Work::where('id', $id)->first();
         
         //作品のレビューを全件取得
-        $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate();
+        $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate(10);
         
         //ログイン判定
         if (Auth::check()) {
@@ -40,7 +40,7 @@ class WorkController extends Controller
             'title',
             'like',
             '%' . $query_word . '%'
-        )->paginate();
+        )->paginate(10);
 
         //多次元データの為ただonlyを使っただけでは空だったのでmapで繰り返し処理
         if($works->isNotEmpty()) {

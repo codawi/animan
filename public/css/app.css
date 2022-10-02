@@ -706,6 +706,10 @@ select {
   margin-top: 20rem;
   margin-bottom: 20rem;
 }
+.my-40 {
+  margin-top: 10rem;
+  margin-bottom: 10rem;
+}
 .ml-3 {
   margin-left: 0.75rem;
 }
@@ -1432,6 +1436,9 @@ select {
 .underline {
   -webkit-text-decoration-line: underline;
           text-decoration-line: underline;
+}
+.underline-offset-auto {
+  text-underline-offset: auto;
 }
 .antialiased {
   -webkit-font-smoothing: antialiased;

@@ -1,7 +1,7 @@
 <template>
   <Navbar />
-  <section class="text-gray-600 body-font">
-    <p>{{ works.total }}件中</p>
+    <p class="text-gray-900 body-font underline">検索結果 {{ works.total }}件中 {{ works.from }}〜{{ works.to}}件</p>
+    <h1 v-if="works.total === 0" class="text-center title-font sm:text-4xl text-2xl font-medium my-40 text-gray-900">ヒットした作品はありませんでした</h1>
     <div
       v-for="(work, key) in works.data"
       :key="key"
@@ -108,7 +108,6 @@
       </div>
     </div>
     <Pagination class="my-8 flex justify-center" :links="works.links" />
-  </section>
   <Footer />
 </template>
 
