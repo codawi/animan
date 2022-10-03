@@ -12,16 +12,17 @@
         flex-col
       "
     >
-      <div v-if="work.image == null">
+    <div v-if="work.image !== null">
         <img
-          :src="'/img/noimage.svg'"
+          :src="work.image"
           class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
+          @error="altImg"
         />
       </div>
       <img
         v-else
-        :src="work.image"
-        class="lg:w-2/6 mb-10 object-cover object-center rounded"
+        :src="'/img/noimage.png'"
+        class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
       />
       <div class="text-center lg:w-2/3 w-full">
         <h1
@@ -94,6 +95,11 @@ export default {
     },
     is_bookmark: {
       type: Boolean,
+    },
+  },
+  methods: {
+    altImg(element) {
+      element.target.src = "/img/noimage.png";
     },
   },
 };

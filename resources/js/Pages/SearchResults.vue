@@ -31,11 +31,12 @@
         <img
           class="object-cover object-center rounded"
           :src="work.image"
+          @error="altImg"
         />
       </div>
-      <div
+      <img
         v-else
-        :src="'/img/noimage.svg'"
+        :src="'/img/noimage.png'"
         class="
           flex
           justify-center
@@ -45,7 +46,7 @@
           mb-10
           md:mb-0
         "
-      ></div>
+      />
       <div
         class="
           lg:flex-grow
@@ -126,6 +127,11 @@ export default {
     BookmarkButton,
     Pagination,
   },
+  methods: {
+    altImg(element) {
+      element.target.src = "/img/noimage.png";
+    },
+  },
   props: {
     works: {
       type: Object,
@@ -133,6 +139,6 @@ export default {
     is_bookmark: {
       type: [Object,Boolean]
     },
-  },
+  }
 };
 </script>
