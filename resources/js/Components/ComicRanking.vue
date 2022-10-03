@@ -31,11 +31,15 @@
             md:mb-0
           "
         >
-          <img class="object-cover object-center rounded" :src="work.image" />
+          <img
+            class="object-cover object-center rounded"
+            :src="work.image"
+            @error="altImg()"
+          />
         </div>
-        <div
+        <img
           v-else
-          :src="'/img/noimage.svg'"
+          :src="'/img/noimage.png'"
           class="
             flex
             justify-center
@@ -45,7 +49,7 @@
             mb-10
             md:mb-0
           "
-        ></div>
+        />
       </div>
       <div
         class="
@@ -81,10 +85,7 @@
             >詳細</Link
           >
           <!-- ログイン済みでなければ表示しない -->
-          <BookmarkButton
-            :work="work"
-            :is_bookmark="is_bookmark[key]"
-          />
+          <BookmarkButton :work="work" :is_bookmark="is_bookmark[key]" />
         </div>
       </div>
     </div>
@@ -111,6 +112,11 @@ export default {
     },
     is_bookmark: {
       type: Object,
+    },
+  },
+  methods: {
+    altImg() {
+      this.src = "/img/noimage.png";
     },
   },
 };
