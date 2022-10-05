@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('category');
             $table->string('title');
-            $table->string('author')->nullable();
             $table->string('image')->nullable();
             $table->string('copyright')->nullable();
             $table->string('url')->nullable();

@@ -57,12 +57,7 @@
           v-text="work.title"
           class="title-font text-2xl mb-4 font-medium text-gray-900"
         ></h1>
-        <div v-if="work.copyright !== null">
           <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
-        </div>
-        <div v-else-if="work.author !== null">
-          <p v-text="work.author" class="mb-8 leading-relaxed"></p>
-        </div>
         <div class="flex mx-auto">
           <Link
             :href="route('comic.work', { id: work.id })"
