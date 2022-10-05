@@ -29,7 +29,7 @@
           v-text="work.title"
           class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-text="work.author" class="mb-8 leading-relaxed"></p>
+        <p v-text="work.copyriht" class="mb-8 leading-relaxed"></p>
 
         <div v-if="$page.props.auth.user" class="flexbg-white">
           <nav class="flex flex-row justify-center">

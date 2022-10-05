@@ -62,8 +62,7 @@
           v-text="work.title"
           class="title-font text-2xl mb-4 font-medium text-gray-900"
         ></h1>
-        <p v-if="work.copyright" v-text="work.copyright" class="mb-8 leading-relaxed"></p>
-        <p v-else v-text="work.author" class="mb-8 leading-relaxed"></p>
+        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
         <div class="flex mx-auto">
           <div v-if="work.title === 'anime'">
           <Link
