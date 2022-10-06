@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Abraham\TwitterOAuth\TwitterOAuth;
 
 class TweetCount extends Model
 {
