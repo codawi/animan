@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('tweet_counts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('work_id')->constrained('works')->cascadeOnDelete();
-            $table->integer('daily_tweet')->nullable();
-            $table->integer('weekly_tweet')->nullable();
-            $table->integer('monthly_tweet')->nullable();
+            $table->integer('daily_tweet')->default(0)->nullable();
+            $table->integer('weekly_tweet')->default(0)->nullable();
+            $table->integer('monthly_tweet')->default(0)->nullable();
             $table->timestamps();
         });
     }
