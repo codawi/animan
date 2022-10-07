@@ -27,9 +27,20 @@ class TweetCountsWeeklyCommand extends Command
      */
     public function handle()
     {
-        // 毎週（月曜日）すること（毎月1日以外）
-        // 日間カラムのツイート数を月間カラムに「足す」
-        // →先日のツイート数を作品別に取得（毎日やることと同じ）
-        // →日間と週間ツイート数をリセットするために日間と週間カラムどちらも先日のツイート数で「上書き」
+        //週初めと月初めそれぞれのカラムをリセット
+        if (date('N') === 1 && date('Y-m-01')) {
+            TweetCount::update([
+                'weekly_tweet' => 0,
+                'monthly_tweet' => 0,
+            ]);
+        } elseif (date('N') === 1) {
+            TweetCount::update([
+                'weekly_tweet' => 0,
+            ]);
+        } elseif (date('Y-m-01')) {
+            TweetCount::update([
+                'monthly_tweet' => 0,
+            ]);
+        }
     }
 }

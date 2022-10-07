@@ -44,7 +44,7 @@ class TweetCountsDailyCommand extends Command
         $works = Work::get()->toArray();
 
         //タイトルのみ「:」を空白に置換
-        $serch = [':', '<', '>', '―', '‐', 'Ⅴ', '[', ']', '≪', '≫', '&', '〜', '！', '・'];
+        $serch = ['　',':', '<', '>', '―', '‐', 'Ⅴ', '[', ']', '≪', '≫', '&', '〜', '！', '・', '∞'];
         $titles = array_column($works, 'title');
         foreach ($titles as $index => $title) {
             $works[$index]["title"] = str_replace($serch, '', $title);
@@ -58,22 +58,20 @@ class TweetCountsDailyCommand extends Command
                 "end_time" => date(DATE_ATOM, strtotime("yesterday + 1day")),
                 "granularity" => "day",
             ];
-            try {
                 $twitter_requests[] = $connection->get('tweets/counts/recent', $params);
-            } catch (\Expection $e) {
-                //API制限(429)になった場合15分スリープしてから処理再開
-                if ($connection->getLastHttpCode() == 429) {
+
+                //statusプロパティがあった場合はAPI制限になったので15分スリープ
+                if (isset($twitter_requests[$index]->status)) {
                     sleep(900);
-                    $twitter_requests[] = $connection->get('tweets/counts/recent', $params);
+                    //429エラーがあった配列に入れ直す
+                    $twitter_requests[$index] = $connection->get('tweets/counts/recent', $params);
                 }
-            }
         }
 
         // work_idで検索し、取得したツイート数をdaily_tweetに「上書き」
         foreach ($twitter_requests as $work_id => $count_result) {
-            // dd($count_result->meta->total_tweet_count);
                 TweetCount::updateOrCreate(['work_id' => $work_id + 1],
-                ['daily_tweet' => $count_result->meta->total_tweet_count]);
+                ['daily_tweet' => $count_result->meta->total_tweet_count ?? null]);
         }
 
         // 更新後のdaily_tweetをweekly_tweet,monthly_tweetに「加算」
