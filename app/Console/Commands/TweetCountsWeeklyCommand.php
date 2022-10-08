@@ -3,6 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use App\Models\TweetCount;
+use Illuminate\Support\Facades\DB;
+
 
 class TweetCountsWeeklyCommand extends Command
 {
@@ -27,20 +30,12 @@ class TweetCountsWeeklyCommand extends Command
      */
     public function handle()
     {
-        //週初めと月初めそれぞれのカラムをリセット
-        if (date('N') === 1 && date('Y-m-01')) {
-            TweetCount::update([
-                'weekly_tweet' => 0,
-                'monthly_tweet' => 0,
-            ]);
-        } elseif (date('N') === 1) {
-            TweetCount::update([
-                'weekly_tweet' => 0,
-            ]);
+        if (date('N') === "1" && date('Y-m-01')) {
+            DB::table('tweet_counts')->update(['weekly_tweet' => 0, 'monthly_tweet' => 0]);
+        } elseif (date('N') === "6") {
+            DB::table('tweet_counts')->update(['weekly_tweet' => 0]);
         } elseif (date('Y-m-01')) {
-            TweetCount::update([
-                'monthly_tweet' => 0,
-            ]);
+            DB::table('tweet_counts')->update(['monthly_tweet' => 0]);
         }
     }
 }

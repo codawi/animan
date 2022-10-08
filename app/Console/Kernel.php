@@ -15,7 +15,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        //毎日0時実行
+        $schedule->command('command:TweetCounts')->daily();
     }
 
     /**
