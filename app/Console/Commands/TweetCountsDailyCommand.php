@@ -71,7 +71,7 @@ class TweetCountsDailyCommand extends Command
         //週初めと月初めそれぞれのカラムをリセット
         if (date('N') === "1" && date('Y-m-01')) {
             DB::table('tweet_counts')->update(['weekly_tweet' => 0, 'monthly_tweet' => 0]);
-        } elseif (date('N') === "6") {
+        } elseif (date('N') === "1") {
             DB::table('tweet_counts')->update(['weekly_tweet' => 0]);
         } elseif (date('Y-m-01')) {
             DB::table('tweet_counts')->update(['monthly_tweet' => 0]);
