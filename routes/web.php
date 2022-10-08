@@ -9,7 +9,6 @@ use App\Http\Controllers\BookMarkController;
 use App\Http\Controllers\comicController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
-use App\Http\Controllers\TweetCountsController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
 
@@ -111,8 +110,5 @@ Route::group(['prefix' => 'bookmark/{id}', 'as' => 'bookmark.'], function () {
     Route::post('store', [BookmarkController::class, 'store'])->name('store');
     Route::delete('delete', [BookmarkController::class, 'destroy'])->name('delete');
 });
-
-Route::get('twitter', [TweetCountsController::class, 'index'])->name('Twitter.index');
-
 
 require __DIR__ . '/auth.php';

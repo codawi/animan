@@ -13,7 +13,6 @@ class AnimeController extends Controller
 {
     public function indexDaily()
     {
-        dd(date(DATE_ATOM, strtotime("yesterday + 1day")));
         //アニメランキングソート
         $anime_ranking = Work::where('category', 'anime')->withCount(['count AS total_daily_count' => function ($query) {
             $query->select(DB::raw("SUM(daily_tweet) as daily_count_sum"));

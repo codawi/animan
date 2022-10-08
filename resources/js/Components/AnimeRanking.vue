@@ -15,15 +15,12 @@
         items-center
       "
     >
-      <div class="relative">
-        <p class="absolute texet-gray-900 font-semibold bg-orange-400 p-1.5">
+        <p class="texet-gray-900 font-semibold bg-orange-400 p-1.5">
           {{ key + 1 }}位
         </p>
         <div
           v-if="work.image !== null"
           class="
-            flex
-            justify-center
             lg:max-w-lg lg:w-full
             md:w-1/2
             w-5/6
@@ -50,7 +47,6 @@
             md:mb-0
           "
         />
-      </div>
       <div
         class="
           lg:flex-grow
@@ -62,10 +58,10 @@
           text-center
         "
       >
-        <h1
+        <li
           v-text="work.title"
           class="title-font text-2xl mb-4 font-medium text-gray-900"
-        ></h1>
+        ></li>
         <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
         <div class="flex mx-auto">
           <Link

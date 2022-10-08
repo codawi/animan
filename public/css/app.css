@@ -663,6 +663,12 @@ select {
 .bottom-0 {
   bottom: 0px;
 }
+.left-80 {
+  left: 20rem;
+}
+.right-80 {
+  right: 20rem;
+}
 .z-0 {
   z-index: 0;
 }
@@ -812,6 +818,9 @@ select {
 .mt-24 {
   margin-top: 6rem;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .block {
   display: block;
 }
@@ -904,6 +913,9 @@ select {
 }
 .flex-1 {
   flex: 1 1 0%;
+}
+.flex-auto {
+  flex: 1 1 auto;
 }
 .flex-shrink-0 {
   flex-shrink: 0;
