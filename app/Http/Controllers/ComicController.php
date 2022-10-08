@@ -30,7 +30,7 @@ class ComicController extends Controller
         }
 
         return Inertia::render(
-            'Comic/DailyRanking',
+            'Ranking/DailyRanking',
             ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark]
         );
     }
