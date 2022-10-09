@@ -29,8 +29,8 @@ class AnimeController extends Controller
         }
 
         return Inertia::render(
-            'Ranking/DailyRanking',
-            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark]
+            'Ranking',
+            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'daily']
         );
     }
 
@@ -42,8 +42,8 @@ class AnimeController extends Controller
         // $anime_ranking = array_merge($anime_ranking);
 
         // return Inertia::render(
-        //     'Anime/WeeklyRanking',
-        //     ['animeWorks' => $anime_ranking]
+        //     'Ranking',
+        //     ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'weekly']
         // );
     }
 
@@ -55,8 +55,8 @@ class AnimeController extends Controller
         // $anime_ranking = array_merge($anime_ranking);
 
         // return Inertia::render(
-        //     'Anime/MonthlyRanking',
-        //     ['animeWorks' => $anime_ranking]
+        //     'Ranking',
+        //     ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'monthly']
         // );
     }
 }
