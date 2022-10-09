@@ -1,7 +1,7 @@
 <template>
   <Navbar />
   <FlashMessage />
-  <section class="text-gray-600 body-font">
+  <section class="text-gray-600 body-font bg-slate-50">
     <div
       class="
         container

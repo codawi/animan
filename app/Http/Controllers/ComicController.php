@@ -30,8 +30,8 @@ class ComicController extends Controller
         }
 
         return Inertia::render(
-            'Ranking/DailyRanking',
-            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark]
+            'Ranking',
+            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'daily']
         );
     }
 
@@ -43,8 +43,8 @@ class ComicController extends Controller
         // $comic_ranking = array_merge($comic_ranking);
 
         // return Inertia::render(
-        //     'Comic/WeeklyRanking',
-        //     ['comicWorks' => $comic_ranking]
+        //     'Ranking',
+        //     ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'weekly']
         // );
     }
 
@@ -56,8 +56,8 @@ class ComicController extends Controller
         // $comic_ranking = array_merge($comic_ranking);
 
         // return Inertia::render(
-        //     'Comic/MonthlyRanking',
-        //     ['comicWorks' => $comic_ranking]
+        //     'Ranking',
+        //     ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'monthly']
         // );
     }
 }

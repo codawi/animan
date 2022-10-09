@@ -49,8 +49,8 @@ class BookmarkController extends Controller
         }
 
         return Inertia::render(
-            'User/Bookmark/Anime',
-            ['works' => $anime_bookmarks, 'is_bookmark' => $is_bookmark]
+            'User/Bookmark',
+            ['works' => $anime_bookmarks, 'is_bookmark' => $is_bookmark, 'category' => 'anime'] 
         );
     
     }
@@ -74,8 +74,8 @@ class BookmarkController extends Controller
         }
 
         return Inertia::render(
-            'User/Bookmark/Comic',
-            ['works' => $comic_bookmarks, 'is_bookmark' => $is_bookmark]
+            'User/Bookmark',
+            ['works' => $comic_bookmarks, 'is_bookmark' => $is_bookmark, 'category' => 'comic']
         );
     }
 }

@@ -1,34 +1,37 @@
 <template>
-  <Navbar />
-  <h1>
+  <div class="bg-slate-50">
+  <h1 class="text-center py-4 text-gray-900 text-xl font-bold">
     <slot></slot>
   </h1>
-  <section class="text-gray-600 body-font">
+  <div class="container px-4 py-8 mx-auto">
     <div
       v-for="(work, key) in works"
       :key="key"
       class="
-        container
+        border-2 rounded-sm
+      border-white
+        border-opacity-50
+        bg-white
         flex
         mx-auto
-        px-5
-        py-24
-        md:flex-row
+        mb-16
         flex-col
-        items-center
+        max-w-2xl
       "
     >
-        <p class="texet-gray-900 font-semibold bg-orange-400 p-1.5">
+        <div class="text-left border-b-2 mb-8 texet-gray-900 font-semibold items-center-none">
           {{ key + 1 }}位
-        </p>
+        </div>
         <div
           v-if="work.image !== null"
           class="
-            lg:max-w-lg lg:w-full
-            md:w-1/2
-            w-5/6
-            mb-10
+            flex
+            justify-center
+            items-center
+            mx-8
+            mb-4
             md:mb-0
+            max-w-2xl
           "
         >
           <img
@@ -41,21 +44,16 @@
           v-else
           :src="'/img/noimage.png'"
           class="
-            flex
+          flex
             justify-center
-            lg:max-w-lg lg:w-full
-            md:w-1/2
-            w-5/6
-            mb-10
+            mx-auto 
+            mb-4
             md:mb-0
           "
         />
       <div
         class="
           lg:flex-grow
-          md:w-1/2
-          lg:pl-24
-          md:pl-16
           flex flex-col
           items-center
           text-center
@@ -63,10 +61,10 @@
       >
         <li
           v-text="work.title"
-          class="list-none title-font text-2xl mb-4 font-medium text-gray-900"
+          class="list-none title-font text-2xl mt-4 mb-2 font-medium text-gray-900"
         ></li>
-        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
-        <div class="flex mx-auto">
+        <p v-text="work.copyright" class="mb-4 leading-relaxed"></p>
+        <div class="flex mx-auto mb-4">
           <Link
             :href="route('anime.work', { id: work.id })"
             class="
@@ -87,21 +85,17 @@
         </div>
       </div>
     </div>
-  </section>
-  <Footer />
+</div>
+</div>
 </template>
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 import BookmarkButton from "@/Components/BookmarkButton";
 
 export default {
   components: {
     Link,
-    Navbar,
-    Footer,
     BookmarkButton,
   },
   props: {
