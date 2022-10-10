@@ -1,35 +1,17 @@
 <template>
-  <nav class="bg-white shadow">
+  <nav class="bg-white shadow sticky top-0 z-50">
     <div class="container px-4 py-3 mx-auto md:flex">
       <div class="flex items-center justify-between">
-        <div>
-          <Link
-            class="
-              text-2xl
-              font-bold
-              text-gray-800
-              transition-colors
-              duration-200
-              transform
-              lg:text-3xl
-              hover:text-gray-700
-            "
-            :href="route('home')"
-            >Animan</Link
-          >
-        </div>
+        <Link :href="route('home')">
+          <img :src="'/img/logo.png'" class="object-contain w-28 inline" alt="logo" />
+        </Link>
 
-        <!-- ハンバーガーメニュー -->
         <div class="flex justify-end md:hidden">
           <div class="text-right">
             <button
               type="button"
               @click="toggle"
-              class="
-                text-gray-500
-                hover:text-gray-600
-                focus:outline-none
-              "
+              class="text-gray-500 hover:text-gray-600 focus:outline-none"
               aria-label="toggle menu"
             >
               <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
@@ -83,9 +65,9 @@
                 class="flex flex-col md:flex-row justify-end"
               >
                 <Link
-                :href="route('user.mypage')"
+                  :href="route('user.mypage')"
                   class="
-                  px-2
+                    px-2
                     py-1
                     text-gray-700
                     transition-colors
@@ -98,9 +80,9 @@
                   マイページ
                 </Link>
                 <Link
-                :href="route('logout')"
-                method="post"
-                as="button"
+                  :href="route('logout')"
+                  method="post"
+                  as="button"
                   class="
                     px-2
                     py-1
@@ -120,7 +102,6 @@
         </div>
       </div>
 
-      <!-- Mobile Menu open: "block", Menu closed: "hidden" -->
       <div class="w-full md:flex md:items-center md:justify-between">
         <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
           <Link
@@ -213,81 +194,81 @@
         </div>
         <div class="hidden md:inline-block">
           <div class="flex flex-col md:flex-row justify-end">
-          <Link
-            :href="route('myLogin')"
-            v-if="!$page.props.auth.user"
-            class="
-              flex flex-col
-              justify-end
-              px-2
-              py-1
-              text-gray-700
-              transition-colors
-              duration-200
-              transform
-              rounded
-              hover:bg-orange-500 hover:text-gray-100
-            "
-          >
-            ログイン
-          </Link>
-          <Link
-            :href="route('register')"
-            v-if="!$page.props.auth.user"
-            class="
-              flex flex-col
-              justify-end
-              px-2
-              py-1
-              text-gray-700
-              transition-colors
-              duration-200
-              transform
-              rounded
-              hover:bg-orange-500 hover:text-gray-100
-            "
-          >
-            会員登録
-          </Link>
-          <div v-else-if="$page.props.auth.user">
-            <div class="flex flex-col md:flex-row justify-end">
-              <Link
-                :href="route('user.mypage')"
-                class="
-                  px-2
-                  py-1
-                  text-gray-700
-                  transition-colors
-                  duration-200
-                  transform
-                  rounded
-                  hover:bg-orange-500 hover:text-gray-100
-                "
-              >
-                マイページ
-              </Link>
-              <Link
-                :href="route('logout')"
-                method="post"
-                as="button"
-                class="
-                  px-2
-                  py-1
-                  text-gray-700
-                  transition-colors
-                  duration-200
-                  transform
-                  rounded
-                  hover:bg-red-500 hover:text-gray-100
-                "
-              >
-                ログアウト</Link
-              >
+            <Link
+              :href="route('myLogin')"
+              v-if="!$page.props.auth.user"
+              class="
+                flex flex-col
+                justify-end
+                px-2
+                py-1
+                text-gray-700
+                transition-colors
+                duration-200
+                transform
+                rounded
+                hover:bg-orange-500 hover:text-gray-100
+              "
+            >
+              ログイン
+            </Link>
+            <Link
+              :href="route('register')"
+              v-if="!$page.props.auth.user"
+              class="
+                flex flex-col
+                justify-end
+                px-2
+                py-1
+                text-gray-700
+                transition-colors
+                duration-200
+                transform
+                rounded
+                hover:bg-orange-500 hover:text-gray-100
+              "
+            >
+              会員登録
+            </Link>
+            <div v-else-if="$page.props.auth.user">
+              <div class="flex flex-col md:flex-row justify-end">
+                <Link
+                  :href="route('user.mypage')"
+                  class="
+                    px-2
+                    py-1
+                    text-gray-700
+                    transition-colors
+                    duration-200
+                    transform
+                    rounded
+                    hover:bg-orange-500 hover:text-gray-100
+                  "
+                >
+                  マイページ
+                </Link>
+                <Link
+                  :href="route('logout')"
+                  method="post"
+                  as="button"
+                  class="
+                    px-2
+                    py-1
+                    text-gray-700
+                    transition-colors
+                    duration-200
+                    transform
+                    rounded
+                    hover:bg-red-500 hover:text-gray-100
+                  "
+                >
+                  ログアウト</Link
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   </nav>
 </template>
