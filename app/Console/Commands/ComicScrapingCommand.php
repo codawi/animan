@@ -48,8 +48,14 @@ class ComicScrapingCommand extends Command
                     //画像取得
                     'image' => $node->filter('.book-list--img')->attr('src'),
 
+                    //ジャンル取得
+                    'media' => $node->filter('.book-list--category-genre')->text(),
+
                     // URL取得
                     'url' => $node->filter('.book-list--item')->attr('href'),
+
+                    //あらすじ取得
+                    'summy' => $node->filter('.book-list--story')->text(),
                 ];
             });
         };
@@ -62,7 +68,9 @@ class ComicScrapingCommand extends Command
             ],[
                 'copyright' => $work['author'] ?? null,
                 'image' => $work['image'] ?? null1,
+                'media' => $work['media'] ?? null,
                 'url' => $work['url'] ?? null,
+                'summy' => $work['summy'] ?? mull,
             ]);
         }
     }
