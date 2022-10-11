@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('copyright')->nullable();
             $table->string('url')->nullable();
             $table->string('media')->nullable();
+            $table->text('summary')->nullable();
             $table->timestamps();
         });
     }
