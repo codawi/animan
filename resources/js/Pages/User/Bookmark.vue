@@ -1,5 +1,6 @@
 <template>
   <Navbar />
+  <MoveTop />
   <Bookmarks v-if="is_bookmark !== null" :works="works" :is_bookmark="is_bookmark">
   <div v-if="category === 'anime'">ブックマークした作品（アニメ）</div>
   <div v-if="category === 'comic'">ブックマークした作品（漫画）</div>
@@ -12,13 +13,15 @@
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Bookmarks from "@/Components/Bookmarks";
+import MoveTop from "@/Components/MoveTop";
 
 export default {
   components: {
     Navbar,
     Footer,
     Bookmarks,
-  },
+    MoveTop,
+},
   props: {
     works: {
       type: Object,
