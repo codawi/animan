@@ -17,8 +17,8 @@ class ComicController extends Controller
         //漫画ランキングソート
         $comic_ranking = Work::where('category', 'comic')->withCount(['count AS total_daily_count' => function ($query) {
             $query->select(DB::raw("SUM(daily_tweet) as daily_count_sum"));
-        }])->orderByDesc('total_daily_count')->take(10)->get();
-        
+        }])->orderByDesc('total_daily_count')->paginate(50);
+
         //ログイン判定
         if (Auth::check()) {
             //ブックマーク済みか作品ごとに確認
