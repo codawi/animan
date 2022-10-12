@@ -86,6 +86,7 @@
       </div>
     </div>
 </div>
+<MoveTop />
 <Pagination v-if="works" class="flex justify-center pb-4" :links="works.links" />
 </div>
 </template>
@@ -94,14 +95,15 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import BookmarkButton from "@/Components/BookmarkButton";
 import Pagination from "@/Components/Pagination";
-
+import MoveTop from "@/Components/MoveTop";
 
 export default {
   components: {
     Link,
     BookmarkButton,
     Pagination,
-  },
+    MoveTop,
+},
   props: {
     works: {
       type: Object,

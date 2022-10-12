@@ -107,6 +107,7 @@
         </div>
       </div>
     </div>
+    <MoveTop />
     <Pagination class="my-8 flex justify-center" :links="works.links" />
   <Footer />
 </template>
@@ -117,6 +118,7 @@ import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import BookmarkButton from "@/Components/BookmarkButton";
 import Pagination from "@/Components/Pagination";
+import MoveTop from "@/Components/MoveTop";
 
 export default {
   components: {
@@ -125,7 +127,8 @@ export default {
     Footer,
     BookmarkButton,
     Pagination,
-  },
+    MoveTop,
+},
   methods: {
     altImg(element) {
       element.target.src = "/img/noimage.png";
