@@ -3,7 +3,11 @@
     <div class="container px-4 py-3 mx-auto md:flex">
       <div class="flex items-center justify-between">
         <Link :href="route('home')">
-          <img :src="'/img/logo.png'" class="object-contain w-28 inline" alt="logo" />
+          <img
+            :src="'/img/logo.png'"
+            class="object-contain w-28 inline"
+            alt="logo"
+          />
         </Link>
 
         <div class="flex justify-end md:hidden">
@@ -107,54 +111,135 @@
           <Link
             :href="route('home')"
             class="
-              px-2
-              py-1
+              justify-end
+              inline-flex
+              items-center
+              px-3
+              py-2
+              border border-transparent
               text-sm
+              leading-4
               font-medium
-              text-gray-700
-              transition-colors
-              duration-200
-              transform
-              rounded
-              hover:bg-gray-900 hover:text-gray-100
-              md:mx-2
+              rounded-md
+              text-gray-500
+              bg-white
+              hover:text-gray-700
+              focus:outline-none
+              transition
+              ease-in-out
+              duration-150
             "
             >ホーム</Link
           >
-          <Link
-            :href="route('anime.daily')"
-            class="
-              px-2
-              py-1
-              text-sm
-              font-medium
-              text-gray-700
-              transition-colors
-              duration-200
-              transform
-              rounded
-              hover:bg-gray-900 hover:text-gray-100
-              md:mx-2
-            "
-            >アニメ</Link
-          >
-          <Link
-            :href="route('comic.daily')"
-            class="
-              px-2
-              py-1
-              text-sm
-              font-medium
-              text-gray-700
-              transition-colors
-              duration-200
-              transform
-              rounded
-              hover:bg-gray-900 hover:text-gray-100
-              md:mx-2
-            "
-            >漫画</Link
-          >
+          <Dropdown class="justify-end flex" align="right" width="48">
+            <template #trigger>
+              <span class="inline-flex rounded-md">
+                <button
+                  type="button"
+                  class="
+                    justify-end
+                    inline-flex
+                    items-center
+                    px-3
+                    py-2
+                    border border-transparent
+                    text-sm
+                    leading-4
+                    font-medium
+                    rounded-md
+                    text-gray-500
+                    bg-white
+                    hover:text-gray-700
+                    focus:outline-none
+                    transition
+                    ease-in-out
+                    duration-150
+                  "
+                >
+                  アニメ
+
+                  <svg
+                    class="ml-2 -mr-0.5 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </template>
+            <template #content>
+              <DropdownLink :href="route('anime.daily')" method="get" as="button">
+                日間ランキング
+              </DropdownLink>
+              <DropdownLink :href="route('anime.weekly')" method="get" as="button">
+                週間ランキング
+              </DropdownLink>
+              <DropdownLink :href="route('anime.monthly')" method="get" as="button">
+                月間ランキング
+              </DropdownLink>
+            </template>
+          </Dropdown>
+          
+          <Dropdown class="flex justify-end" align="right" width="48">
+            <template #trigger>
+              <span class="inline-flex rounded-md">
+                <button
+                  type="button"
+                  class="
+                    inline-flex
+                    items-center
+                    px-3
+                    py-2
+                    border border-transparent
+                    text-sm
+                    leading-4
+                    font-medium
+                    rounded-md
+                    text-gray-500
+                    bg-white
+                    hover:text-gray-700
+                    focus:outline-none
+                    transition
+                    ease-in-out
+                    duration-150
+                  "
+                >
+                  漫画
+
+                  <svg
+                    class="ml-2 -mr-0.5 h-4 w-4"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </button>
+              </span>
+            </template>
+
+            <template #content>
+              <DropdownLink :href="route('comic.daily')" method="get" as="button">
+                日間ランキング
+              </DropdownLink>
+              <DropdownLink :href="route('comic.weekly')" method="get" as="button">
+                週間ランキング
+              </DropdownLink>
+              <DropdownLink :href="route('comic.monthly')" method="get" as="button">
+                月間ランキング
+              </DropdownLink>
+            </template>
+          </Dropdown>
         </div>
 
         <div class="relative">
@@ -275,15 +360,20 @@
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
+import Dropdown from "@/Components/Dropdown.vue";
+import DropdownLink from "@/Components/DropdownLink.vue";
 
 export default {
   components: {
     Link,
+    Dropdown,
+    DropdownLink,
   },
   data() {
     return {
       key: null, //検索キーワード
       isClose: true, //ハンバーガーメニュー
+      isOpen: false, //ドロップダウンメニュー
     };
   },
   methods: {
@@ -292,6 +382,9 @@ export default {
     },
     toggle() {
       this.isClose = !this.isClose;
+    },
+    mouseOver() {
+      this.isOpen = !this.isOpen;
     },
   },
 };
