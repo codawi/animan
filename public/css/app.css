@@ -936,6 +936,9 @@ select {
 .w-28 {
   width: 7rem;
 }
+.w-2 {
+  width: 0.5rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -1331,6 +1334,9 @@ select {
 }
 .pb-8 {
   padding-bottom: 2rem;
+}
+.pb-4 {
+  padding-bottom: 1rem;
 }
 .text-left {
   text-align: left;

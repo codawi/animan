@@ -5,7 +5,7 @@
   </h1>
   <div class="container px-4 py-8 mx-auto">
     <div
-      v-for="(work, key) in works"
+      v-for="(work, key) in works.data"
       :key="key"
       class="
         border-2 rounded-sm
@@ -20,7 +20,7 @@
       "
     >
         <div class="text-left border-b-2 mb-8 texet-gray-900 font-semibold items-center-none">
-          {{ key + 1 }}位
+          {{ works.from + key}}位
         </div>
         <div
           v-if="work.image !== null"
@@ -86,17 +86,21 @@
       </div>
     </div>
 </div>
+<Pagination v-if="works" class="flex justify-center pb-4" :links="works.links" />
 </div>
 </template>
 
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import BookmarkButton from "@/Components/BookmarkButton";
+import Pagination from "@/Components/Pagination";
+
 
 export default {
   components: {
     Link,
     BookmarkButton,
+    Pagination,
   },
   props: {
     works: {

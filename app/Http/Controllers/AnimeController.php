@@ -16,7 +16,7 @@ class AnimeController extends Controller
         //アニメランキングソート
         $anime_ranking = Work::where('category', 'anime')->withCount(['count AS total_daily_count' => function ($query) {
             $query->select(DB::raw("SUM(daily_tweet) as daily_count_sum"));
-        }])->orderByDesc('total_daily_count')->take(10)->get();
+        }])->orderByDesc('total_daily_count')->paginate(50);
 
         //ログイン判定
         if (Auth::check()) {
