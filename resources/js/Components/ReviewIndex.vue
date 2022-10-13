@@ -1,7 +1,7 @@
 <template>
   <div class="my-8 flex justify-center">
     <h1 v-if="reviews.data.length">レビュー一覧</h1>
-    <h2 v-else>レビューはまだありません</h2>
+    <h2 class="mb-16" v-else>レビューはまだありません</h2>
   </div>
   <div
     v-for="(review, key) in reviews.data"
@@ -25,7 +25,7 @@
         class="py-4"
       ></star-rating>
       <p v-if="!readMoreActived" class="mt-2 break-all text-gray-600">
-        {{ review.review.slice(0,40) }}
+        {{ review.review.slice(0,120) }}
       </p>
       <p v-if="readMoreActived" class="mt-2 break-all text-gray-600">
         {{ review.review }}

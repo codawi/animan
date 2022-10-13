@@ -1,5 +1,4 @@
 <template>
-  <div class="bg-slate-50 text-gray-600 body-font">
     <div
       class="
         container
@@ -76,7 +75,6 @@
         </div>
       </div>
     </div>
-</div>
 </template>
 
 <script>

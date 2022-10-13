@@ -1,10 +1,12 @@
 <template>
   <Navbar />
+  <div class="bg-slate-50 text-gray-600 body-font">
   <FlashMessage />
   <animeWork v-if="work.category === 'anime'" :work="work" :is_bookmark="is_bookmark"  />
   <ComicWork v-else-if="work.category === 'comic'" :work="work" :is_bookmark="is_bookmark"  />
   <!-- レビュー一覧 -->
   <ReviewIndex :reviews="reviews" />
+  </div>
   <Footer />
 </template>
 
