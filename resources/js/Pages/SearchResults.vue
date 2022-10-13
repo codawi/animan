@@ -1,114 +1,112 @@
 <template>
   <Navbar />
+  <div class="bg-slate-50 text-gray-600 body-font">
     <p class="text-gray-900 body-font underline">検索結果 {{ works.total }}件中 {{ works.from }}〜{{ works.to}}件</p>
     <h1 v-if="works.total === 0" class="text-center title-font sm:text-4xl text-2xl font-medium my-40 text-gray-900">ヒットした作品はありませんでした</h1>
+    <div class="container px-4 py-8 mx-auto">
     <div
       v-for="(work, key) in works.data"
       :key="key"
       class="
-        container
+        border-2 rounded-sm
+      border-white
+        border-opacity-50
+        bg-white
         flex
         mx-auto
-        px-5
-        py-24
-        md:flex-row
+        mb-16
         flex-col
-        items-center
+        max-w-2xl
       "
     >
-      <div
-        v-if="work.image !== null"
-        class="
-          flex
-          justify-center
-          lg:max-w-lg lg:w-full
-          md:w-1/2
-          w-5/6
-          mb-10
-          md:mb-0
-        "
-      >
+        <div class="text-left border-b-2 mb-8 texet-gray-900 font-semibold items-center-none">
+          {{ works.from + key}}
+        </div>
+        <div
+          v-if="work.image !== null"
+          class="
+            flex
+            justify-center
+            items-center
+            mx-8
+            mb-4
+            md:mb-0
+            max-w-2xl
+          "
+        >
+          <img
+            class="object-cover object-center rounded"
+            :src="work.image"
+            @error="altImg"
+          />
+        </div>
         <img
-          class="object-cover object-center rounded"
-          :src="work.image"
-          @error="altImg"
-        />
-      </div>
-      <img
-        v-else
-        :src="'/img/noimage.png'"
-        class="
+          v-else
+          :src="'/img/noimage.png'"
+          class="
           flex
-          justify-center
-          lg:max-w-lg lg:w-full
-          md:w-1/2
-          w-5/6
-          mb-10
-          md:mb-0
-        "
-      />
+            justify-center
+            mx-auto 
+            mb-4
+            md:mb-0
+          "
+        />
       <div
         class="
           lg:flex-grow
-          md:w-1/2
-          lg:pl-24
-          md:pl-16
           flex flex-col
           items-center
           text-center
         "
       >
-        <h1
+        <li
           v-text="work.title"
-          class="title-font text-2xl mb-4 font-medium text-gray-900"
-        ></h1>
-        <p v-text="work.copyright" class="mb-8 leading-relaxed"></p>
-        <div class="flex mx-auto">
-          <div v-if="work.title === 'anime'">
+          class="list-none title-font text-2xl mt-4 mb-2 font-medium text-gray-900"
+        ></li>
+        <p v-text="work.copyright" class="mb-4 leading-relaxed"></p>
+        <div class="flex mx-auto mb-4">
           <Link
-          :href="route('anime.work', { id: work.id })"
+          v-if="work.category === 'anime'"
+            :href="route('anime.work', { id: work.id })"
             class="
               inline-flex
               text-white
-              bg-orange-500
+              bg-orange-400
               border-0
               py-2
               px-6
               focus:outline-none
-              hover:bg-orange-600
+              hover:bg-orange-500
               rounded
               text-lg
             "
             >詳細</Link
           >
-        </div>
-        <div v-else>
           <Link
-          :href="route('comic.work', { id: work.id })"
+          v-if="work.category === 'comic'"
+            :href="route('comic.work', { id: work.id })"
             class="
               inline-flex
               text-white
-              bg-orange-500
+              bg-orange-400
               border-0
               py-2
               px-6
               focus:outline-none
-              hover:bg-orange-600
+              hover:bg-orange-500
               rounded
               text-lg
             "
             >詳細</Link
           >
-        </div>
-        <BookmarkButton
-            :work="work"
-            :is_bookmark="is_bookmark[key]"
-          />
+          <BookmarkButton :work="work" :is_bookmark="is_bookmark[key]" />
         </div>
       </div>
     </div>
-    <MoveTop />
-    <Pagination class="my-8 flex justify-center" :links="works.links" />
+</div>
+<MoveTop />
+<Pagination v-if="works" class="flex justify-center pb-4" :links="works.links" />
+    </div>
   <Footer />
 </template>
 

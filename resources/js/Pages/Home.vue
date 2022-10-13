@@ -43,12 +43,12 @@
             class="
               inline-flex
               text-white
-              bg-orange-500
+              bg-orange-400
               border-0
               py-2
               px-6
               focus:outline-none
-              hover:bg-orange-600
+              hover:bg-orange-500
               rounded
               text-lg
             "
@@ -64,12 +64,12 @@
               ml-16
               inline-flex
               text-white
-              bg-orange-500
+              bg-orange-400
               border-0
               py-2
               px-6
               focus:outline-none
-              hover:bg-orange-600
+              hover:bg-orange-500
               rounded
               text-lg
             "
