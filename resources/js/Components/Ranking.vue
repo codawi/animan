@@ -1,8 +1,126 @@
 <template>
-  <div class="bg-slate-50">
+  <div class="bg-slate-50 text-gray-600 body-font">
   <h1 class="text-center py-4 text-gray-900 text-xl font-bold">
     <slot></slot>
   </h1>
+  <nav v-if="category === 'anime'" class="flex flex-row justify-center">
+            <Link
+              Link
+              :href="route('anime.daily')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'daily' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              日間
+            </Link>
+            <Link
+              Link
+              :href="route('anime.weekly')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'weekly' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              週間
+          </Link>
+            <Link
+              Link
+              :href="route('anime.monthly')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'monthly' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              月間
+            </Link>
+          </nav>
+  <nav v-if="category === 'comic'" class="flex flex-row justify-center">
+            <Link
+              Link
+              :href="route('comic.daily')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'daily' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              日間
+            </Link>
+            <Link
+              Link
+              :href="route('comic.weekly')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'weekly' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              週間
+          </Link>
+            <Link
+              Link
+              :href="route('comic.monthly')"
+              method="get"
+              as="button"
+              type="button"
+              :class="{ active: period === 'monthly' }"
+              class="
+                text-gray-600
+                py-4
+                px-6
+                block
+                hover:text-blue-500
+                focus:outline-none
+              "
+              preserve-scroll
+            >
+              月間
+            </Link>
+          </nav>
   <div class="container px-4 py-8 mx-auto">
     <div
       v-for="(work, key) in works.data"
@@ -111,11 +229,24 @@ export default {
     is_bookmark: {
       type: Object,
     },
+    period: {
+      type: String,
+    },
+    category: {
+      type: String,
+    }
   },
   methods: {
     altImg(element) {
       element.target.src = "/img/noimage.png";
-    },
+    }
   },
 };
 </script>
+
+<style scoped>
+  .active {
+    border-bottom-width: 2px;
+    border-color: #3B82F6;
+  }
+</style>

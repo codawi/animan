@@ -30,33 +30,47 @@ class AnimeController extends Controller
 
         return Inertia::render(
             'Ranking',
-            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'daily']
+            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'daily', 'category' => 'anime']
         );
     }
 
-    public function indexWeekly()
+    public function indexweekly()
     {
-        // $anime_ranking = Work::with('count')->where('category', 'anime')->get();
-        // $anime_ranking = $anime_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+        $anime_ranking = Work::where('category', 'anime')->withCount(['count AS total_weekly_count' => function ($query) {
+            $query->select(DB::raw("SUM(monthly_tweet) as weekly_count_sum"));
+        }])->orderByDesc('total_weekly_count')->paginate(50);
 
-        // $anime_ranking = array_merge($anime_ranking);
+        if (Auth::check()) {
+            foreach ($anime_ranking as $anime_id) {
+                $is_bookmark[] = Auth::user()->is_bookmark($anime_id->id);
+            }
+        } else {
+            $is_bookmark[] = null;
+        }
 
-        // return Inertia::render(
-        //     'Ranking',
-        //     ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'weekly']
-        // );
+        return Inertia::render(
+            'Ranking',
+            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'weekly', 'category' => 'anime']
+        );
     }
 
     public function indexMonthly()
     {
-        // $anime_ranking = Work::with('count')->where('category', 'anime')->get();
-        // $anime_ranking = $anime_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+        $anime_ranking = Work::where('category', 'anime')->withCount(['count AS total_monthly_count' => function ($query) {
+            $query->select(DB::raw("SUM(monthly_tweet) as monthly_count_sum"));
+        }])->orderByDesc('total_monthly_count')->paginate(50);
 
-        // $anime_ranking = array_merge($anime_ranking);
+        if (Auth::check()) {
+            foreach ($anime_ranking as $anime_id) {
+                $is_bookmark[] = Auth::user()->is_bookmark($anime_id->id);
+            }
+        } else {
+            $is_bookmark[] = null;
+        }
 
-        // return Inertia::render(
-        //     'Ranking',
-        //     ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'monthly']
-        // );
+        return Inertia::render(
+            'Ranking',
+            ['works' => $anime_ranking, 'is_bookmark' => $is_bookmark, 'period'=> 'monthly', 'category' => 'anime']
+        );
     }
 }

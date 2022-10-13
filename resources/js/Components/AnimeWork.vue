@@ -1,5 +1,5 @@
 <template>
-  <section class="text-gray-600 body-font">
+  <div class="bg-slate-50 text-gray-600 body-font">
     <div
       class="
         container
@@ -76,7 +76,7 @@
         </div>
       </div>
     </div>
-  </section>
+</div>
 </template>
 
 <script>

@@ -31,33 +31,47 @@ class ComicController extends Controller
 
         return Inertia::render(
             'Ranking',
-            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'daily']
+            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'daily', 'category' => 'comic']
         );
     }
 
     public function indexWeekly()
     {
-        // $comic_ranking = Work::with('count')->where('category', 'comic')->get();
-        // $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+        $comic_ranking = Work::where('category', 'comic')->withCount(['count AS total_weekly_count' => function ($query) {
+            $query->select(DB::raw("SUM(weekly_tweet) as weekly_count_sum"));
+        }])->orderByDesc('total_weekly_count')->paginate(50);
 
-        // $comic_ranking = array_merge($comic_ranking);
+        if (Auth::check()) {
+            foreach ($comic_ranking as $comic_id) {
+                $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
+            }
+        } else {
+            $is_bookmark[] = null;
+        }
 
-        // return Inertia::render(
-        //     'Ranking',
-        //     ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'weekly']
-        // );
+        return Inertia::render(
+            'Ranking',
+            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'weekly', 'category' => 'comic']
+        );
     }
 
     public function indexMonthly()
     {
-        // $comic_ranking = Work::with('count')->where('category', 'comic')->get();
-        // $comic_ranking = $comic_ranking->sortByDesc('count.daily_tweet')->take(10)->toArray();
+        $comic_ranking = Work::where('category', 'comic')->withCount(['count AS total_monthly_count' => function ($query) {
+            $query->select(DB::raw("SUM(monthly_tweet) as monthly_count_sum"));
+        }])->orderByDesc('total_monthly_count')->paginate(50);
 
-        // $comic_ranking = array_merge($comic_ranking);
+        if (Auth::check()) {
+            foreach ($comic_ranking as $comic_id) {
+                $is_bookmark[] = Auth::user()->is_bookmark($comic_id->id);
+            }
+        } else {
+            $is_bookmark[] = null;
+        }
 
-        // return Inertia::render(
-        //     'Ranking',
-        //     ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'monthly']
-        // );
+        return Inertia::render(
+            'Ranking',
+            ['works' => $comic_ranking, 'is_bookmark' => $is_bookmark, 'period' => 'monthly', 'category' => 'comic']
+        );
     }
 }
