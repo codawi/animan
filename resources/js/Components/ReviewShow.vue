@@ -29,7 +29,7 @@
       ></star-rating>
       <p
         v-text="review.review"
-        class="mt-2 text-gray-600 dark:text-gray-300"
+        class="mt-2 break-all text-gray-600 dark:text-gray-300"
       ></p>
     </div>
 
