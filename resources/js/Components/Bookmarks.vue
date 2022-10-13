@@ -1,6 +1,6 @@
 <template>
   <div class="bg-slate-50">
-  <h1>
+    <h1 class="text-center py-4 text-gray-900 text-xl font-bold">
     <slot></slot>
   </h1>
   <div class="container px-4 py-8 mx-auto">
@@ -20,7 +20,7 @@
       "
     >
         <div class="text-left border-b-2 mb-8 texet-gray-900 font-semibold items-center-none">
-          {{ key + 1 }}位
+          {{ key + 1 }}
         </div>
         <div
           v-if="work.image !== null"
@@ -66,17 +66,36 @@
         <p v-text="work.copyright" class="mb-4 leading-relaxed"></p>
         <div class="flex mx-auto">
           <Link
+          v-if="work.category === 'anime'"
             :href="route('anime.work', { id: work.id })"
             class="
               inline-flex
               text-white
-              bg-orange-500
+              bg-orange-400
               border-0
               py-2
               px-6
               mb-4
               focus:outline-none
-              hover:bg-orange-600
+              hover:bg-orange-500
+              rounded
+              text-lg
+            "
+            >詳細</Link
+          >
+          <Link
+          v-if="work.category === 'comic'"
+            :href="route('comic.work', { id: work.id })"
+            class="
+              inline-flex
+              text-white
+              bg-orange-400
+              border-0
+              py-2
+              px-6
+              mb-4
+              focus:outline-none
+              hover:bg-orange-500
               rounded
               text-lg
             "

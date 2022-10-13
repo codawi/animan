@@ -5,14 +5,15 @@
       <h1 class="text-3xl font-medium text-gray-900 pb-8">
         {{ user.name }}さんのマイページ
       </h1>
-      <div class="p-4 lg:w-1/2 w-full">
+      <div class="p-4 md:w-1/2 w-full">
         <div
           class="
             flex
             border-2
             rounded-lg
             border-gray-200 border-opacity-50
-            p-8
+            py-8
+            px-4
             mb-8
           "
         >
@@ -42,9 +43,12 @@
           <Link
             :href="route('bookmark.anime')"
             class="
-              px-4
+            text-white
+            bg-orange-400
+              px-3
               py-2
-              text-gray-700
+              border-0
+              focus:outline-none
               transition-colors
               duration-200
               transform
@@ -53,15 +57,18 @@
               hover:bg-orange-500 hover:text-gray-100
             "
           >
-            アニメ作品
+            アニメ
           </Link>
           <Link
             :href="route('bookmark.comic')"
             class="
-              px-4
+            text-white
+            bg-orange-400
+              px-3
               py-2
               ml-2
-              text-gray-700
+              border-0
+              focus:outline-none
               transition-colors
               duration-200
               transform
@@ -70,13 +77,13 @@
               hover:bg-orange-500 hover:text-gray-100
             "
           >
-            漫画作品
+            漫画
           </Link>
         </div>
         </div>
         </div>
       </div>
-      <div class="p-4 lg:w-1/2 w-full">
+      <div class="p-4 md:w-1/2 w-full">
         <Link
         :href="route('user.edit')"
           class="flex border-2 rounded-lg border-gray-200 border-opacity-50 p-8"
