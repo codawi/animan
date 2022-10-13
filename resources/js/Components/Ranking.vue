@@ -121,6 +121,7 @@
               月間
             </Link>
           </nav>
+          
   <div class="container px-4 py-8 mx-auto">
     <div
       v-for="(work, key) in works.data"
@@ -184,7 +185,25 @@
         <p v-text="work.copyright" class="mb-4 leading-relaxed"></p>
         <div class="flex mx-auto mb-4">
           <Link
+          v-if="work.category === 'anime'"
             :href="route('anime.work', { id: work.id })"
+            class="
+              inline-flex
+              text-white
+              bg-orange-400
+              border-0
+              py-2
+              px-6
+              focus:outline-none
+              hover:bg-orange-500
+              rounded
+              text-lg
+            "
+            >詳細</Link
+          >
+          <Link
+          v-if="work.category === 'comic'"
+            :href="route('comic.work', { id: work.id })"
             class="
               inline-flex
               text-white
