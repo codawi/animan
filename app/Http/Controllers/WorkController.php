@@ -19,7 +19,7 @@ class WorkController extends Controller
         
         //作品のレビューを全件取得
         $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate(10);
-        
+
         //ログイン判定
         if (Auth::check()) {
             //ブックマーク済みか作品ごとに確認
