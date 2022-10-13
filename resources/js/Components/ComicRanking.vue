@@ -1,6 +1,6 @@
 <template>
   <Navbar />
-  <section class="text-gray-600 body-font">
+  <div class="bg-slate-50 text-gray-600 body-font"></div>
     <div
       v-for="(work, key) in works"
       :key="key"
@@ -89,7 +89,6 @@
         </div>
       </div>
     </div>
-  </section>
   <Footer />
 </template>
 
