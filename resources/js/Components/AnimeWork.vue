@@ -32,7 +32,6 @@
         <div v-if="$page.props.auth.user" class="flexbg-white">
           <nav class="flex flex-row justify-center">
             <Link
-              Link
               :href="route('anime.work', { id: work.id })"
               method="get"
               as="button"
