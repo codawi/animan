@@ -87,10 +87,9 @@ class TweetCountsDailyCommand extends Command
             );
 
             // 更新後のdaily_tweetをweekly_tweet,monthly_tweetに「加算」
-            //週初めはweekly_tweetリセット、月初めはmonthly_tweetリセットしてから加算
             TweetCount::where('work_id', $work_id)->update([
-                'weekly_tweet' => DB::raw('daily_tweet + weekly_tweet'),
-                'monthly_tweet' => DB::raw('daily_tweet + monthly_tweet'),
+                ['weekly_tweet' => DB::raw('daily_tweet + weekly_tweet')],
+                ['monthly_tweet' => DB::raw('daily_tweet + monthly_tweet')],
             ]);
         }
     }
