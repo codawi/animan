@@ -10,7 +10,7 @@
   >
     <div class="flex items-center justify-between">
       <span
-        v-text="review.created_at"
+        v-text="review.updated_at"
         class="text-sm font-light text-gray-600"
       ></span>
     </div>

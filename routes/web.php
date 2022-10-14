@@ -11,6 +11,7 @@ use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GoogleLoginController;
 
 
 /*
@@ -45,6 +46,12 @@ Route::get('/', function () {
 
 //ログイン
 Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
+
+//GoogleAPIログイン
+Route::group(['prefix' => 'auth', 'as' => 'google.'], function() {
+    Route::get("google", [GoogleLoginController::class, 'redirectToGoogle'])->name('redirect');
+    Route::get("google/callback", [GoogleLoginController::class, 'handleGoogleCallback'])->name('callback');
+});
 
 //マイページ、ユーザー情報編集
 Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function() {

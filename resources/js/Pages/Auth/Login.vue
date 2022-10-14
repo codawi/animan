@@ -6,6 +6,7 @@ import BreezeInput from '@/Components/Input.vue';
 import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import GoogleLogin from '@/Components/GoogleLogin'
 
 defineProps({
     canResetPassword: Boolean,
@@ -62,6 +63,7 @@ const submit = () => {
                     ログイン
                 </BreezeButton>
             </div>
+            <GoogleLogin />
         </form>
     </BreezeGuestLayout>
 </template>
