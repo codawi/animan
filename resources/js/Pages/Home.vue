@@ -103,7 +103,7 @@
       />
     </div>
   </section>
-
+  <MoveTop />
   <Footer />
 </template>
 
@@ -112,6 +112,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import FlashMessage from "@/Components/FlashMessage";
+import MoveTop from "@/Components/MoveTop"
 
 export default {
   components: {
@@ -119,6 +120,7 @@ export default {
     Navbar,
     Footer,
     FlashMessage,
+    MoveTop,
   },
 };
 </script>
