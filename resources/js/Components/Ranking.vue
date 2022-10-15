@@ -48,8 +48,15 @@
       >
         月間
       </Link>
+
     </nav>
-    <nav v-if="category === 'comic'" class="flex flex-row justify-center">
+    <nav v-if="category === 'comic'" class="flex
+        justify-center
+        space-x-8
+        text-gray-600
+        py-4
+        px-6
+        focus:outline-none">
       <Link
         Link
         :href="route('comic.daily')"
@@ -112,8 +119,8 @@
             items-center-none
           "
         >
-          <div class="left">{{ works.from + key }}位</div>
-          <div class="right font-medium">
+          <div class="left ml-1">{{ works.from + key }}位</div>
+          <div class="right font-medium my-auto text-xs mr-1">
             {{ work.media }}
           </div>
         </div>

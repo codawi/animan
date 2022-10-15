@@ -10,9 +10,8 @@
   >
     <div class="flex items-center justify-between">
       <span
-        v-text="review.updated_at"
         class="text-sm font-light text-gray-600"
-      ></span>
+      >{{ format(review.updated_at) }}</span>
     </div>
 
     <div class="mt-2">
@@ -58,6 +57,8 @@
 import { Link } from "@inertiajs/inertia-vue3";
 import StarRating from "vue-star-rating";
 import Pagination from "@/Components/Pagination";
+import dayjs from "dayjs";
+dayjs.locale("ja");
 
 export default {
   components: {
@@ -80,6 +81,10 @@ export default {
     readMore() {
       this.readMoreActived = true;
     },
+    format(date) {
+      let updated_at = dayjs(date).format("YYYY-MM DD:mm");
+      return updated_at;
+    }
   },
 };
 </script>
