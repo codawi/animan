@@ -13,9 +13,8 @@
   >
     <div class="flex items-center justify-between">
       <span
-        v-text="review.created_at"
         class="text-sm font-light text-gray-600 dark:text-gray-400"
-      ></span>
+      >{{ format(review.updated_at) }}</span>
     </div>
 
     <div class="mt-2">
@@ -85,6 +84,8 @@
 <script>
 import { Link } from "@inertiajs/inertia-vue3";
 import StarRating from "vue-star-rating";
+import dayjs from "dayjs";
+dayjs.locale("ja");
 
 export default {
   components: {
@@ -104,5 +105,11 @@ export default {
       rating: 0,
     };
   },
+  methods: {
+    format(date) {
+      let updated_at = dayjs(date).format("YYYY-MM DD:mm");
+      return updated_at;
+    }
+  }
 };
 </script>

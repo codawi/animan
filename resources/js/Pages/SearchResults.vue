@@ -45,8 +45,8 @@
             items-center-none
           "
         >
-          <div class="left">{{ works.from + key }}</div>
-          <div class="right font-medium">
+        <div class="left ml-1">{{ works.from + key }}</div>
+          <div class="right font-medium my-auto text-xs mr-1">
             {{ work.media }}
           </div>
         </div>
