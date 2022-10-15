@@ -12,22 +12,16 @@
 
         <div class="flex justify-end md:hidden">
           <div class="text-right">
-            <button
-              type="button"
-              @click="toggle"
-              class="text-gray-500 hover:text-gray-600 focus:outline-none"
-              aria-label="toggle menu"
-            >
-              <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current">
-                <path
-                  fill-rule="evenodd"
-                  d="M4 5h16a1 1 0 0 1 0 2H4a1 1 0 1 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2zm0 6h16a1 1 0 0 1 0 2H4a1 1 0 0 1 0-2z"
-                ></path>
-              </svg>
-            </button>
-            <Link
-              v-bind:class="{ hidden: isClose }"
-              :href="route('myLogin')"
+            <Dropdown class="flex justify-end" align="right" width="48">
+            <template #trigger>
+              <button>
+                <font-awesome-icon v-if="!$page.props.auth.user" icon="fa-solid fa-right-to-bracket" />
+                <font-awesome-icon v-if="$page.props.auth.user" icon="fa-solid fa-user" />
+          </button>
+            </template>
+            <template #content>
+            <DropdownLink
+              :href="route('myLogin')" method="get" as="button"
               v-if="!$page.props.auth.user"
               class="
                 flex flex-col
@@ -43,10 +37,9 @@
               "
             >
               ログイン
-            </Link>
-            <Link
-              v-bind:class="{ hidden: isClose }"
-              :href="route('register')"
+            </DropdownLink>
+            <DropdownLink
+              :href="route('register')" method="get" as="button"
               v-if="!$page.props.auth.user"
               class="
                 flex flex-col
@@ -62,14 +55,13 @@
               "
             >
               会員登録
-            </Link>
+            </DropdownLink>
             <div v-else-if="$page.props.auth.user">
               <div
-                v-bind:class="{ hidden: isClose }"
                 class="flex flex-col md:flex-row justify-end"
               >
-                <Link
-                  :href="route('user.mypage')"
+                <DropdownLink
+                :href="route('user.mypage')" method="get" as="button"
                   class="
                     px-2
                     py-1
@@ -82,11 +74,9 @@
                   "
                 >
                   マイページ
-                </Link>
-                <Link
-                  :href="route('logout')"
-                  method="post"
-                  as="button"
+                </DropdownLink>
+                <DropdownLink
+                :href="route('logout')" method="post" as="button"
                   class="
                     px-2
                     py-1
@@ -98,50 +88,28 @@
                     hover:bg-red-500 hover:text-gray-100
                   "
                 >
-                  ログアウト</Link
+                  ログアウト</DropdownLink
                 >
               </div>
             </div>
+            </template>
+          </Dropdown>
           </div>
         </div>
       </div>
 
       <div class="w-full md:flex md:items-center md:justify-between">
-        <div class="flex flex-col px-2 py-3 -mx-4 md:flex-row md:mx-0 md:py-0">
-          <Link
-            :href="route('home')"
-            class="
-              justify-end
-              inline-flex
-              items-center
-              px-3
-              py-2
-              border border-transparent
-              text-sm
-              leading-4
-              font-medium
-              rounded-md
-              text-gray-500
-              bg-white
-              hover:text-gray-700
-              focus:outline-none
-              transition
-              ease-in-out
-              duration-150
-            "
-            >ホーム</Link
-          >
+        <div class="flex flex-col m-2 -mx-4 md:flex-row md:mx-0 md:py-0">
           <Dropdown class="justify-end flex" align="right" width="48">
             <template #trigger>
               <span class="inline-flex rounded-md">
                 <button
                   type="button"
                   class="
+                  px-2
                     justify-end
                     inline-flex
                     items-center
-                    px-3
-                    py-2
                     border border-transparent
                     text-sm
                     leading-4
@@ -192,10 +160,9 @@
                 <button
                   type="button"
                   class="
+                  px-2
                     inline-flex
                     items-center
-                    px-3
-                    py-2
                     border border-transparent
                     text-sm
                     leading-4
@@ -280,7 +247,7 @@
         <div class="hidden md:inline-block">
           <div class="flex flex-col md:flex-row justify-end">
             <Link
-              :href="route('myLogin')"
+              :href="route('myLogin')" method="get" as="button"
               v-if="!$page.props.auth.user"
               class="
                 flex flex-col
@@ -298,7 +265,7 @@
               ログイン
             </Link>
             <Link
-              :href="route('register')"
+            :href="route('register')" method="get" as="button"
               v-if="!$page.props.auth.user"
               class="
                 flex flex-col
@@ -318,7 +285,7 @@
             <div v-else-if="$page.props.auth.user">
               <div class="flex flex-col md:flex-row justify-end">
                 <Link
-                  :href="route('user.mypage')"
+                :href="route('user.mypage')" method="get" as="button"
                   class="
                     px-2
                     py-1
@@ -333,9 +300,7 @@
                   マイページ
                 </Link>
                 <Link
-                  :href="route('logout')"
-                  method="post"
-                  as="button"
+                :href="route('logout')" method="post" as="button"
                   class="
                     px-2
                     py-1
@@ -372,19 +337,11 @@ export default {
   data() {
     return {
       key: null, //検索キーワード
-      isClose: true, //ハンバーガーメニュー
-      isOpen: false, //ドロップダウンメニュー
     };
   },
   methods: {
     onKeypressEnter() {
       this.$inertia.get(route("work.search", this.key));
-    },
-    toggle() {
-      this.isClose = !this.isClose;
-    },
-    mouseOver() {
-      this.isOpen = !this.isOpen;
     },
   },
 };

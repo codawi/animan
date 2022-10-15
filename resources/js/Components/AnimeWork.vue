@@ -6,29 +6,34 @@
         flex
         px-5
         py-20
-        items-center
-        justify-center
         flex-col
       "
     >
-      <div v-if="work.image !== null">
+    <div
+          v-if="work.image !== null"
+          class="flex justify-center items-center mx-8 my-4 md:mb-0 max-w-2xl"
+        >
+          <img
+            class="object-cover object-center rounded"
+            :src="work.image"
+            @error="altImg"
+          />
+        </div>
         <img
-          :src="work.image"
-          class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
-          @error="altImg"
+          v-else
+          :src="'/img/noimage.png'"
+          class="flex justify-center mx-auto mb-4 md:mb-0"
         />
-      </div>
-      <img
-        v-else
-        :src="'/img/noimage.png'"
-        class="w-5/6 mb-10 mx-auto object-cover object-center rounded"
-      />
-      <div class="text-center lg:w-2/3 w-full">
-        <h1
+        <p
           v-text="work.title"
-          class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
-        ></h1>
-        <p v-text="work.author" class="mb-8 leading-relaxed"></p>
+          class="list-none mt-2 mx-8 title-font text-2xlfont-medium text-gray-900"
+        ></p>
+        <p v-text="work.copyright" class="mb-4 ml-8 leading-relaxed text-xs"></p>
+        <p class="mb-8 flex justify-center leading-relaxed">
+        あらすじ<br>
+        {{ work.summary }}
+        </p>
+
         <div v-if="$page.props.auth.user" class="flexbg-white">
           <nav class="flex flex-row justify-center">
             <Link
@@ -73,7 +78,6 @@
           </nav>
         </div>
       </div>
-    </div>
 </template>
 
 <script>

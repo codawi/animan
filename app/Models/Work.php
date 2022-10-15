@@ -10,7 +10,7 @@ class Work extends Model
 {
   use HasFactory;
 
-  protected $fillable = ['category', 'title', 'image', 'copyright', 'url', 'media'];
+  protected $fillable = ['category', 'title', 'image', 'copyright', 'url', 'media', 'summary'];
 
 
   //カウント数リレーション
