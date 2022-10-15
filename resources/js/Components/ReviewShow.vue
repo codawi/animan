@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      max-w-2xl
+      max-w-xl
       px-8
       py-8
       mx-auto
