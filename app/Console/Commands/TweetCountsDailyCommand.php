@@ -68,12 +68,12 @@ class TweetCountsDailyCommand extends Command
             }
         }
 
-        //週初めと月初めそれぞれのカラムをリセット
-        if (date('N') === "1" && date('Y-m-01')) {
+        //週初めと月初めにそれぞれのカラムをリセット
+        if (date('N') === "1" && date('Y-m-01') === date('Y-m-d')) {
             DB::table('tweet_counts')->update(['weekly_tweet' => 0, 'monthly_tweet' => 0]);
         } elseif (date('N') === "1") {
             DB::table('tweet_counts')->update(['weekly_tweet' => 0]);
-        } elseif (date('Y-m-01')) {
+        } elseif (date('Y-m-01') === date('Y-m-d')) {
             DB::table('tweet_counts')->update(['monthly_tweet' => 0]);
         }
         
@@ -87,9 +87,9 @@ class TweetCountsDailyCommand extends Command
             );
 
             // 更新後のdaily_tweetをweekly_tweet,monthly_tweetに「加算」
-            TweetCount::where('work_id', $work_id)->update([
-                ['weekly_tweet' => DB::raw('daily_tweet + weekly_tweet')],
-                ['monthly_tweet' => DB::raw('daily_tweet + monthly_tweet')],
+           TweetCount::where('work_id', $work_id)->update([
+                'weekly_tweet' => DB::raw('daily_tweet + weekly_tweet'),
+                'monthly_tweet' => DB::raw('daily_tweet + monthly_tweet'),
             ]);
         }
     }

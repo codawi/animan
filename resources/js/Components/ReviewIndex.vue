@@ -6,7 +6,7 @@
   <div
     v-for="(review, key) in reviews.data"
     :key="key"
-    class="max-w-2xl px-8 py-8 mx-auto bg-white rounded-lg shadow-md"
+    class="max-w-2xl px-4 py-4 mb-8 mx-auto bg-white rounded-lg shadow-md"
   >
     <div class="flex items-center justify-between">
       <span
