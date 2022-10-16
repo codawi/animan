@@ -124,12 +124,11 @@
             {{ work.media }}
           </div>
         </div>
-        <div
+        <div class="mx-auto px-4 flex-col items-center my-4">
+    <div
           v-if="work.image !== null"
-          class="flex justify-center items-center mx-8 my-4 md:mb-0 max-w-2xl"
         >
           <img
-            class="object-cover object-center rounded"
             :src="work.image"
             @error="altImg"
           />
@@ -137,22 +136,15 @@
         <img
           v-else
           :src="'/img/noimage.png'"
-          class="flex justify-center mx-auto mb-4 md:mb-0"
         />
-        <p
+        <div class="mr-auto">
+          <p
           v-text="work.title"
-          class="
-            list-none
-            mt-2
-            mx-8
-            title-font
-            text-2xlfont-medium text-gray-900
-          "
-        ></p>
-        <p
-          v-text="work.copyright"
-          class="mb-4 ml-8 leading-relaxed text-xs"
-        ></p>
+          class="mt-2 title-font text-2xl font-medium text-gray-900"
+          ></p>
+          <p v-text="work.copyright" class="mb-4 leading-relaxed text-xs"></p>
+        </div>
+      </div>
         <div class="flex mx-auto mb-4">
           <div
             class="
