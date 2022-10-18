@@ -30,16 +30,7 @@ class TweetCountsDailyCommand extends Command
      * @return int
      */
     public function handle()
-    {   
-        //週初めと月初めはそれぞれのカラムをリセット
-        if (date('N') === "1" && date('Y-m-01') === date('Y-m-d')) {
-            DB::table('tweet_counts')->update(['weekly_tweet' => 0, 'monthly_tweet' => 0]);
-        } elseif (date('N') === "1") {
-            DB::table('tweet_counts')->update(['weekly_tweet' => 0]);
-        } elseif (date('Y-m-01') === date('Y-m-d')) {
-            DB::table('tweet_counts')->update(['monthly_tweet' => 0]);
-        }
-
+    {
         //ツイート数取得
         $consumer_key = config('twitter.twitter-api');
         $consumer_secret = config('twitter.twitter-api-secret');
@@ -50,7 +41,6 @@ class TweetCountsDailyCommand extends Command
 
         //DBから作品情報取得(3文字以下のタイトルの作品は除く)
         $works = Work::whereRaw('CHAR_LENGTH(title) > 3')->get()->toArray();
-        dd($works[252]);
 
         //APIで検索が出来ない記号を空白に変換
         $serch = [':', '<', '>', '―', '‐', 'Ⅴ', '[', ']', '≪', '≫', '&', '〜', '！', '・', '∞'];
@@ -75,8 +65,20 @@ class TweetCountsDailyCommand extends Command
                 //429エラーがあった配列に入れ直す
                 $twitter_requests[$index] = $connection->get('tweets/counts/recent', $params);
             }
+        }
 
-            //保存
+        //日間ツイート数リセット、週初めの場合週間カラム、月初めの場合月間カラムリセット
+        DB::table('tweet_counts')->update(['daily_tweet' => 0]);
+        if (date('N') === "1" && date('Y-m-01') === date('Y-m-d')) {
+            DB::table('tweet_counts')->update(['weekly_tweet' => 0, 'monthly_tweet' => 0]);
+        } elseif (date('N') === "1") {
+            DB::table('tweet_counts')->update(['weekly_tweet' => 0]);
+        } elseif (date('Y-m-01') === date('Y-m-d')) {
+            DB::table('tweet_counts')->update(['monthly_tweet' => 0]);
+        }
+
+        //ツイート数保存
+        foreach ($works as $index => $work) {
             TweetCount::updateOrCreate(
                 ['work_id' => $work['id']],
                 ['daily_tweet' => $twitter_requests[$index]->meta->total_tweet_count ?? 0]
