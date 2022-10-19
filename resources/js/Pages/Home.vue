@@ -14,27 +14,30 @@
         flex-col
       "
     >
-      <div class="text-center lg:w-2/3 w-full">
+      <div class="text-center w-full">
+        <div class="relative">
+        <img class="opacity-10 saturate-50 mb-16 " src="img/combine_images.png" alt="hero">
         <h1
-          class="title-font sm:text-4xl text-3xl mb-8 font-medium text-gray-900"
+          class="md:text-4xl text-xl w-4/5 font-bold text-gray-900 absolute left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4" 
         >
-          話題の作品を見つけよう
-        </h1>
+        話題の作品を見つけよう
+      </h1>
         <p
           class="
-            mb-8
+          w-11/12
             leading-relaxed
-            text-sm
-            font-normal
-            md:text-lg
-            text-gray-700
+            text-xs
+            font-medium
+            md:text-base
+            text-gray-900
+            absolute left-2/4 top-2/4 -translate-x-2/4 translate-y-10
           "
         >
           Animanは<strong>アニメ 漫画</strong
-          >のトレンドをランキング形式で表示するサービスです。<br />
-          ログインすると気になった作品をブックマークしたり、感想を投稿することもできます。
+          >のトレンドをランキング形式で表示するサービスです。
         </p>
-        <div class="flex justify-center mb-32">
+      </div>
+        <div class="flex justify-center mb-16">
           <Link
           :href="route('anime.daily')"
             method="get"
@@ -46,14 +49,15 @@
               bg-orange-400
               border-0
               py-2
-              px-6
+              px-4
               focus:outline-none
               hover:bg-orange-500
               rounded
-              text-lg
+              text-xs
+              sm:text-lg
             "
           >
-            アニメランキングへ
+            アニメランキング
           </Link>
           <Link
           :href="route('comic.daily')"
@@ -61,20 +65,21 @@
             as="button"
             type="button"
             class="
-              ml-16
+              ml-8
               inline-flex
               text-white
               bg-orange-400
               border-0
               py-2
-              px-6
+              px-4
               focus:outline-none
               hover:bg-orange-500
               rounded
-              text-lg
+              text-xs
+              sm:text-lg
             "
           >
-            マンガランキングへ
+            マンガランキング
           </Link>
         </div>
       </div>
@@ -84,22 +89,22 @@
       </h1>
       <img
         class="w-5/6 mb-56 object-cover object-center rounded"
-        alt="hero"
-        src="https://dummyimage.com/720x600"
+        alt="ranking"
+        src="img/work.gif"
       />
       <h1 class="mb-4 text-xl text-gray-700">気になる作品をブックマーク</h1>
       <img
         class="w-5/6 mb-56 object-cover object-center rounded"
-        alt="hero"
-        src="https://dummyimage.com/720x600"
+        alt="bookmark"
+        src="img/bookmark.gif"
       />
       <h1 class="mb-4 text-xl text-gray-700">
         観た、読んだ作品の評価、感想を書く
       </h1>
       <img
         class="w-5/6 mb-10 object-cover object-center rounded"
-        alt="hero"
-        src="https://dummyimage.com/720x600"
+        alt="review"
+        src="img/review.gif"
       />
     </div>
   </section>
