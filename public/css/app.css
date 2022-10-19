@@ -969,6 +969,12 @@ select {
 .w-11\/12 {
   width: 91.666667%;
 }
+.w-2 {
+  width: 0.5rem;
+}
+.w-1\/2 {
+  width: 50%;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
