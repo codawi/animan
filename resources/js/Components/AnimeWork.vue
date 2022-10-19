@@ -169,7 +169,7 @@
       </li>
     </ul>
     <div v-if="$page.props.auth.user" class="flexbg-white">
-      <nav class="flex flex-row justify-center">
+      <nav class="flex flex-row justify-center mb-8">
         <Link
           :href="route('anime.work', { id: work.id })"
           method="get"
