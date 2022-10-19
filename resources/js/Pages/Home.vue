@@ -88,23 +88,23 @@
         話題のアニメ、漫画作品をチェック
       </h1>
       <img
-        class="w-5/6 mb-56 object-cover object-center rounded"
+        class="w-1/2 mb-56 object-cover object-center rounded"
         alt="ranking"
-        src="img/work.gif"
+        src="img/work.png"
       />
       <h1 class="mb-4 text-xl text-gray-700">気になる作品をブックマーク</h1>
       <img
-        class="w-5/6 mb-56 object-cover object-center rounded"
+        class="w-1/2 mb-56 object-cover object-center rounded"
         alt="bookmark"
-        src="img/bookmark.gif"
+        src="img/bookmark.png"
       />
       <h1 class="mb-4 text-xl text-gray-700">
         観た、読んだ作品の評価、感想を書く
       </h1>
       <img
-        class="w-5/6 mb-10 object-cover object-center rounded"
+        class="w-1/2 mb-10 object-cover object-center rounded"
         alt="review"
-        src="img/review.gif"
+        src="img/review.png"
       />
     </div>
   </section>
