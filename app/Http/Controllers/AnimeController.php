@@ -34,7 +34,7 @@ class AnimeController extends Controller
         );
     }
 
-    public function indexweekly()
+    public function indexWeekly()
     {
         $anime_ranking = Work::where('category', 'anime')->withCount(['count AS total_weekly_count' => function ($query) {
             $query->select(DB::raw("SUM(monthly_tweet) as weekly_count_sum"));
