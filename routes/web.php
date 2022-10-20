@@ -74,7 +74,7 @@ Route::group(['prefix' => 'anime', 'as' => 'anime.'], function () {
     Route::get('weekly', [AnimeController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [AnimeController::class, 'indexMonthly'])->name('monthly');
     //アニメ作品詳細
-    Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
+    Route::get('work/{id}', [WorkController::class, 'animeIndex'])->name('work');
     //レビュー
     Route::group(['middleware' => 'auth', 'prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');
@@ -90,7 +90,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
     Route::get('weekly', [ComicController::class, 'indexWeekly'])->name('weekly');
     Route::get('monthly', [ComicController::class, 'indexMonthly'])->name('monthly');
     //漫画作品詳細
-    Route::get('work/{id}', [WorkController::class, 'index'])->name('work');
+    Route::get('work/{id}', [WorkController::class, 'comicIndex'])->name('work');
     //レビュー
     Route::group(['middleware' => 'auth', 'prefix' => 'work/{id}/review', 'as' => 'review.'], function () {
         Route::get('create', [RatingController::class, 'create'])->name('create');

@@ -13,9 +13,30 @@ use function PHPUnit\Framework\isEmpty;
 
 class WorkController extends Controller
 {
-    public function index($id)
+    public function animeIndex($id)
     {
-        $work = Work::where('id', $id)->first();
+        $work = Work::where('category', 'anime')->findOrFail($id);
+        
+        //作品のレビューを全件取得
+        $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate(10);
+        
+        //ログイン判定
+        if (Auth::check()) {
+            //ブックマーク済みか作品ごとに確認
+            $is_bookmark = Auth::user()->is_bookmark($id);
+        } else {
+            $is_bookmark = null;
+        }
+
+        return Inertia::render(
+            'Work/Work',
+            ['work' => $work, 'reviews' => $reviews, 'is_bookmark' => $is_bookmark]
+        );
+    }
+
+    public function comicIndex($id)
+    {
+        $work = Work::where('category', 'comic')->findOrFail($id);
         
         //作品のレビューを全件取得
         $reviews = Review::with('user:id,name')->where('work_id', $id)->paginate(10);
