@@ -50,6 +50,9 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return to_route('home');
+        return to_route('home')->with([
+            'message' => '登録メールアドレスへ確認メールを送信しました。',
+            'status' => 'success'
+        ]);;
     }
 }
