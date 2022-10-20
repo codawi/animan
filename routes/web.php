@@ -54,7 +54,7 @@ Route::group(['prefix' => 'auth', 'as' => 'google.'], function() {
 });
 
 //マイページ、ユーザー情報編集
-Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], function() {
+Route::group(['middleware' => ['auth', 'verified'] , 'prefix' => 'user', 'as' => 'user.'], function() {
     Route::get('', [UserController::class, 'index'])->name('mypage');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
     Route::patch('update', [UserController::class, 'update'])->name('update');
@@ -62,7 +62,7 @@ Route::group(['middleware' => 'auth', 'prefix' => 'user', 'as' => 'user.'], func
 });
 
 //ブックマーク一覧
-Route::group(['middleware' => 'auth', 'prefix' => 'bookmark', 'as' => 'bookmark.'], function() {
+Route::group(['middleware' => ['auth', 'verified'], 'prefix' => 'bookmark', 'as' => 'bookmark.'], function() {
     Route::get('anime', [BookmarkController::class, 'animeIndex'])->name('anime');
     Route::get('comic', [BookmarkController::class, 'comicIndex'])->name('comic');
 });
@@ -101,7 +101,7 @@ Route::group(['prefix' => 'comic', 'as' => 'comic.'], function () {
 
 
 //レビューDB関連
-Route::group(['middleware' => 'auth', 'prefix' => '{id}/review', 'as' => 'review.'], function () {
+Route::group(['middleware' => ['auth', 'verified'], 'verified', 'prefix' => '{id}/review', 'as' => 'review.'], function () {
     Route::post('store', [RatingController::class, 'store'])->name('store');
     Route::patch('update', [RatingController::class, 'update'])->name('update');
     Route::delete('delete', [RatingController::class, 'destroy'])->name('delete');
