@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
+use DateTime;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -34,10 +35,14 @@ class GoogleLoginController extends Controller
 
         public function createUser($googleUser)
         {
+            $google_user = Socialite::driver("google")->user();
+
             $user = User::create([
                 'name'     => $googleUser->name,
                 'email'    => $googleUser->email,
+                'email_verified_at' => now(),
                 'password' => Hash::make(uniqid()),
+                'google_id' => $google_user->id,
             ]);
             return $user;
         }
