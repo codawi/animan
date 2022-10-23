@@ -4,9 +4,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-use App\Http\Controllers\animeController;
+use App\Http\Controllers\AnimeController;
 use App\Http\Controllers\BookMarkController;
-use App\Http\Controllers\comicController;
+use App\Http\Controllers\ComicController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
 use App\Http\Controllers\LoginController;
