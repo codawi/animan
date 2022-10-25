@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 use App\Http\Controllers\AnimeController;
-use App\Http\Controllers\BookMarkController;
+use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\ComicController;
 use App\Http\Controllers\WorkController;
 use App\Http\Controllers\RatingController;
