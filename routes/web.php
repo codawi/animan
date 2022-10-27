@@ -57,7 +57,10 @@ Route::group(['prefix' => 'auth', 'as' => 'google.'], function() {
 Route::group(['middleware' => ['auth', 'verified'] , 'prefix' => 'user', 'as' => 'user.'], function() {
     Route::get('', [UserController::class, 'index'])->name('mypage');
     Route::get('edit', [UserController::class, 'edit'])->name('edit');
+    //通常の方法でログインしていた場合のユーザー情報更新
     Route::patch('update', [UserController::class, 'update'])->name('update');
+    // Googleアカウントでログインしていた場合ユーザー名のみ更新
+    Route::patch('nameUpdate', [UserController::class, 'nameUpdate'])->name('name.update');
     Route::delete('delete', [UserController::class, 'destroy'])->name('delete');
 });
 

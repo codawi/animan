@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use App\Models\User;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Requests\UserNameUpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -14,18 +15,17 @@ class UserController extends Controller
 {
     public function index() {
         $id = Auth::id();
-        $user = User::find($id);
-
+        $user_name = User::where('id', $id)->first('name');
 
         return Inertia::render(
             'User/Mypage',
-            ['user' => $user]
+            ['user' => $user_name]
         );
     }
 
     public function edit() {
         $user = Auth::user();
-        
+
         return Inertia::render(
             'User/Profile',
             ['user' => $user]
@@ -43,6 +43,19 @@ class UserController extends Controller
         return back()
         ->with([
             'message' => 'ユーザー情報を更新しました',
+            'status' => 'success'
+        ]);
+    }
+
+    public function nameUpdate(UserNameUpdateRequest $request) {
+        $user = Auth::user();
+        $user->name = $request->name;
+
+        $user->update();
+
+        return back()
+        ->with([
+            'message' => 'ユーザー名を更新しました',
             'status' => 'success'
         ]);
     }
