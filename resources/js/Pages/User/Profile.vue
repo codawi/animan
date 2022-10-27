@@ -14,12 +14,13 @@
             <li v-for="error in form.errors" :key="error">{{ error }}</li>
           </ul>
         </div>
-        <form @submit.prevent="submit">
+
+        <!-- 通常の方法でログインしていた場合 -->
+        <form v-if="user.google_id === null" @submit.prevent="submit">
           <div class="overflow-hidden shadow sm:rounded-md">
             <div class="bg-white px-4 py-5">
               <div class="flex-col">
                 <label
-                  for="first-name"
                   class="pt-4 block text-sm font-medium text-gray-700"
                   >ユーザー名</label
                 >
@@ -163,6 +164,62 @@
             </div>
           </div>
         </form>
+
+      <!-- googleアカウントでログインしていた場合 -->
+        <form v-if="user.google_id" @submit.prevent="googleSubmit">
+          <div class="overflow-hidden shadow sm:rounded-md">
+            <div class="bg-white px-4 py-5">
+              <div class="flex-col">
+                <label
+                  class="pt-4 block text-sm font-medium text-gray-700"
+                  >ユーザー名</label
+                >
+                <input
+                  type="text"
+                  v-model="user.name"
+                  id="name"
+                  required
+                  class="
+                    mt-1
+                    block
+                    w-full
+                    rounded-md
+                    border-gray-300
+                    shadow-sm
+                    focus:border-indigo-500 focus:ring-indigo-500
+                    sm:text-sm
+                  "
+                />
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
+                <button
+                  type="submit"
+                  class="
+                    inline-flex
+                    justify-center
+                    rounded-md
+                    border border-transparent
+                    bg-orange-600
+                    py-2
+                    px-4
+                    text-sm
+                    font-medium
+                    text-white
+                    shadow-sm
+                    hover:bg-orange-700
+                    focus:outline-none
+                    focus:ring-2
+                    focus:ring-orange-500
+                    focus:ring-offset-2
+                  "
+                >
+                  更新
+                </button>
+              </div>
+          </div>
+        </form>
+
       </div>
       <DeleteConfirmButton class="mt-24" />
     </div>
@@ -199,11 +256,17 @@ export default {
         new_password: null,
         new_password_confirmation: null,
       }),
+      google_form: this.$inertia.form({
+        name: this.user.name,
+      }),
     };
   },
   methods: {
     submit() {
       this.form.patch(route("user.update"));
+    },
+    googleSubmit() {
+      this.google_form.patch(route("user.name.update"));
     },
   },
 };
