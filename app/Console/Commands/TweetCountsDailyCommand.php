@@ -52,7 +52,7 @@ class TweetCountsDailyCommand extends Command
         //ツイート検索
         foreach ($works as $index => $work) {
             $params = [
-                "query" => $work['title'],
+                "query" => "$work[title] lang:ja",
                 "start_time" => date(DATE_ATOM, strtotime("yesterday")),
                 "end_time" => date(DATE_ATOM, strtotime("yesterday + 1day")),
                 "granularity" => "day",
