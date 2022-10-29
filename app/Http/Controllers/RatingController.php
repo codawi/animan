@@ -182,11 +182,12 @@ class RatingController extends Controller
      */
     public function destroy($id)
     {
+        $category = Work::where('id', $id)->value('category');
         $input = Review::where('work_id', $id)->where('user_id', AUth::id())->first();
 
         $input->delete();
         return redirect()
-        ->action([WorkController::class, 'index'], ['id' => $id])
+        ->action([WorkController::class, "{$category}Index"], ['id' => $id])
         ->with([
             'message' => '削除しました',
             'status' => 'danger'
