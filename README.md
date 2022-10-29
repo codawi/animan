@@ -8,7 +8,7 @@ Twitterの単語を分析し、人気の作品をランキング形式で表示�
 https://animan-am.com/
 
 # 開発背景
-**解決したい課題**
+**解決したい課題**<br>
 昨今はスマホ一つで無限に時間を潰せてしまう娯楽バブル時代です。<br>
 ユーザーの時間も無限ではなく、大量のコンテンツが可処分時間の奪い合いが起き
 ています。<br>
@@ -18,9 +18,8 @@ https://animan-am.com/
 する時間の方が圧倒的に多くなり、肝心の作品に触れる時間があまりないといった
 ことがよくありました。
 
-**解決方法**
-最近話題の漫画やアニメをTwitterのツイートから分析しランキング形式で表示する
-サイトを作る。<br>
+**解決方法**<br>
+最近話題の漫画やアニメをTwitterのツイートから分析しランキング形式で毎日手軽に見れるサイトを作る。<br>
 一目で最近の流行作品が分かるようにしてユーザーの作品を見る以外の時間の無駄
 を無くす。
 
@@ -39,7 +38,7 @@ https://animan-am.com/
   - Guzzle(GrapQLAPIを利用) 7.2
   - TwitterOAuth(TwitterAPIを利用して作品を検索) 4.0
 
-**インフラ**
+**インフラ**<br>
 -AWS
   - EC2
   - VPC
@@ -56,12 +55,13 @@ https://animan-am.com/
 - GitHub
 - VSCode
 - PHPMyAdmin
+- laravel-graphql-playground
 - MailHog
 
 # 機能一覧
 - ランキング表示(アニメ、漫画)
 - ユーザー登録、ログイン(LaravelBreeze, GoogleAPI)
-  -ユーザー情報変更、削除
+  - ユーザー情報変更、削除
   - メール認証
 - ブックマーク
 - レビュー投稿,一覧,編集,削除
@@ -72,5 +72,5 @@ https://animan-am.com/
 # ER図
 ![ER図 drawio](https://user-images.githubusercontent.com/105541558/198505024-bca5f1a8-161e-4f3c-8552-aa8b4546312a.png)
 
-#AWS構成図
+# AWS構成図
 ![aws](https://user-images.githubusercontent.com/105541558/198754936-574fda46-ac73-4daf-b84c-b54946410df6.png)
