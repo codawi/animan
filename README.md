@@ -1,65 +1,76 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# AniMan
+AniManはアニメと漫画のトレンドランキングサービスです。<br>
+Twitterの単語を分析し、人気の作品をランキング形式で表示します。<br>
+会員登録を行うと気になる作品をブックマークしたり、感想を書くことができます。
+<img width="1049" alt="スクリーンショット 2022-10-29 10 13 25" src="https://user-images.githubusercontent.com/105541558/198755254-d4333d8b-d604-4e8d-8249-d7dbb07c33f4.png">
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+# URL
+https://animan-am.com/
 
-## About Laravel
+# 開発背景
+**解決したい課題**
+昨今はスマホ一つで無限に時間を潰せてしまう娯楽バブル時代です。<br>
+ユーザーの時間も無限ではなく、大量のコンテンツが可処分時間の奪い合いが起き
+ています。<br>
+限りある時間の中でせっかくなら最大限面白いコンテンツに触れたいと思う人も多
+いでしょう。<br>
+私はSNSをメインに話題のアニメや漫画を知るのですが、いつの間にか情報を収集
+する時間の方が圧倒的に多くなり、肝心の作品に触れる時間があまりないといった
+ことがよくありました。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+**解決方法**
+最近話題の漫画やアニメをTwitterのツイートから分析しランキング形式で表示する
+サイトを作る。<br>
+一目で最近の流行作品が分かるようにしてユーザーの作品を見る以外の時間の無駄
+を無くす。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 使用技術
+**フロントエンド**
+- Vue,js 3.2.33
+- TailwindCSS 3.0.18
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+**バックエンド**
+- PHP 8.0.2
+- Laravel 9.11
+  - Inertia.js(Vueと連携してSPA開発) 0.11.0
+  - LaravelBreeze(ログイン認証) 1.9
+  - Goutte(スクレイピングライブラリ) 2.2
+  - Socialite(GoogleAPIでログイン) 5.5
+  - Guzzle(GrapQLAPIを利用) 7.2
+  - TwitterOAuth(TwitterAPIを利用して作品を検索) 4.0
 
-## Learning Laravel
+**インフラ**
+-AWS
+  - EC2
+  - VPC
+  - RDS
+  - Route53
+  - ALB
+  - SES
+- Apach
+- MySQL
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+**開発環境**
+- Docker
+- Laravel sail
+- GitHub
+- VSCode
+- PHPMyAdmin
+- MailHog
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+# 機能一覧
+- ランキング表示(アニメ、漫画)
+- ユーザー登録、ログイン(LaravelBreeze, GoogleAPI)
+  -ユーザー情報変更、削除
+  - メール認証
+- ブックマーク
+- レビュー投稿,一覧,編集,削除
+  - 星評価(vue-star-rating)
+- 作品検索
+- 作品配信URL,公式サイトURL
 
-## Laravel Sponsors
+# ER図
+![ER図 drawio](https://user-images.githubusercontent.com/105541558/198505024-bca5f1a8-161e-4f3c-8552-aa8b4546312a.png)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# Animan
+#AWS構成図
+![aws](https://user-images.githubusercontent.com/105541558/198754936-574fda46-ac73-4daf-b84c-b54946410df6.png)
