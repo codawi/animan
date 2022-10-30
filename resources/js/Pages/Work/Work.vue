@@ -1,4 +1,5 @@
 <template>
+  <AppHead :title="`${work.title}`" />
   <Navbar />
   <div class="bg-slate-50 text-gray-600 body-font">
   <FlashMessage />
@@ -11,22 +12,27 @@
 </template>
 
 <script>
+import AppHead from "@/Components/AppHead";
 import animeWork from "@/Components/AnimeWork";
 import ComicWork from "@/Components/ComicWork";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import ReviewIndex from "@/Components/ReviewIndex";
 import FlashMessage from "@/Components/FlashMessage";
+import AnimeWork from "@/Components/AnimeWork.vue";
 
 export default {
   components: {
+    AppHead,
     animeWork,
     ComicWork,
     Navbar,
     Footer,
     ReviewIndex,
     FlashMessage,
-  },
+    AnimeWork,
+    AppHead
+},
   props: {
     work: {
       type: Object,

@@ -129,7 +129,6 @@ import MoveTop from "@/Components/MoveTop";
 export default {
   components: {
     Link,
-    Navbar,
     Footer,
     BookmarkButton,
     Pagination,
@@ -140,6 +139,7 @@ export default {
       element.target.src = "/img/noimage.png";
     },
   },
+  Navbar: Navbar,
   props: {
     works: {
       type: Object,

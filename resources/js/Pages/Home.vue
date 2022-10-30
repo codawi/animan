@@ -1,4 +1,5 @@
 <template>
+  <AppHead title="話題の作品を見つけよう"/>
   <Navbar />
   <FlashMessage />
   <section class="text-gray-600 body-font bg-slate-50">
@@ -113,6 +114,7 @@
 </template>
 
 <script>
+import AppHead from "@/Components/AppHead";
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
@@ -121,6 +123,7 @@ import MoveTop from "@/Components/MoveTop"
 
 export default {
   components: {
+    AppHead,
     Link,
     Navbar,
     Footer,
