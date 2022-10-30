@@ -1,4 +1,5 @@
 <template>
+  <AppHead title="ユーザー情報編集" />
   <Navbar />
   <section class="bg-slate-50">
     <FlashMessage />
@@ -228,13 +229,16 @@
 </template>
 
 <script>
+import AppHead from "@/Components/AppHead.vue"
 import { Link } from "@inertiajs/inertia-vue3";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import FlashMessage from "@/Components/FlashMessage";
 import DeleteConfirmButton from "@/Components/DeleteConfirmButton";
+
 export default {
   components: {
+    AppHead,
     Link,
     Navbar,
     Footer,

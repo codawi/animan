@@ -1,4 +1,5 @@
 <template>
+  <AppHead title="ブックマーク" />
   <Navbar />
   <MoveTop />
   <Bookmarks v-if="is_bookmark !== null" :works="works" :is_bookmark="is_bookmark">
@@ -10,6 +11,7 @@
 </template>
 
 <script>
+import AppHead from "@/Components/AppHead";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import Bookmarks from "@/Components/Bookmarks";
@@ -17,6 +19,7 @@ import MoveTop from "@/Components/MoveTop";
 
 export default {
   components: {
+    AppHead,
     Navbar,
     Footer,
     Bookmarks,

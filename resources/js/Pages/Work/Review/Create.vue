@@ -1,4 +1,5 @@
 <template>
+  <AppHead :title="`${work.title}のレビューをする`" />
   <Navbar />
   <section class="text-gray-600 body-font bg-slate-50">
   <!-- 作品詳細画面 -->
@@ -11,6 +12,7 @@
 </template>
 
 <script>
+import AppHead from "@/Components/AppHead";
 import AnimeWork from "@/Components/AnimeWork";
 import ComicWork from "@/Components/ComicWork";
 import Navbar from "@/Components/Navbar";
@@ -19,6 +21,7 @@ import ReviewCreate from "@/Components/ReviewCreate";
 
 export default {
   components: {
+    AppHead,
     AnimeWork,
     ComicWork,
     Navbar,
