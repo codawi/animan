@@ -1,5 +1,5 @@
 <template>
-  <Navbar />
+  <Head title="検索結果" />
   <div class="bg-slate-50 text-gray-600 body-font">
     <p class="text-gray-900 body-font underline">
       検索結果 {{ works.total }}件中 {{ works.from }}〜{{ works.to }}件
@@ -115,21 +115,19 @@
       :links="works.links"
     />
   </div>
-  <Footer />
 </template>
 
 <script>
+import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 import BookmarkButton from "@/Components/BookmarkButton";
 import Pagination from "@/Components/Pagination";
 import MoveTop from "@/Components/MoveTop";
 
 export default {
   components: {
+    Head,
     Link,
-    Footer,
     BookmarkButton,
     Pagination,
     MoveTop,
@@ -139,7 +137,6 @@ export default {
       element.target.src = "/img/noimage.png";
     },
   },
-  Navbar: Navbar,
   props: {
     works: {
       type: Object,

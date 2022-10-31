@@ -1,6 +1,5 @@
 <template>
-  <AppHead title="話題の作品を見つけよう"/>
-  <Navbar />
+  <Head title="話題の作品を見つけよう" />
   <FlashMessage />
   <section class="text-gray-600 body-font bg-slate-50">
     <div
@@ -89,13 +88,13 @@
         話題のアニメ、漫画作品をチェック
       </h1>
       <img
-        class="w-1/2 mb-56 object-cover object-center rounded"
+        class="md:w-1/2 w-full mb-32 object-cover object-center rounded"
         alt="ranking"
         src="img/work.png"
       />
       <h1 class="mb-4 text-xl text-gray-700">気になる作品をブックマーク</h1>
       <img
-        class="w-1/2 mb-56 object-cover object-center rounded"
+        class="md:w-1/2 w-full mb-32 object-cover object-center rounded"
         alt="bookmark"
         src="img/bookmark.png"
       />
@@ -103,30 +102,25 @@
         観た、読んだ作品の評価、感想を書く
       </h1>
       <img
-        class="w-1/2 mb-10 object-cover object-center rounded"
+        class="md:w-1/2 w-full mb-10 object-cover object-center rounded"
         alt="review"
         src="img/review.png"
       />
     </div>
   </section>
   <MoveTop />
-  <Footer />
 </template>
 
 <script>
-import AppHead from "@/Components/AppHead";
+import { Head } from "@inertiajs/inertia-vue3";
 import { Link } from "@inertiajs/inertia-vue3";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 import FlashMessage from "@/Components/FlashMessage";
 import MoveTop from "@/Components/MoveTop"
 
 export default {
   components: {
-    AppHead,
+    Head,
     Link,
-    Navbar,
-    Footer,
     FlashMessage,
     MoveTop,
   },

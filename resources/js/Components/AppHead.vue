@@ -1,5 +1,5 @@
 <template>
-  <Head :title="`${title}`">
+  <Head :title="title ? `${title} - AniMan` : 'AniMan'">
     <meta name="description" content="Animanはアニメ 漫画のトレンドをランキング形式で表示するサービスです。">
   </Head>
 </template>

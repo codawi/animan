@@ -1,6 +1,5 @@
 <template>
   <AppHead title="マイページ" />
-  <Navbar />
   <section class="text-gray-600 body-font bg-slate-50">
     <div class="container px-5 py-24 mx-auto flex flex-col items-center">
       <h1 class="text-3xl font-medium text-gray-900 pb-8">
@@ -131,21 +130,16 @@
       </div>
     </div>
   </section>
-  <Footer />
 </template>
 
 <script>
 import AppHead from '@/Components/AppHead';
 import { Link } from "@inertiajs/inertia-vue3";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 
 export default {
   components: {
     AppHead,
     Link,
-    Navbar,
-    Footer,
   },
   props: {
     user: {

@@ -1,6 +1,5 @@
 <template>
   <AppHead title="ユーザー情報編集" />
-  <Navbar />
   <section class="bg-slate-50">
     <FlashMessage />
     <div class="container py-32 mx-auto w-80 sm:w-1/2">
@@ -225,14 +224,11 @@
       <DeleteConfirmButton class="mt-24" />
     </div>
   </section>
-  <Footer />
 </template>
 
 <script>
 import AppHead from "@/Components/AppHead.vue"
 import { Link } from "@inertiajs/inertia-vue3";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 import FlashMessage from "@/Components/FlashMessage";
 import DeleteConfirmButton from "@/Components/DeleteConfirmButton";
 
@@ -240,8 +236,6 @@ export default {
   components: {
     AppHead,
     Link,
-    Navbar,
-    Footer,
     FlashMessage,
     DeleteConfirmButton,
   },
