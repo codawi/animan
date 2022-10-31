@@ -1,6 +1,5 @@
 <template>
   <AppHead title="ランキング"/>
-  <Navbar />
   <Ranking
     v-if="period === 'daily'"
     :works="works"
@@ -25,21 +24,16 @@
     :category="category"
     >月間ランキング</Ranking
   >
-  <Footer />
 </template>
   
 <script>
 import AppHead from "@/Components/AppHead"
 import Ranking from "@/Components/Ranking";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 
 export default {
   components: {
     AppHead,
     Ranking,
-    Navbar,
-    Footer,
     AppHead
 },
   props: {

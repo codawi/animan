@@ -1,6 +1,5 @@
 <template>
   <AppHead :title="`${work.title}のレビューを編集`" />
-  <Navbar />
   <section class="text-gray-600 body-font bg-slate-50">
   <FlashMessage />
   <AnimeWork v-if="work.category === 'anime'" :work="work" :is_bookmark="is_bookmark" />
@@ -8,15 +7,12 @@
   <!-- レビュー投稿画面 -->
   <ReviewEdit :work="work" :review="review" />
 </section>
-  <Footer />
 </template>
 
 <script>
 import AppHead from "@/Components/AppHead";
 import AnimeWork from "@/Components/AnimeWork";
 import ComicWork from "@/Components/ComicWork";
-import Navbar from "@/Components/Navbar";
-import Footer from "@/Components/Footer";
 import ReviewEdit from "@/Components/ReviewEdit";
 import FlashMessage from "@/Components/FlashMessage";
 
@@ -25,8 +21,6 @@ export default {
     AppHead,
     AnimeWork,
     ComicWork,
-    Navbar,
-    Footer,
     ReviewEdit,
     FlashMessage,
   },
