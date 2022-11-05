@@ -58,6 +58,7 @@ https://animan-am.com/
 - MailHog
 
 # 機能一覧
+- SPA対応
 - ランキング表示(アニメ,漫画)
 - ユーザー登録、ログイン(LaravelBreeze, GoogleAPI)
   - ゲストログイン機能
