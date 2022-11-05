@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('command:TweetCounts')->daily();
+        $schedule->command('command:GuestUser')->daily();
     }
 
     /**

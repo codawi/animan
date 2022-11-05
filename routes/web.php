@@ -47,6 +47,9 @@ Route::get('/', function () {
 //ログイン
 Route::get("/my-login", [LoginController::class, "index"])->name("myLogin");
 
+//ゲストログイン
+Route::get("/guest-login", [LoginController::class, "guestLogin"])->name("guestLogin");
+
 //GoogleAPIログイン
 Route::group(['prefix' => 'auth', 'as' => 'google.'], function() {
     Route::get("google", [GoogleLoginController::class, 'redirectToGoogle'])->name('redirect');
