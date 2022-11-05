@@ -27,7 +27,7 @@ class GuestUserCommand extends Command
      *
      * @return int
      */
-    private const GUEST_USER_ID = 4;
+    private const GUEST_USER_ID = 5;
 
     public function handle()
     {
