@@ -4,7 +4,7 @@
     <FlashMessage />
     <div class="container py-32 mx-auto w-80 sm:w-1/2">
       <h1 class="text-xl font-medium text-gray-900">ユーザー情報編集</h1>
-      <p v-if="user.id === 4" class="text-red-500">※ゲストユーザーはアカウント情報を編集できません</p>
+      <p v-if="user.id === 5" class="text-red-500">※ゲストユーザーはアカウント情報を編集できません</p>
       <div class="mt-5">
         <div
           v-if="form.hasErrors"
@@ -278,7 +278,7 @@ export default {
   },
   mounted() {
     // ゲストユーザーならdisabled
-    if(this.user.id === 4) {
+    if(this.user.id === 5) {
         this.isDisabled = true;
       }
     }
