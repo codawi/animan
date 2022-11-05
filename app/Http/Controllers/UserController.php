@@ -38,7 +38,8 @@ class UserController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->new_password);
 
-        $user->update();
+        //バリデーションをかけた値だけDB保存
+        $user->fill($request->validated())->update();
 
         return back()
         ->with([

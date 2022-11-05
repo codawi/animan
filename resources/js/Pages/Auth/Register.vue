@@ -6,6 +6,7 @@ import BreezeLabel from '@/Components/Label.vue';
 import BreezeValidationErrors from '@/Components/ValidationErrors.vue';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import GoogleLogin from '@/Components/GoogleLogin'
+import GuestLogin from '@/Components/GuestLogin'
 
 const form = useForm({
     name: '',
@@ -58,7 +59,8 @@ const submit = () => {
                     登録
                 </BreezeButton>
             </div>
-            <GoogleLogin />
         </form>
+        <GoogleLogin />
+        <GuestLogin />
     </BreezeGuestLayout>
 </template>

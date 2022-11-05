@@ -4,6 +4,7 @@
     <FlashMessage />
     <div class="container py-32 mx-auto w-80 sm:w-1/2">
       <h1 class="text-xl font-medium text-gray-900">ユーザー情報編集</h1>
+      <p v-if="user.id === 4" class="text-red-500">※ゲストユーザーはアカウント情報を編集できません</p>
       <div class="mt-5">
         <div
           v-if="form.hasErrors"
@@ -27,6 +28,7 @@
                 <input
                   type="text"
                   v-model="user.name"
+                  :disabled="isDisabled"
                   id="name"
                   required
                   class="
@@ -47,6 +49,7 @@
                 <input
                   type="email"
                   v-model="user.email"
+                  :disabled="isDisabled"
                   required
                   class="
                     mt-1
@@ -66,6 +69,7 @@
                 <input
                   type="email"
                   v-model="form.email_confirmation"
+                  :disabled="isDisabled"
                   required
                   class="
                     mt-1
@@ -85,6 +89,7 @@
                 <input
                   type="password"
                   v-model="form.current_password"
+                  :disabled="isDisabled"
                   required
                   class="
                     mt-1
@@ -104,6 +109,7 @@
                 <input
                   type="password"
                   v-model="form.new_password"
+                  :disabled="isDisabled"
                   required
                   class="
                     mt-1
@@ -123,6 +129,7 @@
                 <input
                   type="password"
                   v-model="form.new_password_confirmation"
+                  :disabled="isDisabled"
                   required
                   class="
                     mt-1
@@ -140,6 +147,7 @@
             <div class="bg-gray-50 px-4 py-3 text-right sm:px-6">
               <button
                 type="submit"
+                :disabled="isDisabled"
                 class="
                   inline-flex
                   justify-center
@@ -221,7 +229,7 @@
         </form>
 
       </div>
-      <DeleteConfirmButton class="mt-24" />
+      <DeleteConfirmButton v-if="!user.if === 4" class="mt-24" />
     </div>
   </section>
 </template>
@@ -257,6 +265,7 @@ export default {
       google_form: this.$inertia.form({
         name: this.user.name,
       }),
+      isDisabled: false,
     };
   },
   methods: {
@@ -267,5 +276,11 @@ export default {
       this.google_form.patch(route("user.name.update"));
     },
   },
+  mounted() {
+    // ゲストユーザーならdisabled
+    if(this.user.id === 4) {
+        this.isDisabled = true;
+      }
+    }
 };
 </script>
