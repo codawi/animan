@@ -32,7 +32,7 @@ class AnimeScrapingCommand extends Command
         //annictAPI作品情報取得
         $query = <<<GQL
     query {
-        searchWorks(seasons: ["2022-spring","2022-summer","2022-autumn","2022-winter"]) {
+        searchWorks(seasons: ["2022-spring","2022-summer","2022-autumn","2022-winter", "2023-winter"]) {
           edges {
             node {
               title
